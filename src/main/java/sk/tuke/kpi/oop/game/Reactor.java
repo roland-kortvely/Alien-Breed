@@ -1,5 +1,6 @@
 package sk.tuke.kpi.oop.game;
 
+import org.lwjgl.Sys;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
@@ -49,17 +50,7 @@ public class Reactor extends AbstractActor {
             return;
         }
 
-        this.setTemperature(
-            (int) (this.getTemperature() + increment *
-                (
-                    (this.getDamage() >= 33.0f && this.getDamage() <= 66.0f)
-                        ? 1.5f
-                        : (this.getDamage() >= 66.0f)
-                        ? 2.0f
-                        : 1.0f
-                )
-            )
-        );
+        this.setTemperature((int) (this.getTemperature() + increment * ((this.getDamage() >= 33.0f && this.getDamage() <= 66.0f) ? 1.5f : (this.getDamage() >= 66.0f) ? 2.0f : 1.0f)));
 
         if (this.getTemperature() <= 2000) {
             return;
@@ -144,8 +135,18 @@ public class Reactor extends AbstractActor {
 
         hammer.use();
 
+        float temperature = ((100.0f / this.getDamage()) * (this.getDamage() - 50)) / 100.0f;
+        temperature *= this.getTemperature();
+        System.out.println("Old temperature is:" + this.getTemperature());
+        System.out.println("New temperature is:" + temperature);
+
         this.setDamage(this.getDamage() - 50);
-        this.decreaseTemperature(1000);
+
+        if (this.getTemperature() > temperature) {
+            this.setTemperature((int) temperature);
+        }
+
+        this.updateAnimation();
     }
 
     public void extinguishWith(FireExtinguisher extinguisher)
