@@ -6,6 +6,7 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 public class Reactor extends AbstractActor {
 
     private boolean running;
+    private boolean extinguished;
 
     private int temperature;
     private int damage;
@@ -14,6 +15,7 @@ public class Reactor extends AbstractActor {
     private Animation normalAnimation;
     private Animation overheatedAnimation;
     private Animation brokenAnimation;
+    private Animation extinguishedAnimation;
 
     private Light light;
 
@@ -26,7 +28,9 @@ public class Reactor extends AbstractActor {
         this.setNormalAnimation(new Animation("sprites/reactor_on.png", 80, 80, 0.1f, Animation.PlayMode.LOOP_PINGPONG));
         this.setOverheatedAnimation(new Animation("sprites/reactor_hot.png", 80, 80, 0.05f, Animation.PlayMode.LOOP_PINGPONG));
         this.setBrokenAnimation(new Animation("sprites/reactor_broken.png", 80, 80, 0.1f, Animation.PlayMode.LOOP_PINGPONG));
+        this.setExtinguishedAnimation(new Animation("sprites/reactor_extinguished.png", 80, 80));
 
+        this.setExtinguished(false);
         this.setRunning(false);
     }
 
@@ -105,6 +109,11 @@ public class Reactor extends AbstractActor {
 
     private void updateAnimation()
     {
+        if (this.isExtinguished()) {
+            setAnimation(this.getExtinguishedAnimation());
+            return;
+        }
+
         if (this.getDamage() >= 100) {
             setAnimation(this.getBrokenAnimation());
             return;
@@ -139,24 +148,40 @@ public class Reactor extends AbstractActor {
         this.decreaseTemperature(1000);
     }
 
+    public void extinguishWith(FireExtinguisher extinguisher)
+    {
+        if (extinguisher == null) {
+            return;
+        }
+
+        if (this.getDamage() < 100) {
+            return;
+        }
+
+        extinguisher.use();
+        this.setExtinguished(true);
+
+        this.setTemperature(4000);
+    }
+
     public void addLight(Light light)
     {
         if (light == null) {
             return;
         }
 
-        this.light = light;
-        this.light.setElectricityFlow(this.isRunning());
+        this.setLight(light);
+        this.getLight().setElectricityFlow(this.isRunning());
     }
 
     public void removeLight()
     {
-        if (this.light == null) {
+        if (this.getLight() == null) {
             return;
         }
 
-        this.light.setElectricityFlow(false);
-        this.light = null;
+        this.getLight().setElectricityFlow(false);
+        this.setLight(null);
     }
 
     private int getTemperature()
@@ -166,7 +191,18 @@ public class Reactor extends AbstractActor {
 
     private void setTemperature(int temperature)
     {
-        this.temperature = (temperature <= 6000) ? temperature : 6000;
+        if (temperature <= 0) {
+            this.temperature = 0;
+            return;
+        }
+
+        if (temperature >= 6000) {
+            this.temperature = 6000;
+            this.turnOff();
+            return;
+        }
+
+        this.temperature = temperature;
     }
 
     private int getDamage()
@@ -231,6 +267,16 @@ public class Reactor extends AbstractActor {
         this.brokenAnimation = brokenAnimation;
     }
 
+    private Animation getExtinguishedAnimation()
+    {
+        return extinguishedAnimation;
+    }
+
+    private void setExtinguishedAnimation(Animation extinguishedAnimation)
+    {
+        this.extinguishedAnimation = extinguishedAnimation;
+    }
+
     public boolean isRunning()
     {
         if (this.getDamage() >= 100) {
@@ -247,12 +293,33 @@ public class Reactor extends AbstractActor {
         this.updateAnimation();
     }
 
+    public boolean isExtinguished()
+    {
+        return extinguished;
+    }
+
+    public void setExtinguished(boolean extinguished)
+    {
+        this.extinguished = extinguished;
+        this.updateAnimation();
+    }
+
+    public Light getLight()
+    {
+        return light;
+    }
+
+    public void setLight(Light light)
+    {
+        this.light = light;
+    }
+
     private void powerAppliance()
     {
-        if (this.light == null) {
+        if (this.getLight() == null) {
             return;
         }
 
-        this.light.setElectricityFlow(this.isRunning());
+        this.getLight().setElectricityFlow(this.isRunning());
     }
 }
