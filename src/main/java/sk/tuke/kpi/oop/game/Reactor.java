@@ -15,6 +15,8 @@ public class Reactor extends AbstractActor {
     private Animation overheatedAnimation;
     private Animation brokenAnimation;
 
+    private Light light;
+
     public Reactor()
     {
         this.setTemperature(0);
@@ -127,7 +129,7 @@ public class Reactor extends AbstractActor {
             return;
         }
 
-        if (this.getDamage() <= 0) {
+        if (this.getDamage() <= 0 || this.getDamage() >= 100) {
             return;
         }
 
@@ -135,6 +137,26 @@ public class Reactor extends AbstractActor {
 
         this.setDamage(this.getDamage() - 50);
         this.decreaseTemperature(1000);
+    }
+
+    public void addLight(Light light)
+    {
+        if (light == null) {
+            return;
+        }
+
+        this.light = light;
+        this.light.setElectricityFlow(this.isRunning());
+    }
+
+    public void removeLight()
+    {
+        if (this.light == null) {
+            return;
+        }
+
+        this.light.setElectricityFlow(false);
+        this.light = null;
     }
 
     private int getTemperature()
@@ -211,17 +233,26 @@ public class Reactor extends AbstractActor {
 
     public boolean isRunning()
     {
+        if (this.getDamage() >= 100) {
+            return false;
+        }
+
         return running;
     }
 
     private void setRunning(boolean running)
     {
-        if (this.getDamage() >= 100) {
+        this.running = running;
+        this.powerAppliance();
+        this.updateAnimation();
+    }
+
+    private void powerAppliance()
+    {
+        if (this.light == null) {
             return;
         }
 
-        this.running = running;
-
-        this.updateAnimation();
+        this.light.setElectricityFlow(this.isRunning());
     }
 }

@@ -6,19 +6,21 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 public class Hammer extends AbstractActor {
 
     private int uses;
-    private Animation animation;
 
     public Hammer()
     {
-        this.uses = 1;
-        this.animation = new Animation("sprites/hammer.png", 16, 16);
-
-        setAnimation(this.animation);
+        this.setUses(1);
+        setAnimation(new Animation("sprites/hammer.png", 16, 16));
     }
 
     public int getUses()
     {
         return uses;
+    }
+
+    public void setUses(int uses)
+    {
+        this.uses = uses;
     }
 
     public void use()
