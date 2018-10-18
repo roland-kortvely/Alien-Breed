@@ -1,8 +1,14 @@
 package sk.tuke.kpi.oop.game;
 
-import org.lwjgl.Sys;
+import org.jetbrains.annotations.NotNull;
+import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
+import sk.tuke.kpi.oop.game.actions.PerpetualReactorHeating;
+import sk.tuke.kpi.oop.game.tools.BreakableTool;
+import sk.tuke.kpi.oop.game.tools.FireExtinguisher;
+import sk.tuke.kpi.oop.game.tools.Hammer;
+import sk.tuke.kpi.oop.game.tools.Mjolnir;
 
 public class Reactor extends AbstractActor {
 
@@ -33,6 +39,15 @@ public class Reactor extends AbstractActor {
 
         this.setExtinguished(false);
         this.setRunning(false);
+    }
+
+    @Override
+    public void addedToScene(@NotNull Scene scene)
+    {
+        super.addedToScene(scene);
+
+        //Perpetual Heating ---> BOOM
+        new PerpetualReactorHeating(1).scheduleOn(this);
     }
 
     public void increaseTemperature(int increment)
@@ -123,9 +138,14 @@ public class Reactor extends AbstractActor {
         setAnimation(this.getNormalAnimation());
     }
 
-    public void repairWith(Hammer hammer)
+    public void repairWith(BreakableTool tool)
     {
-        if (hammer == null) {
+        if (tool == null) {
+            return;
+        }
+
+        //TODO: REPLACE WITH ARRAY
+        if (tool.getClass() != Hammer.class && tool.getClass() != Mjolnir.class) {
             return;
         }
 
@@ -133,12 +153,10 @@ public class Reactor extends AbstractActor {
             return;
         }
 
-        hammer.use();
+        tool.use();
 
         float temperature = ((100.0f / this.getDamage()) * (this.getDamage() - 50)) / 100.0f;
         temperature *= this.getTemperature();
-        System.out.println("Old temperature is:" + this.getTemperature());
-        System.out.println("New temperature is:" + temperature);
 
         this.setDamage(this.getDamage() - 50);
 
@@ -206,7 +224,7 @@ public class Reactor extends AbstractActor {
         this.temperature = temperature;
     }
 
-    private int getDamage()
+    public int getDamage()
     {
         return damage;
     }
@@ -299,7 +317,7 @@ public class Reactor extends AbstractActor {
         return extinguished;
     }
 
-    public void setExtinguished(boolean extinguished)
+    private void setExtinguished(boolean extinguished)
     {
         this.extinguished = extinguished;
         this.updateAnimation();

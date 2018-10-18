@@ -7,9 +7,9 @@ public class Controller extends AbstractActor {
 
     private Reactor reactor;
 
-    public Controller(Reactor r)
+    public Controller(Reactor reactor)
     {
-        this.reactor = r;
+        this.reactor = reactor;
         setAnimation(new Animation("sprites/switch.png", 16, 16));
     }
 
