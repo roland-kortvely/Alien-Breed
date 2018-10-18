@@ -15,11 +15,14 @@ public class Cooler extends AbstractActor {
 
     private boolean on;
 
+    private int decrement;
+
     public Cooler(Reactor reactor)
     {
         this.setOnAnimation(new Animation("sprites/fan.png", 32, 32, 0f, Animation.PlayMode.LOOP_PINGPONG));
         this.setReactor(reactor);
         this.turnOff();
+        this.setDecrement(1);
     }
 
     private void coolReactor()
@@ -32,7 +35,7 @@ public class Cooler extends AbstractActor {
             return;
         }
 
-        this.getReactor().decreaseTemperature(1);
+        this.getReactor().decreaseTemperature(this.getDecrement());
     }
 
     @Override
@@ -43,7 +46,7 @@ public class Cooler extends AbstractActor {
         new Loop<>(new Invoke(this::coolReactor)).scheduleOn(this);
     }
 
-    private Reactor getReactor()
+    public Reactor getReactor()
     {
         return reactor;
     }
@@ -81,5 +84,15 @@ public class Cooler extends AbstractActor {
     {
         this.onAnimation = onAnimation;
         setAnimation(this.onAnimation);
+    }
+
+    public int getDecrement()
+    {
+        return decrement;
+    }
+
+    public void setDecrement(int decrement)
+    {
+        this.decrement = decrement;
     }
 }

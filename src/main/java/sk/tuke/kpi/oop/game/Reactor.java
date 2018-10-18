@@ -5,10 +5,8 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.oop.game.actions.PerpetualReactorHeating;
-import sk.tuke.kpi.oop.game.tools.BreakableTool;
 import sk.tuke.kpi.oop.game.tools.FireExtinguisher;
 import sk.tuke.kpi.oop.game.tools.Hammer;
-import sk.tuke.kpi.oop.game.tools.Mjolnir;
 
 public class Reactor extends AbstractActor {
 
@@ -198,7 +196,7 @@ public class Reactor extends AbstractActor {
         this.setLight(null);
     }
 
-    private int getTemperature()
+    public int getTemperature()
     {
         return temperature;
     }
