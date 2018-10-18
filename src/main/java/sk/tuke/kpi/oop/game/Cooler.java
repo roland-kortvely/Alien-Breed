@@ -24,7 +24,6 @@ public class Cooler extends AbstractActor {
 
     private void coolReactor()
     {
-
         if (this.getReactor() == null) {
             return;
         }

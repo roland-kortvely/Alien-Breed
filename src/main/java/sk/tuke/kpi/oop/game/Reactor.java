@@ -138,14 +138,9 @@ public class Reactor extends AbstractActor {
         setAnimation(this.getNormalAnimation());
     }
 
-    public void repairWith(BreakableTool tool)
+    public void repairWith(Hammer tool)
     {
         if (tool == null) {
-            return;
-        }
-
-        //TODO: REPLACE WITH ARRAY
-        if (tool.getClass() != Hammer.class && tool.getClass() != Mjolnir.class) {
             return;
         }
 

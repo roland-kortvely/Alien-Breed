@@ -7,12 +7,14 @@ public class PerpetualReactorHeating extends AbstractAction<Reactor> {
 
     private int increment;
 
-    public PerpetualReactorHeating(int increment) {
+    public PerpetualReactorHeating(int increment)
+    {
         this.setIncrement(increment);
     }
 
     @Override
-    public void execute(float deltaTime) {
+    public void execute(float deltaTime)
+    {
 
         if (this.getActor() == null) {
             return;
@@ -21,11 +23,13 @@ public class PerpetualReactorHeating extends AbstractAction<Reactor> {
         this.getActor().increaseTemperature(this.getIncrement());
     }
 
-    private int getIncrement() {
+    private int getIncrement()
+    {
         return increment;
     }
 
-    private void setIncrement(int increment) {
+    private void setIncrement(int increment)
+    {
         this.increment = increment;
     }
 }
