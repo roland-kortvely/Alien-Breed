@@ -8,7 +8,10 @@ import sk.tuke.kpi.oop.game.actions.PerpetualReactorHeating;
 import sk.tuke.kpi.oop.game.tools.FireExtinguisher;
 import sk.tuke.kpi.oop.game.tools.Hammer;
 
-public class Reactor extends AbstractActor {
+import java.util.HashSet;
+import java.util.Set;
+
+public class Reactor extends AbstractActor implements Switchable, Repairable {
 
     private boolean running;
     private boolean extinguished;
@@ -22,10 +25,12 @@ public class Reactor extends AbstractActor {
     private Animation brokenAnimation;
     private Animation extinguishedAnimation;
 
-    private Light light;
+    private Set<EnergyConsumer> devices;
 
     public Reactor()
     {
+        devices = new HashSet<>();
+
         this.setTemperature(0);
         this.setDamage(0);
 
@@ -50,7 +55,7 @@ public class Reactor extends AbstractActor {
 
     public void increaseTemperature(int increment)
     {
-        if (!this.isRunning()) {
+        if (!this.isOn()) {
             return;
         }
 
@@ -80,7 +85,7 @@ public class Reactor extends AbstractActor {
 
     public void decreaseTemperature(int decrement)
     {
-        if (!this.isRunning()) {
+        if (!this.isOn()) {
             return;
         }
 
@@ -123,7 +128,7 @@ public class Reactor extends AbstractActor {
             return;
         }
 
-        if (!this.isRunning()) {
+        if (!this.isOn()) {
             setAnimation(this.getOffAnimation());
             return;
         }
@@ -136,17 +141,12 @@ public class Reactor extends AbstractActor {
         setAnimation(this.getNormalAnimation());
     }
 
-    public void repairWith(Hammer tool)
+    @Override
+    public void repair()
     {
-        if (tool == null) {
-            return;
-        }
-
         if (this.getDamage() <= 0 || this.getDamage() >= 100) {
             return;
         }
-
-        tool.use();
 
         float temperature = ((100.0f / this.getDamage()) * (this.getDamage() - 50)) / 100.0f;
         temperature *= this.getTemperature();
@@ -160,40 +160,14 @@ public class Reactor extends AbstractActor {
         this.updateAnimation();
     }
 
-    public void extinguishWith(FireExtinguisher extinguisher)
+    public void extinguish()
     {
-        if (extinguisher == null) {
-            return;
-        }
-
         if (this.getDamage() < 100) {
             return;
         }
 
-        extinguisher.use();
         this.setExtinguished(true);
-
         this.setTemperature(4000);
-    }
-
-    public void addLight(Light light)
-    {
-        if (light == null) {
-            return;
-        }
-
-        this.setLight(light);
-        this.getLight().setElectricityFlow(this.isRunning());
-    }
-
-    public void removeLight()
-    {
-        if (this.getLight() == null) {
-            return;
-        }
-
-        this.getLight().setElectricityFlow(false);
-        this.setLight(null);
     }
 
     public int getTemperature()
@@ -289,7 +263,8 @@ public class Reactor extends AbstractActor {
         this.extinguishedAnimation = extinguishedAnimation;
     }
 
-    public boolean isRunning()
+    @Override
+    public boolean isOn()
     {
         if (this.getDamage() >= 100) {
             return false;
@@ -301,7 +276,7 @@ public class Reactor extends AbstractActor {
     private void setRunning(boolean running)
     {
         this.running = running;
-        this.powerAppliance();
+        this.powerDevice();
         this.updateAnimation();
     }
 
@@ -316,22 +291,30 @@ public class Reactor extends AbstractActor {
         this.updateAnimation();
     }
 
-    public Light getLight()
+    public void addDevice(EnergyConsumer device)
     {
-        return light;
-    }
-
-    public void setLight(Light light)
-    {
-        this.light = light;
-    }
-
-    private void powerAppliance()
-    {
-        if (this.getLight() == null) {
+        if (device == null) {
             return;
         }
 
-        this.getLight().setElectricityFlow(this.isRunning());
+        this.devices.add(device);
+        device.setPowered(this.isOn());
+    }
+
+    public void removeDevice(EnergyConsumer device)
+    {
+        if (device == null) {
+            return;
+        }
+
+        device.setPowered(false);
+        this.devices.remove(device);
+    }
+
+    private void powerDevice()
+    {
+        for (EnergyConsumer device : devices) {
+            device.setPowered(this.isOn());
+        }
     }
 }
