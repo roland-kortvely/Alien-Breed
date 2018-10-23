@@ -15,31 +15,32 @@ public abstract class BreakableTool<T> extends AbstractActor implements Usable<T
     @Override
     public void useWith(T actor)
     {
-        Scene scene = this.getScene();
-
         if (this.getRemainingUses() <= 0) {
-            if (scene != null) {
-                scene.removeActor(this);
-            }
             return;
         }
 
         this.setRemainingUses(this.getRemainingUses() - 1);
-
-        if (this.getRemainingUses() <= 0) {
-            if (scene != null) {
-                scene.removeActor(this);
-            }
-        }
     }
 
     public int getRemainingUses()
     {
+        Scene scene = this.getScene();
+
+        if (this.remainingUses <= 0 && scene != null) {
+            scene.removeActor(this);
+        }
+
         return remainingUses;
     }
 
     public void setRemainingUses(int remainingUses)
     {
+        Scene scene = this.getScene();
+
         this.remainingUses = remainingUses;
+
+        if (this.remainingUses <= 0 && scene != null) {
+            scene.removeActor(this);
+        }
     }
 }

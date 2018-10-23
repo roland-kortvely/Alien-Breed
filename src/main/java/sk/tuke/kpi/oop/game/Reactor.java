@@ -5,8 +5,6 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.oop.game.actions.PerpetualReactorHeating;
-import sk.tuke.kpi.oop.game.tools.FireExtinguisher;
-import sk.tuke.kpi.oop.game.tools.Hammer;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -97,11 +95,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
             return;
         }
 
-        if (this.getDamage() >= 50) {
-            decrement /= 2;
-        }
-
-        this.setTemperature(this.getTemperature() - decrement);
+        this.setTemperature(this.getTemperature() - ((this.getDamage() >= 50) ? decrement / 2 : decrement));
 
         this.updateAnimation();
     }
@@ -142,10 +136,10 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
     }
 
     @Override
-    public void repair()
+    public boolean repair()
     {
         if (this.getDamage() <= 0 || this.getDamage() >= 100) {
-            return;
+            return false;
         }
 
         float temperature = ((100.0f / this.getDamage()) * (this.getDamage() - 50)) / 100.0f;
@@ -158,6 +152,8 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         }
 
         this.updateAnimation();
+
+        return true;
     }
 
     public void extinguish()

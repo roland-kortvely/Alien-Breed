@@ -16,8 +16,8 @@ public class Computer extends AbstractActor implements EnergyConsumer {
 
         this.setOn(false);
 
-        this.number1 = 0;
-        this.number2 = 0.0f;
+        this.setNumber1(0);
+        this.setNumber2(0.0f);
     }
 
     @Override
@@ -28,22 +28,22 @@ public class Computer extends AbstractActor implements EnergyConsumer {
 
     public void add(int n1, int n2)
     {
-        this.number1 = n1 + n2;
+        this.setNumber1(n1 + n2);
     }
 
     public void sub(int n1, int n2)
     {
-        this.number1 = n1 - n2;
+        this.setNumber1(n1 - n2);
     }
 
     public void add(float n1, float n2)
     {
-        this.number2 = n1 + n2;
+        this.setNumber2(n1 + n2);
     }
 
     public void sub(float n1, float n2)
     {
-        this.number2 = n1 - n2;
+        this.setNumber2(n1 - n2);
     }
 
     private boolean isOn()
@@ -60,8 +60,28 @@ public class Computer extends AbstractActor implements EnergyConsumer {
         } else {
             this.getAnimation().pause();
 
-            this.number1 = 0;
-            this.number2 = 0.0f;
+            this.setNumber1(0);
+            this.setNumber2(0.0f);
         }
+    }
+
+    public int getNumber1()
+    {
+        return number1;
+    }
+
+    public void setNumber1(int number1)
+    {
+        this.number1 = number1;
+    }
+
+    public float getNumber2()
+    {
+        return number2;
+    }
+
+    public void setNumber2(float number2)
+    {
+        this.number2 = number2;
     }
 }

@@ -8,8 +8,6 @@ public class PowerSwitch extends AbstractActor {
 
     private Switchable device;
 
-    private boolean on;
-
     public PowerSwitch(Switchable device)
     {
         setAnimation(new Animation("sprites/switch.png", 16, 16));

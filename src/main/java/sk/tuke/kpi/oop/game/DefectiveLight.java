@@ -37,15 +37,17 @@ public class DefectiveLight extends Light implements Repairable {
     }
 
     @Override
-    public void repair()
+    public boolean repair()
     {
         if (this.instance == null) {
-            return;
+            return false;
         }
 
         this.instance.dispose();
         this.turnOn();
 
         new ActionSequence<>(new Wait(4), new Invoke(this::defect));
+
+        return true;
     }
 }

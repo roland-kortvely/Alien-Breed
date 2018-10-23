@@ -7,7 +7,6 @@ import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.actions.Wait;
 import sk.tuke.kpi.gamelib.framework.Scenario;
 import sk.tuke.kpi.gamelib.map.MapMarker;
-import sk.tuke.kpi.oop.game.tools.Hammer;
 
 import java.util.Map;
 
@@ -24,7 +23,7 @@ public class Gameplay extends Scenario {
         scene.addActor(reactor, reactorArea1.getPosX(), reactorArea1.getPosY());
         reactor.turnOn();
 
-        SmartCooler cooler = new SmartCooler(reactor);
+        Cooler cooler = new Cooler(reactor);
         MapMarker coolerArea1 = markers.get("cooler-area-1");
         scene.addActor(cooler, coolerArea1.getPosX(), coolerArea1.getPosY());
 
@@ -33,10 +32,10 @@ public class Gameplay extends Scenario {
         reactor.addDevice(defectiveLight);
 
         //-------------------------------------------------------------v
-        //new ActionSequence<>(new Wait(5), new Invoke(() -> {
-        //cooler.turnOn();
-        //reactor.repairWith(new Hammer());
-        //}));
+        new ActionSequence<>(new Wait(5), new Invoke(() -> {
+            cooler.turnOn();
+            //reactor.repairWith(new Hammer());
+        }));
         //-------------------------------------------------------------^
 
         Reactor reactor2 = new Reactor();

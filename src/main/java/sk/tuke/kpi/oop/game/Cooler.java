@@ -65,14 +65,14 @@ public class Cooler extends AbstractActor implements Switchable {
     {
         this.on = true;
         this.onAnimation.setFrameDuration(0.2f);
-        setAnimation(this.onAnimation);
+        setAnimation(this.getOnAnimation());
     }
 
     public void turnOff()
     {
         this.on = false;
         this.onAnimation.setFrameDuration(0);
-        setAnimation(this.onAnimation);
+        setAnimation(this.getOnAnimation());
     }
 
     private Animation getOnAnimation()
@@ -83,7 +83,7 @@ public class Cooler extends AbstractActor implements Switchable {
     private void setOnAnimation(Animation onAnimation)
     {
         this.onAnimation = onAnimation;
-        setAnimation(this.onAnimation);
+        setAnimation(this.getOnAnimation());
     }
 
     public int getDecrement()
