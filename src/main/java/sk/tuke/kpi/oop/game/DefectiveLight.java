@@ -16,7 +16,6 @@ public class DefectiveLight extends Light implements Repairable {
 
     private void defect()
     {
-        System.out.println("Defective..");
         this.instance = new Loop<>(new Invoke(this::defective)).scheduleOn(this);
     }
 
@@ -46,7 +45,7 @@ public class DefectiveLight extends Light implements Repairable {
         this.instance.dispose();
         this.turnOn();
 
-        new ActionSequence<>(new Wait(4), new Invoke(this::defect));
+        new ActionSequence<>(new Wait(10), new Invoke(this::defect)).scheduleOn(this);
 
         return true;
     }

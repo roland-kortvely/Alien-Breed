@@ -28,15 +28,10 @@ public class Gameplay extends Scenario {
         scene.addActor(cooler, coolerArea1.getPosX(), coolerArea1.getPosY());
 
         DefectiveLight defectiveLight = new DefectiveLight();
-        scene.addActor(defectiveLight, 120, 175);
+        scene.addActor(defectiveLight, 113, 180);
         reactor.addDevice(defectiveLight);
 
-        //-------------------------------------------------------------v
-        new ActionSequence<>(new Wait(5), new Invoke(() -> {
-            cooler.turnOn();
-            //reactor.repairWith(new Hammer());
-        }));
-        //-------------------------------------------------------------^
+        new ActionSequence<>(new Wait(5), new Invoke(cooler::turnOn)).scheduleOn(cooler);
 
         Reactor reactor2 = new Reactor();
         MapMarker reactorArea2 = markers.get("reactor-area-2");
