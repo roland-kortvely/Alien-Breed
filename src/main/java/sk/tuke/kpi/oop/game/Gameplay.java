@@ -31,7 +31,10 @@ public class Gameplay extends Scenario {
         scene.addActor(defectiveLight, 113, 180);
         reactor.addDevice(defectiveLight);
 
-        new ActionSequence<>(new Wait(5), new Invoke(cooler::turnOn)).scheduleOn(cooler);
+        new ActionSequence<>(
+            new Wait(5),
+            new Invoke(cooler::turnOn)
+        ).scheduleOn(cooler);
 
         Reactor reactor2 = new Reactor();
         MapMarker reactorArea2 = markers.get("reactor-area-2");
@@ -48,5 +51,7 @@ public class Gameplay extends Scenario {
         Computer computer = new Computer();
         MapMarker computerArea = markers.get("computer-area");
         scene.addActor(computer, computerArea.getPosX(), computerArea.getPosY());
+
+        scene.addActor(new TimeBomb(4), 98, 126);
     }
 }
