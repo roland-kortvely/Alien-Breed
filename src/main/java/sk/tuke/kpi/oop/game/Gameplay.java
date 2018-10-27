@@ -52,6 +52,10 @@ public class Gameplay extends Scenario {
         MapMarker computerArea = markers.get("computer-area");
         scene.addActor(computer, computerArea.getPosX(), computerArea.getPosY());
 
-        scene.addActor(new TimeBomb(4), 98, 126);
+        scene.addActor(new ChainBomb(4), 98, 126);
+        scene.addActor(new ChainBomb(4), 98, 94);
+        scene.addActor(new ChainBomb(4), 66, 94);
+        scene.addActor(new ChainBomb(4), 82, 254);
+        scene.addActor(new ChainBomb(4), 131, 78);
     }
 }

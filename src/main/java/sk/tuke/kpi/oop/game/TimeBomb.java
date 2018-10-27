@@ -31,20 +31,26 @@ public class TimeBomb extends AbstractActor {
 
     public void activate()
     {
+        if (this.isActivated()) {
+            return;
+        }
+
         setAnimation(this.getActiveAnimation());
         this.activated = true;
 
-        new ActionSequence<>(new Wait(this.getTime()), new Invoke(this::detonate)).scheduleOn(this);
+        new ActionSequence<>(
+            new Wait(this.getTime()),
+            new Invoke(this::detonate)
+        ).scheduleOn(this);
     }
 
-    private void detonate()
+    public void detonate()
     {
-
         setAnimation(this.getExplosionAnimation());
 
         new ActionSequence<>(
             new Invoke(() -> setAnimation(this.getExplosionAnimation())),
-            new Wait(2.0f),
+            new Wait(0.6f),
             new Invoke(() -> {
                 Scene scene = this.getScene();
                 if (scene != null) {
