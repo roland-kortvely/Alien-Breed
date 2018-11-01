@@ -1,5 +1,6 @@
 package sk.tuke.kpi.oop.game;
 
+import org.jetbrains.annotations.Contract;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
@@ -46,6 +47,7 @@ public class Computer extends AbstractActor implements EnergyConsumer {
         this.setNumber2(n1 - n2);
     }
 
+    @Contract(pure = true)
     private boolean isOn()
     {
         return on;

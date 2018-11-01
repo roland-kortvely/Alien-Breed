@@ -1,5 +1,6 @@
 package sk.tuke.kpi.oop.game;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
@@ -208,6 +209,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         this.damage = damage;
     }
 
+    @Contract(pure = true)
     private Animation getOffAnimation()
     {
         return offAnimation;
@@ -218,6 +220,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         this.offAnimation = offAnimation;
     }
 
+    @Contract(pure = true)
     private Animation getNormalAnimation()
     {
         return normalAnimation;
@@ -228,6 +231,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         this.normalAnimation = normalAnimation;
     }
 
+    @Contract(pure = true)
     private Animation getOverheatedAnimation()
     {
         this.overheatedAnimation.setFrameDuration(0.05f - ((0.03f / 100.0f) * this.getDamage()));
@@ -239,6 +243,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         this.overheatedAnimation = overheatedAnimation;
     }
 
+    @Contract(pure = true)
     private Animation getBrokenAnimation()
     {
         return brokenAnimation;
@@ -249,6 +254,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         this.brokenAnimation = brokenAnimation;
     }
 
+    @Contract(pure = true)
     private Animation getExtinguishedAnimation()
     {
         return extinguishedAnimation;

@@ -1,5 +1,6 @@
 package sk.tuke.kpi.oop.game;
 
+import org.jetbrains.annotations.Contract;
 import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.framework.Player;
@@ -82,6 +83,7 @@ public class Helicopter extends AbstractActor {
         this.deadly = deadly;
     }
 
+    @Contract(pure = true)
     private Animation getNormalAnimation()
     {
         return normalAnimation;
@@ -92,6 +94,7 @@ public class Helicopter extends AbstractActor {
         this.normalAnimation = normalAnimation;
     }
 
+    @Contract(pure = true)
     private int getSpeed()
     {
         return speed;
@@ -102,6 +105,7 @@ public class Helicopter extends AbstractActor {
         this.speed = speed;
     }
 
+    @Contract(pure = true)
     private int getDamage()
     {
         return damage;

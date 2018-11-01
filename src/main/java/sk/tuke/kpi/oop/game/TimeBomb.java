@@ -1,5 +1,6 @@
 package sk.tuke.kpi.oop.game;
 
+import org.jetbrains.annotations.Contract;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.actions.ActionSequence;
 import sk.tuke.kpi.gamelib.actions.Invoke;
@@ -59,6 +60,7 @@ public class TimeBomb extends AbstractActor {
         ).scheduleOn(this);
     }
 
+    @Contract(pure = true)
     private float getTime()
     {
         return time;
@@ -74,6 +76,7 @@ public class TimeBomb extends AbstractActor {
         return activated;
     }
 
+    @Contract(pure = true)
     private Animation getInactiveAnimation()
     {
         return inactiveAnimation;
@@ -84,6 +87,7 @@ public class TimeBomb extends AbstractActor {
         this.inactiveAnimation = inactiveAnimation;
     }
 
+    @Contract(pure = true)
     private Animation getActiveAnimation()
     {
         return activeAnimation;
@@ -94,6 +98,7 @@ public class TimeBomb extends AbstractActor {
         this.activeAnimation = activeAnimation;
     }
 
+    @Contract(pure = true)
     private Animation getExplosionAnimation()
     {
         return explosionAnimation;

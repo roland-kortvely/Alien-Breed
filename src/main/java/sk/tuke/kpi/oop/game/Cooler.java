@@ -1,5 +1,6 @@
 package sk.tuke.kpi.oop.game;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.actions.Invoke;
@@ -75,6 +76,7 @@ public class Cooler extends AbstractActor implements Switchable {
         setAnimation(this.getOnAnimation());
     }
 
+    @Contract(pure = true)
     private Animation getOnAnimation()
     {
         return onAnimation;

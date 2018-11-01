@@ -1,5 +1,6 @@
 package sk.tuke.kpi.oop.game;
 
+import org.jetbrains.annotations.Contract;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
@@ -31,6 +32,7 @@ public class Light extends AbstractActor implements Switchable, EnergyConsumer {
         setAnimation(this.getAnimationOff());
     }
 
+    @Contract(pure = true)
     private boolean isPowered()
     {
         return powered;
@@ -74,6 +76,7 @@ public class Light extends AbstractActor implements Switchable, EnergyConsumer {
         this.updateAnimation();
     }
 
+    @Contract(pure = true)
     private Animation getAnimationOn()
     {
         return animationOn;
@@ -84,6 +87,7 @@ public class Light extends AbstractActor implements Switchable, EnergyConsumer {
         this.animationOn = animationOn;
     }
 
+    @Contract(pure = true)
     private Animation getAnimationOff()
     {
         return animationOff;
