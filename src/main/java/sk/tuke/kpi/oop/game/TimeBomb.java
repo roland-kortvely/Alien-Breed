@@ -22,7 +22,7 @@ public class TimeBomb extends AbstractActor {
     {
         this.setInactiveAnimation(new Animation("sprites/bomb.png", 16, 16));
         this.setActiveAnimation(new Animation("sprites/bomb_activated.png", 16, 16, 0.02f, Animation.PlayMode.LOOP_PINGPONG));
-        this.setExplosionAnimation(new Animation("sprites/small_explosion.png", 16, 16, 0.05f, Animation.PlayMode.ONCE));
+        this.setExplosionAnimation(new Animation("sprites/small_explosion.png", 16, 16, 0.1f, Animation.PlayMode.ONCE));
 
         this.setTime(time);
 
@@ -48,9 +48,8 @@ public class TimeBomb extends AbstractActor {
     {
         setAnimation(this.getExplosionAnimation());
 
-        new ActionSequence<>(
-            new Invoke(() -> setAnimation(this.getExplosionAnimation())),
-            new Wait(0.6f),
+        new When<>(
+            (action) -> this.getAnimation().getCurrentFrameIndex() >= this.getAnimation().getCurrentFrameIndex(),
             new Invoke(() -> {
                 Scene scene = this.getScene();
                 if (scene != null) {
