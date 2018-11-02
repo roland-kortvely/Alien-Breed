@@ -8,9 +8,19 @@ public class PowerSwitch extends AbstractActor {
 
     private Switchable device;
 
+    public PowerSwitch()
+    {
+        this(null);
+    }
+
     public PowerSwitch(Switchable device)
     {
         setAnimation(new Animation("sprites/switch.png", 16, 16));
+
+        if (device == null) {
+            return;
+        }
+
         this.setDevice(device);
 
         if (!device.isOn()) {
@@ -30,13 +40,19 @@ public class PowerSwitch extends AbstractActor {
 
     public void switchOn()
     {
-        this.getDevice().turnOn();
         getAnimation().setTint(Color.WHITE);
+
+        if (this.getDevice() != null) {
+            this.getDevice().turnOn();
+        }
     }
 
     public void switchOff()
     {
-        this.getDevice().turnOff();
         getAnimation().setTint(Color.GRAY);
+
+        if (this.getDevice() != null) {
+            this.getDevice().turnOff();
+        }
     }
 }
