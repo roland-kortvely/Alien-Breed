@@ -47,6 +47,26 @@ public class Computer extends AbstractActor implements EnergyConsumer {
         this.setNumber2(n1 - n2);
     }
 
+    public void add(int n1)
+    {
+        this.setNumber1(this.getNumber1() + n1);
+    }
+
+    public void add(float n1)
+    {
+        this.setNumber2(this.getNumber2() + n1);
+    }
+
+    public void sub(int n1)
+    {
+        this.setNumber1(this.getNumber1() - n1);
+    }
+
+    public void sub(float n1)
+    {
+        this.setNumber2(this.getNumber2() - n1);
+    }
+
     @Contract(pure = true)
     private boolean isOn()
     {
