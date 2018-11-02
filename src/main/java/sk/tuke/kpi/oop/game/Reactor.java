@@ -143,13 +143,21 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
             return false;
         }
 
-        float temperature = ((100.0f / this.getDamage()) * (this.getDamage() - 50)) / 100.0f;
-        temperature *= this.getTemperature();
+        //        float temperature = ((100.0f / this.getDamage()) * (this.getDamage() - 50)) / 100.0f;
+        //        temperature *= this.getTemperature();
+        //
+        //        this.setDamage(this.getDamage() - 50);
+        //
 
-        this.setDamage(this.getDamage() - 50);
+        int damage = this.getDamage() - 50;
+        float temperature = (int) Math.floor(damage / 4000.0f) + 2000.0f;
+
+        this.setDamage(damage > 0 ? damage : 0);
+
+        temperature = temperature < this.getTemperature() ? temperature : this.getTemperature();
 
         if (this.getTemperature() > temperature) {
-            this.setTemperature((int) temperature);
+            this.setTemperature((temperature < 0) ? 0 : (int) temperature);
         }
 
         this.updateAnimation();
