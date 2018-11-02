@@ -15,6 +15,15 @@ public class FireExtinguisher extends BreakableTool<Reactor> {
     public void useWith(Reactor actor)
     {
         super.useWith(actor);
+
+        if (actor == null) {
+            return;
+        }
+
+        if (actor.getDamage() < 100) {
+            return;
+        }
+
         actor.extinguish();
     }
 }
