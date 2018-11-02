@@ -180,9 +180,9 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         }
 
         if (temperature >= 6000) {
-            this.temperature = 6000;
+            //this.temperature = 6000;
             this.turnOff();
-            return;
+            //return;
         }
 
         this.temperature = temperature;
