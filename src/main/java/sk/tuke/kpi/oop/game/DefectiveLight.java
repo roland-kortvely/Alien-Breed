@@ -1,5 +1,6 @@
 package sk.tuke.kpi.oop.game;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import sk.tuke.kpi.gamelib.Disposable;
 import sk.tuke.kpi.gamelib.Scene;
@@ -14,8 +15,17 @@ public class DefectiveLight extends Light implements Repairable {
 
     private Disposable instance;
 
+    private boolean broken;
+
+    public DefectiveLight()
+    {
+        super();
+        this.setBroken(true);
+    }
+
     private void defect()
     {
+        this.setBroken(true);
         this.instance = new Loop<>(new Invoke(this::defective)).scheduleOn(this);
     }
 
@@ -42,11 +52,27 @@ public class DefectiveLight extends Light implements Repairable {
             return false;
         }
 
+        if (!this.isBroken()) {
+            return false;
+        }
+
         this.instance.dispose();
         this.turnOn();
+        this.setBroken(false);
 
         new ActionSequence<>(new Wait(10), new Invoke(this::defect)).scheduleOn(this);
 
         return true;
+    }
+
+    @Contract(pure = true)
+    private boolean isBroken()
+    {
+        return broken;
+    }
+
+    private void setBroken(boolean broken)
+    {
+        this.broken = broken;
     }
 }
