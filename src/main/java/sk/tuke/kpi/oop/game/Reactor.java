@@ -151,14 +151,16 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         return true;
     }
 
-    public void extinguish()
+    public boolean extinguish()
     {
         if (this.getDamage() < 100) {
-            return;
+            return false;
         }
 
         this.setExtinguished(true);
         this.setTemperature(4000);
+
+        return true;
     }
 
     public int getTemperature()

@@ -18,12 +18,10 @@ public class Hammer extends BreakableTool<Reactor> {
             return;
         }
 
-        if (actor.getDamage() <= 0) {
+        if (!actor.repair()) {
             return;
         }
 
         super.useWith(actor);
-
-        actor.repair();
     }
 }
