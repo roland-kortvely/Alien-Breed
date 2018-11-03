@@ -19,14 +19,13 @@ public class Teleport extends AbstractActor {
         setAnimation(new Animation("sprites/lift.png", 48, 48));
     }
 
-    public void teleportPlayer()
+    public void teleportPlayer(Player player)
     {
-        if (this.getDestination() == null) {
+        if (player == null) {
             return;
         }
 
-        Player player = this.getScene().getFirstActorByType(Player.class);
-        if (player == null) {
+        if (this.getDestination() == null) {
             return;
         }
 
@@ -41,7 +40,6 @@ public class Teleport extends AbstractActor {
     public void setDestination(Teleport destination)
     {
         if (this.equals(destination)) {
-            this.destination = null;
             return;
         }
 

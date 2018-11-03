@@ -22,7 +22,7 @@ public class ChainBomb extends TimeBomb {
             return;
         }
 
-        Ellipse2D.Float ellipse = new Ellipse2D.Float(this.getPosX(), this.getPosY(), 50, 50);
+        Ellipse2D.Float ellipse = new Ellipse2D.Float(this.getPosX(), this.getPosY(), 75, 75);
 
         for (Actor actor : scene.getActors()) {
             if (actor.getClass() == ChainBomb.class && !this.equals(actor)) {

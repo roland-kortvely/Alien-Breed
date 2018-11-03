@@ -18,10 +18,6 @@ public class FireExtinguisher extends BreakableTool<Reactor> {
             return;
         }
 
-        if (actor.getDamage() < 100) {
-            return;
-        }
-
         if (!actor.extinguish()) {
             return;
         }
