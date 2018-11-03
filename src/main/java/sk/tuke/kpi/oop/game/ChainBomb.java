@@ -27,7 +27,7 @@ public class ChainBomb extends TimeBomb {
         for (Actor actor : scene.getActors()) {
             if (actor.getClass() == ChainBomb.class && !this.equals(actor)) {
 
-                Rectangle2D.Float rectangle = new Rectangle2D.Float(actor.getPosX(), actor.getPosY(), 50, 50);
+                Rectangle2D.Float rectangle = new Rectangle2D.Float(actor.getPosX(), actor.getPosY(), 75, 75);
 
                 if (ellipse.intersects(rectangle)) {
                     ((ChainBomb) actor).activate();
