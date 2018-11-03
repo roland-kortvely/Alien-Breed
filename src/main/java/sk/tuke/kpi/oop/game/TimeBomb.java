@@ -52,7 +52,7 @@ public class TimeBomb extends AbstractActor {
         //     (action) -> this.getAnimation().getCurrentFrameIndex() >= this.getAnimation().getCurrentFrameIndex(),
         new ActionSequence<>(
             new Invoke(() -> setAnimation(this.getExplosionAnimation())),
-            new Wait(0.6f),
+            new Wait(1.0f),
             new Invoke(() -> {
                 Scene scene = this.getScene();
                 if (scene != null) {
