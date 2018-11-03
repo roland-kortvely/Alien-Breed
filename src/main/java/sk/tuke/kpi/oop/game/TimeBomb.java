@@ -5,6 +5,7 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.actions.ActionSequence;
 import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.actions.Wait;
+import sk.tuke.kpi.gamelib.actions.When;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
@@ -48,11 +49,11 @@ public class TimeBomb extends AbstractActor {
     {
         setAnimation(this.getExplosionAnimation());
 
-        // new When<>(
-        //     (action) -> this.getAnimation().getCurrentFrameIndex() >= this.getAnimation().getCurrentFrameIndex(),
-        new ActionSequence<>(
-            new Invoke(() -> setAnimation(this.getExplosionAnimation())),
-            new Wait(0.8f),
+        System.out.println("Max: " + this.getAnimation().getFrameCount());
+        System.out.println("Current: " + this.getAnimation().getCurrentFrameIndex());
+
+        new When<>(
+            (action) -> this.getAnimation().getCurrentFrameIndex() >= (this.getAnimation().getFrameCount() - 1),
             new Invoke(() -> {
                 Scene scene = this.getScene();
                 if (scene != null) {
