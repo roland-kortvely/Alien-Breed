@@ -1,6 +1,8 @@
 package sk.tuke.kpi.oop.game.tools;
 
-public interface Usable<T> {
+import sk.tuke.kpi.gamelib.framework.AbstractActor;
+
+public interface Usable<T extends AbstractActor> {
 
     void useWith(T actor);
 }

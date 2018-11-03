@@ -49,9 +49,6 @@ public class TimeBomb extends AbstractActor {
     {
         setAnimation(this.getExplosionAnimation());
 
-        System.out.println("Max: " + this.getAnimation().getFrameCount());
-        System.out.println("Current: " + this.getAnimation().getCurrentFrameIndex());
-
         new When<>(
             (action) -> this.getAnimation().getCurrentFrameIndex() >= (this.getAnimation().getFrameCount() - 1),
             new Invoke(() -> {
