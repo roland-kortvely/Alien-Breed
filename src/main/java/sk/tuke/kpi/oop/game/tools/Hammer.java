@@ -20,9 +20,11 @@ public class Hammer extends BreakableTool<Reactor> {
             return;
         }
 
+        /*
         if (actor.getDamage() <= 0) {
             return;
         }
+        */
 
         actor.repair();
     }
