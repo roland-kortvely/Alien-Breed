@@ -9,8 +9,6 @@ import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.framework.Player;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
-import java.util.List;
-
 public class Teleport extends AbstractActor {
 
     private Teleport destination;
