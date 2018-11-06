@@ -22,12 +22,16 @@ public class ChainBomb extends TimeBomb {
             return;
         }
 
-        Ellipse2D.Float ellipse = new Ellipse2D.Float(this.getPosX() - 25, this.getPosY() - 25, 50, 50);
+        Ellipse2D.Float ellipse = new Ellipse2D.Float(
+            (this.getPosX() + this.getWidth() / 2.0f) - 50,
+            (this.getPosY() + this.getHeight() / 2.0f) - 50,
+            100, 100
+        );
 
         for (Actor actor : scene.getActors()) {
             if (actor.getClass() == ChainBomb.class && !this.equals(actor)) {
 
-                Rectangle2D.Float rectangle = new Rectangle2D.Float(actor.getPosX() - 25, actor.getPosY() - 25, 50, 50);
+                Rectangle2D.Float rectangle = new Rectangle2D.Float(actor.getPosX(), actor.getPosY(), actor.getWidth(), actor.getHeight());
 
                 if (ellipse.intersects(rectangle)) {
                     ((ChainBomb) actor).activate();

@@ -1,6 +1,7 @@
 package sk.tuke.kpi.oop.game;
 
 import org.jetbrains.annotations.Contract;
+import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.framework.Player;
@@ -37,7 +38,13 @@ public class Helicopter extends AbstractActor {
             return;
         }
 
-        Player player = this.getScene().getFirstActorByType(Player.class);
+        Scene scene = this.getScene();
+
+        if (scene == null) {
+            return;
+        }
+
+        Player player = scene.getFirstActorByType(Player.class);
         if (player == null) {
             return;
         }
