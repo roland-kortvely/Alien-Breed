@@ -62,8 +62,7 @@ public class Move<T extends Movable> implements Action<T> {
         }
 
         if (this.getDuration() <= 0.00001f) {
-            this.getActor().stoppedMoving();
-            this.setDone(true);
+            this.stop();
         }
     }
 
@@ -71,6 +70,16 @@ public class Move<T extends Movable> implements Action<T> {
     public void reset()
     {
 
+    }
+
+    public void stop()
+    {
+        if (this.getActor() == null) {
+            return;
+        }
+
+        this.getActor().stoppedMoving();
+        this.setDone(true);
     }
 
     @Nullable
