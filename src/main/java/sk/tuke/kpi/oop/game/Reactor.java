@@ -28,7 +28,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
 
     public Reactor()
     {
-        devices = new HashSet<>();
+        this.setDevices(new HashSet<>());
 
         this.setTemperature(0);
         this.setDamage(0);
@@ -297,7 +297,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
             return;
         }
 
-        this.devices.add(device);
+        this.getDevices().add(device);
         device.setPowered(this.isOn());
     }
 
@@ -308,13 +308,23 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         }
 
         device.setPowered(false);
-        this.devices.remove(device);
+        this.getDevices().remove(device);
     }
 
     private void powerDevice()
     {
-        for (EnergyConsumer device : devices) {
+        for (EnergyConsumer device : this.getDevices()) {
             device.setPowered(this.isOn());
         }
+    }
+
+    public Set<EnergyConsumer> getDevices()
+    {
+        return devices;
+    }
+
+    public void setDevices(Set<EnergyConsumer> devices)
+    {
+        this.devices = devices;
     }
 }

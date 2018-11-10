@@ -56,6 +56,32 @@ public class Move<T extends Movable> implements Action<T> {
             case WEST:
                 this.getActor().setPosition(this.getActor().getPosX() - this.getActor().getSpeed(), this.getActor().getPosY());
                 break;
+
+            case NORTHEAST:
+                this.getActor().setPosition(
+                    this.getActor().getPosX() + this.getActor().getSpeed() / 2,
+                    this.getActor().getPosY() + this.getActor().getSpeed() / 2
+                );
+                break;
+            case NORTHWEST:
+                this.getActor().setPosition(
+                    this.getActor().getPosX() - this.getActor().getSpeed() / 2,
+                    this.getActor().getPosY() + this.getActor().getSpeed() / 2
+                );
+                break;
+            case SOUTHEAST:
+                this.getActor().setPosition(
+                    this.getActor().getPosX() + this.getActor().getSpeed() / 2,
+                    this.getActor().getPosY() - this.getActor().getSpeed() / 2
+                );
+                break;
+            case SOUTHWEST:
+                this.getActor().setPosition(
+                    this.getActor().getPosX() - this.getActor().getSpeed() / 2,
+                    this.getActor().getPosY() - this.getActor().getSpeed() / 2
+                );
+                break;
+
             default:
             case NONE:
                 break;
