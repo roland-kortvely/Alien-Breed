@@ -1,12 +1,13 @@
 package sk.tuke.kpi.oop.game.controllers;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import sk.tuke.kpi.gamelib.Actor;
+
 import sk.tuke.kpi.gamelib.Input;
 import sk.tuke.kpi.gamelib.KeyboardListener;
-import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.oop.game.Keeper;
 import sk.tuke.kpi.oop.game.actions.Drop;
+import sk.tuke.kpi.oop.game.actions.Shift;
 import sk.tuke.kpi.oop.game.actions.Take;
 import sk.tuke.kpi.oop.game.items.Collectible;
 
@@ -33,9 +34,13 @@ public class CollectorController<A extends Keeper> implements KeyboardListener {
             case BACKSPACE:
                 new Drop<>().scheduleOn(this.getActor());
                 break;
+            case Q:
+                new Shift<>().scheduleOn(this.getActor());
+                break;
         }
     }
 
+    @Contract(pure = true)
     private A getActor()
     {
         return actor;

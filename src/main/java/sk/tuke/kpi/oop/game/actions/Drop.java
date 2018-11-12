@@ -1,7 +1,7 @@
 package sk.tuke.kpi.oop.game.actions;
 
 import org.jetbrains.annotations.Nullable;
-import sk.tuke.kpi.gamelib.Actor;
+
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
 import sk.tuke.kpi.oop.game.Keeper;

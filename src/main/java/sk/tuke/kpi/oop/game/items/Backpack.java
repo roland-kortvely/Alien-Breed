@@ -6,6 +6,7 @@ import org.jetbrains.annotations.Nullable;
 import sk.tuke.kpi.gamelib.ActorContainer;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -94,6 +95,10 @@ public class Backpack implements ActorContainer<Collectible> {
     @Override
     public void shift()
     {
-        this.content.add(this.content.remove(0));
+        if (this.content.size() == 0) {
+            return;
+        }
+
+        Collections.rotate(this.content, -1);
     }
 }
