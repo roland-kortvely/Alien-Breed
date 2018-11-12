@@ -81,6 +81,7 @@ public class Ripley extends AbstractActor implements Movable {
         return ammo;
     }
 
+    @Contract(pure = true)
     public void setAmmo(int ammo)
     {
         this.ammo = ammo;

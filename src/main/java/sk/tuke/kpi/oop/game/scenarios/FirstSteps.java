@@ -1,6 +1,7 @@
 package sk.tuke.kpi.oop.game.scenarios;
 
 import org.jetbrains.annotations.NotNull;
+
 import sk.tuke.kpi.gamelib.GameApplication;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.SceneListener;
@@ -13,6 +14,8 @@ import sk.tuke.kpi.oop.game.characters.Ripley;
 import sk.tuke.kpi.oop.game.items.Ammo;
 import sk.tuke.kpi.oop.game.items.Energy;
 
+import java.util.List;
+
 public class FirstSteps implements SceneListener {
 
     private Ripley ripley;
@@ -22,6 +25,8 @@ public class FirstSteps implements SceneListener {
     @Override
     public void sceneInitialized(@NotNull Scene scene)
     {
+        scene.setActorRenderOrder(List.of(Ripley.class));
+
         this.topLine = scene.getGame().getWindowSetup().getHeight() - GameApplication.STATUS_LINE_OFFSET;
 
         //Prepare player

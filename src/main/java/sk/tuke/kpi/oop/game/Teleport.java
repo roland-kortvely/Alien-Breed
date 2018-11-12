@@ -2,6 +2,7 @@ package sk.tuke.kpi.oop.game;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.actions.When;
@@ -31,7 +32,6 @@ public class Teleport extends AbstractActor {
     public void addedToScene(@NotNull Scene scene)
     {
         super.addedToScene(scene);
-        scene.setActorRenderOrder(Player.class);
         this.teleport();
     }
 

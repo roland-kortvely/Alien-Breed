@@ -1,6 +1,7 @@
 package sk.tuke.kpi.oop.game.actions;
 
 import org.jetbrains.annotations.Contract;
+
 import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
 import sk.tuke.kpi.oop.game.Reactor;
 
