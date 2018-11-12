@@ -3,7 +3,7 @@ package sk.tuke.kpi.oop.game.scenarios;
 import org.jetbrains.annotations.NotNull;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.SceneListener;
-import sk.tuke.kpi.oop.game.KeyboardController;
+import sk.tuke.kpi.oop.game.controllers.MovableController;
 import sk.tuke.kpi.oop.game.characters.Ripley;
 
 public class FirstSteps implements SceneListener {
@@ -16,8 +16,8 @@ public class FirstSteps implements SceneListener {
 
         scene.addActor(ripley, 0, 0);
 
-        KeyboardController keyboardController = new KeyboardController<Ripley>(ripley);
+        MovableController movableController = new MovableController<Ripley>(ripley);
 
-        scene.getInput().registerListener(keyboardController);
+        scene.getInput().registerListener(movableController);
     }
 }

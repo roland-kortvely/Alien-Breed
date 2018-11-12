@@ -1,15 +1,17 @@
-package sk.tuke.kpi.oop.game;
+package sk.tuke.kpi.oop.game.controllers;
 
 import org.jetbrains.annotations.NotNull;
 import sk.tuke.kpi.gamelib.Input;
 import sk.tuke.kpi.gamelib.KeyboardListener;
+import sk.tuke.kpi.oop.game.Direction;
+import sk.tuke.kpi.oop.game.Movable;
 import sk.tuke.kpi.oop.game.actions.Move;
 
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class KeyboardController<T extends Movable> implements KeyboardListener {
+public class MovableController<T extends Movable> implements KeyboardListener {
 
     private Movable actor;
 
@@ -29,12 +31,12 @@ public class KeyboardController<T extends Movable> implements KeyboardListener {
 
     private Set<Direction> keys;
 
-    public KeyboardController()
+    public MovableController()
     {
         this(null);
     }
 
-    public KeyboardController(Movable actor)
+    public MovableController(Movable actor)
     {
         if (actor == null) {
             return;

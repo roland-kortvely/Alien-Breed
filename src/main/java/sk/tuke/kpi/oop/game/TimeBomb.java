@@ -40,8 +40,8 @@ public class TimeBomb extends AbstractActor {
         this.activated = true;
 
         new ActionSequence<>(
-            new Wait(this.getTime()),
-            new Invoke(this::detonate)
+            new Wait<>(this.getTime()),
+            new Invoke<>(this::detonate)
         ).scheduleOn(this);
     }
 
@@ -51,7 +51,7 @@ public class TimeBomb extends AbstractActor {
 
         new When<>(
             (action) -> this.getAnimation().getCurrentFrameIndex() >= (this.getAnimation().getFrameCount() - 1),
-            new Invoke(() -> {
+            new Invoke<>(() -> {
                 Scene scene = this.getScene();
                 if (scene != null) {
                     scene.removeActor(this);

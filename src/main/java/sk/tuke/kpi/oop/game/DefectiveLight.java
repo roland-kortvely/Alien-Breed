@@ -26,7 +26,7 @@ public class DefectiveLight extends Light implements Repairable {
     private void defect()
     {
         this.setBroken(true);
-        this.instance = new Loop<>(new Invoke(this::defective)).scheduleOn(this);
+        this.instance = new Loop<>(new Invoke<>(this::defective)).scheduleOn(this);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class DefectiveLight extends Light implements Repairable {
         this.turnOn();
         this.setBroken(false);
 
-        new ActionSequence<>(new Wait(10), new Invoke(this::defect)).scheduleOn(this);
+        new ActionSequence<>(new Wait(10), new Invoke<>(this::defect)).scheduleOn(this);
 
         return true;
     }

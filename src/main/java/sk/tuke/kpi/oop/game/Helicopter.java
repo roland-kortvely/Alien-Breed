@@ -61,7 +61,7 @@ public class Helicopter extends AbstractActor {
         }
 
         if ((diffX >= -1 && diffX <= 1) && (diffY >= -1 && diffY <= 1)) {
-            new Invoke(this::searchAndDestroy).scheduleOn(this);
+            new Invoke<>(this::searchAndDestroy).scheduleOn(this);
             return;
         }
 
@@ -77,7 +77,7 @@ public class Helicopter extends AbstractActor {
 
         this.setPosition((int) Math.round(posX), (int) Math.round(posY));
 
-        new Invoke(this::searchAndDestroy).scheduleOn(this);
+        new Invoke<>(this::searchAndDestroy).scheduleOn(this);
     }
 
     public boolean isDeadly()

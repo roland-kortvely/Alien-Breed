@@ -32,8 +32,8 @@ public class TrainingGameplay extends Scenario {
         reactor.addDevice(defectiveLight);
 
         new ActionSequence<>(
-            new Wait(5),
-            new Invoke(cooler::turnOn)
+            new Wait<>(5),
+            new Invoke<>(cooler::turnOn)
         ).scheduleOn(cooler);
 
         Reactor reactor2 = new Reactor();

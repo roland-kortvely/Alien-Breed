@@ -60,7 +60,7 @@ public class Teleport extends AbstractActor {
                 && (((2 * player.getPosY() + player.getHeight()) / 2) >= this.getPosY())
                 && (((2 * player.getPosY() + player.getHeight()) / 2) <= this.getPosY() + this.getHeight())
             ),
-            new Invoke(() -> {
+            new Invoke<>(() -> {
                 destination.teleportPlayer(player);
                 this.teleport();
                 destination.teleport();
@@ -74,7 +74,7 @@ public class Teleport extends AbstractActor {
                     && (((2 * player.getPosY() + player.getHeight()) / 2) >= this.getPosY())
                     && (((2 * player.getPosY() + player.getHeight()) / 2) <= this.getPosY() + this.getHeight())
                 ) && !this.intersects(player),
-            new Invoke(() -> this.setActive(false))
+            new Invoke<>(() -> this.setActive(false))
         ).scheduleOn(scene);
     }
 

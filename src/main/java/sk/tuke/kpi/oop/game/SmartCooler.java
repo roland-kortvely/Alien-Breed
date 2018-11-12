@@ -19,7 +19,7 @@ public class SmartCooler extends Cooler {
 
         this.setDecrement(2);
 
-        new Loop<>(new Invoke(this::smartCooler)).scheduleOn(this);
+        new Loop<>(new Invoke<>(this::smartCooler)).scheduleOn(this);
     }
 
     private void smartCooler()
