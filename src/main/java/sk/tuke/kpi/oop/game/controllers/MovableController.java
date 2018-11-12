@@ -33,12 +33,14 @@ public class MovableController<M extends Movable> implements KeyboardListener {
             Map.entry(Input.Key.UP, Direction.NORTH),
             Map.entry(Input.Key.DOWN, Direction.SOUTH),
             Map.entry(Input.Key.RIGHT, Direction.EAST),
-            Map.entry(Input.Key.LEFT, Direction.WEST),
+            Map.entry(Input.Key.LEFT, Direction.WEST)
 
+            /*
             Map.entry(Input.Key.W, Direction.NORTH),
             Map.entry(Input.Key.S, Direction.SOUTH),
             Map.entry(Input.Key.D, Direction.EAST),
             Map.entry(Input.Key.A, Direction.WEST)
+            */
         ));
 
         this.setKeys(new HashSet<>());

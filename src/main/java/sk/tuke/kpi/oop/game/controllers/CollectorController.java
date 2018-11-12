@@ -34,7 +34,7 @@ public class CollectorController<A extends Keeper> implements KeyboardListener {
             case BACKSPACE:
                 new Drop<>().scheduleOn(this.getActor());
                 break;
-            case Q:
+            case S:
                 new Shift<>().scheduleOn(this.getActor());
                 break;
         }
