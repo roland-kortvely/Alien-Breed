@@ -88,7 +88,7 @@ public class Backpack implements ActorContainer<Collectible> {
     @Override
     public Collectible peek()
     {
-        return this.content.get(0);
+        return this.content.get(this.content.size() - 1);
     }
 
     @Override

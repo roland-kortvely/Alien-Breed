@@ -6,6 +6,7 @@ import sk.tuke.kpi.gamelib.Input;
 import sk.tuke.kpi.gamelib.KeyboardListener;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.oop.game.Keeper;
+import sk.tuke.kpi.oop.game.actions.Drop;
 import sk.tuke.kpi.oop.game.actions.Take;
 import sk.tuke.kpi.oop.game.items.Collectible;
 
@@ -28,6 +29,9 @@ public class CollectorController<A extends Keeper> implements KeyboardListener {
         switch (key) {
             case ENTER:
                 new Take<>(Collectible.class).scheduleOn(this.getActor());
+                break;
+            case BACKSPACE:
+                new Drop<>().scheduleOn(this.getActor());
                 break;
         }
     }
