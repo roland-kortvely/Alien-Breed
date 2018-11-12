@@ -7,6 +7,7 @@ import sk.tuke.kpi.gamelib.SceneListener;
 import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.actions.When;
 import sk.tuke.kpi.gamelib.graphics.Overlay;
+import sk.tuke.kpi.oop.game.actions.Use;
 import sk.tuke.kpi.oop.game.controllers.MovableController;
 import sk.tuke.kpi.oop.game.characters.Ripley;
 import sk.tuke.kpi.oop.game.items.Energy;
@@ -29,9 +30,10 @@ public class FirstSteps implements SceneListener {
         //Energy
         Energy energy = new Energy();
         scene.addActor(energy, 50, 50);
+
         new When<>(
             (action) -> energy.intersects(this.getRipley()),
-            new Invoke<>(() -> energy.useWith(this.getRipley()))
+            new Invoke<>(() -> new Use<>(energy).scheduleOn(this.getRipley()))
         ).scheduleOn(this.getRipley());
     }
 

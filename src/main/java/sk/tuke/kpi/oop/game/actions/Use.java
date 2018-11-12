@@ -4,19 +4,21 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import sk.tuke.kpi.gamelib.Disposable;
+import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
 import sk.tuke.kpi.oop.game.items.Usable;
 
-public class Use<T extends Usable> extends AbstractAction<T> {
+public class Use<T extends AbstractActor> extends AbstractAction<T> {
 
     private T actor;
-    private T target;
+
+    private Usable usable;
 
     private boolean done;
 
-    public Use(T actor)
+    public Use(Usable usable)
     {
-        this.setActor(actor);
+        this.setUsable(usable);
         this.setDone(false);
     }
 
@@ -27,11 +29,11 @@ public class Use<T extends Usable> extends AbstractAction<T> {
             return;
         }
 
-        if (this.getTarget() == null) {
+        if (this.getUsable() == null) {
             return;
         }
 
-        this.getActor().useWith(this.getTarget());
+        this.getUsable().useWith(this.getActor());
         this.setDone(true);
     }
 
@@ -39,7 +41,7 @@ public class Use<T extends Usable> extends AbstractAction<T> {
     @Override
     public Disposable scheduleOn(@NotNull T actor)
     {
-        this.setTarget(actor);
+        this.setActor(actor);
         return super.scheduleOn(actor);
     }
 
@@ -56,14 +58,14 @@ public class Use<T extends Usable> extends AbstractAction<T> {
         this.actor = actor;
     }
 
-    public T getTarget()
+    public Usable getUsable()
     {
-        return target;
+        return usable;
     }
 
-    public void setTarget(T target)
+    public void setUsable(Usable usable)
     {
-        this.target = target;
+        this.usable = usable;
     }
 
     @Override
