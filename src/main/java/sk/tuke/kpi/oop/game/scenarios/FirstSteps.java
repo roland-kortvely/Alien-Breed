@@ -10,15 +10,20 @@ import sk.tuke.kpi.gamelib.graphics.Overlay;
 import sk.tuke.kpi.oop.game.actions.Use;
 import sk.tuke.kpi.oop.game.controllers.MovableController;
 import sk.tuke.kpi.oop.game.characters.Ripley;
+import sk.tuke.kpi.oop.game.items.Ammo;
 import sk.tuke.kpi.oop.game.items.Energy;
 
 public class FirstSteps implements SceneListener {
 
     private Ripley ripley;
 
+    private int topLine;
+
     @Override
     public void sceneInitialized(@NotNull Scene scene)
     {
+        this.topLine = scene.getGame().getWindowSetup().getHeight() - GameApplication.STATUS_LINE_OFFSET;
+
         //Prepare player
         this.setRipley(new Ripley());
         scene.addActor(this.getRipley(), 0, 0);
@@ -30,10 +35,17 @@ public class FirstSteps implements SceneListener {
         //Energy
         Energy energy = new Energy();
         scene.addActor(energy, 50, 50);
-
         new When<>(
             (action) -> energy.intersects(this.getRipley()),
             new Invoke<>(() -> new Use<>(energy).scheduleOn(this.getRipley()))
+        ).scheduleOn(this.getRipley());
+
+        //Ammo
+        Ammo ammo = new Ammo();
+        scene.addActor(ammo, -50, 50);
+        new When<>(
+            (action) -> ammo.intersects(this.getRipley()),
+            new Invoke<>(() -> new Use<>(ammo).scheduleOn(this.getRipley()))
         ).scheduleOn(this.getRipley());
     }
 
@@ -42,7 +54,8 @@ public class FirstSteps implements SceneListener {
     {
         Overlay overlay = scene.getGame().getOverlay();
 
-        overlay.drawText("| ENERGY: " + this.getRipley().getEnergy(), 100, scene.getGame().getWindowSetup().getHeight() - GameApplication.STATUS_LINE_OFFSET);
+        overlay.drawText(" | ENERGY: " + this.getRipley().getEnergy(), 100, this.topLine);
+        overlay.drawText(" | AMMO: " + this.getRipley().getAmmo(), 250, this.topLine);
     }
 
     public Ripley getRipley()

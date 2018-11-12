@@ -13,14 +13,17 @@ public class Ripley extends AbstractActor implements Movable {
 
     private int speed;
     private int energy;
+    private int ammo;
 
     public Ripley()
     {
         super("Ellen");
 
         this.setNormalAnimation(new Animation("sprites/player.png", 32, 32, 0.1f, Animation.PlayMode.LOOP_PINGPONG));
+
         this.setSpeed(2);
         this.setEnergy(50);
+        this.setAmmo(450);
 
         this.getNormalAnimation().stop();
 
@@ -71,5 +74,20 @@ public class Ripley extends AbstractActor implements Movable {
     public void setEnergy(int energy)
     {
         this.energy = energy;
+    }
+
+    public int getAmmo()
+    {
+        return ammo;
+    }
+
+    public void setAmmo(int ammo)
+    {
+        this.ammo = ammo;
+    }
+
+    public void increaseAmmo(int ammo)
+    {
+        this.ammo = (this.ammo + ammo) > 500 ? 500 : (this.ammo + ammo);
     }
 }
