@@ -2,18 +2,23 @@ package sk.tuke.kpi.oop.game.characters;
 
 import org.jetbrains.annotations.Contract;
 
+import sk.tuke.kpi.gamelib.ActorContainer;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.oop.game.Direction;
+import sk.tuke.kpi.oop.game.Keeper;
 import sk.tuke.kpi.oop.game.Movable;
+import sk.tuke.kpi.oop.game.items.Backpack;
 
-public class Ripley extends AbstractActor implements Movable {
+public class Ripley extends AbstractActor implements Movable, Keeper {
 
     private Animation normalAnimation;
 
     private int speed;
     private int energy;
     private int ammo;
+
+    private Backpack backpack;
 
     public Ripley()
     {
@@ -24,6 +29,7 @@ public class Ripley extends AbstractActor implements Movable {
         this.setSpeed(2);
         this.setEnergy(50);
         this.setAmmo(450);
+        this.setBackpack(new Backpack("Ripley's backpack", 10));
 
         this.getNormalAnimation().stop();
 
@@ -90,5 +96,22 @@ public class Ripley extends AbstractActor implements Movable {
     public void increaseAmmo(int ammo)
     {
         this.ammo = (this.ammo + ammo) > 500 ? 500 : (this.ammo + ammo);
+    }
+
+    @Contract(pure = true)
+    private Backpack getBackpack()
+    {
+        return backpack;
+    }
+
+    private void setBackpack(Backpack backpack)
+    {
+        this.backpack = backpack;
+    }
+
+    @Override
+    public ActorContainer getContainer()
+    {
+        return this.getBackpack();
     }
 }

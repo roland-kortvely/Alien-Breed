@@ -3,69 +3,97 @@ package sk.tuke.kpi.oop.game.items;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.ActorContainer;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Backpack implements ActorContainer {
+public class Backpack implements ActorContainer<Collectible> {
+
+    private List<Collectible> content;
+
+    private String name;
+
+    private int capacity;
+
+    public Backpack(String name, int capacity)
+    {
+        this.content = new ArrayList<>();
+
+        this.setName(name);
+        this.setCapacity(capacity);
+    }
 
     @Override
     public int getCapacity()
     {
-        return 0;
+        return this.capacity;
+    }
+
+    private void setCapacity(int capacity)
+    {
+        this.capacity = capacity;
     }
 
     @NotNull
     @Override
-    public List getContent()
+    public List<Collectible> getContent()
     {
-        return null;
+        return new ArrayList<>(this.content);
     }
 
     @NotNull
     @Override
     public String getName()
     {
-        return null;
+        return this.name;
+    }
+
+    private void setName(String name)
+    {
+        this.name = name;
     }
 
     @Override
     public int getSize()
     {
-        return 0;
+        return this.content.size();
     }
 
     @Override
-    public void add(@NotNull Actor actor)
+    public void add(@NotNull Collectible actor)
     {
+        if (this.getSize() >= this.getCapacity()) {
+            throw new IllegalStateException(this.getName() + " is full");
+        }
 
+        this.content.add(actor);
+    }
+
+    @Override
+    public void remove(@NotNull Collectible actor)
+    {
+        this.content.remove(actor);
+    }
+
+    @NotNull
+    @Override
+    public Iterator<Collectible> iterator()
+    {
+        return this.content.iterator();
     }
 
     @Nullable
     @Override
-    public Actor peek()
+    public Collectible peek()
     {
-        return null;
-    }
-
-    @Override
-    public void remove(@NotNull Actor actor)
-    {
-
+        return this.content.get(0);
     }
 
     @Override
     public void shift()
     {
-
-    }
-
-    @NotNull
-    @Override
-    public Iterator iterator()
-    {
-        return null;
+        this.content.add(this.content.remove(0));
     }
 }

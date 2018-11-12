@@ -1,5 +1,6 @@
 package sk.tuke.kpi.oop.game.controllers;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import sk.tuke.kpi.gamelib.Input;
@@ -12,36 +13,33 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class MovableController<T extends Movable> implements KeyboardListener {
+public class MovableController<M extends Movable> implements KeyboardListener {
 
-    private Movable actor;
+    private M actor;
 
-    private Move<T> action;
+    private Move<M> action;
 
-    private Map<Input.Key, Direction> keyDirectionMap = Map.ofEntries(
-        Map.entry(Input.Key.UP, Direction.NORTH),
-        Map.entry(Input.Key.DOWN, Direction.SOUTH),
-        Map.entry(Input.Key.RIGHT, Direction.EAST),
-        Map.entry(Input.Key.LEFT, Direction.WEST),
-
-        Map.entry(Input.Key.W, Direction.NORTH),
-        Map.entry(Input.Key.S, Direction.SOUTH),
-        Map.entry(Input.Key.D, Direction.EAST),
-        Map.entry(Input.Key.A, Direction.WEST)
-    );
+    private Map<Input.Key, Direction> keyDirectionMap;
 
     private Set<Direction> keys;
 
-    public MovableController()
-    {
-        this(null);
-    }
-
-    public MovableController(Movable actor)
+    public MovableController(M actor)
     {
         if (actor == null) {
             return;
         }
+
+        this.setKeyDirectionMap(Map.ofEntries(
+            Map.entry(Input.Key.UP, Direction.NORTH),
+            Map.entry(Input.Key.DOWN, Direction.SOUTH),
+            Map.entry(Input.Key.RIGHT, Direction.EAST),
+            Map.entry(Input.Key.LEFT, Direction.WEST),
+
+            Map.entry(Input.Key.W, Direction.NORTH),
+            Map.entry(Input.Key.S, Direction.SOUTH),
+            Map.entry(Input.Key.D, Direction.EAST),
+            Map.entry(Input.Key.A, Direction.WEST)
+        ));
 
         this.setKeys(new HashSet<>());
         this.setActor(actor);
@@ -108,26 +106,29 @@ public class MovableController<T extends Movable> implements KeyboardListener {
         }
     }
 
-    private Movable getActor()
+    @Contract(pure = true)
+    private M getActor()
     {
         return actor;
     }
 
-    private void setActor(Movable actor)
+    private void setActor(M actor)
     {
         this.actor = actor;
     }
 
+    @Contract(pure = true)
     private Move getAction()
     {
         return action;
     }
 
-    public void setAction(Move<T> action)
+    public void setAction(Move<M> action)
     {
         this.action = action;
     }
 
+    @Contract(pure = true)
     private Map<Input.Key, Direction> getKeyDirectionMap()
     {
         return keyDirectionMap;
@@ -138,6 +139,7 @@ public class MovableController<T extends Movable> implements KeyboardListener {
         this.keyDirectionMap = keyDirectionMap;
     }
 
+    @Contract(pure = true)
     private Set<Direction> getKeys()
     {
         return keys;

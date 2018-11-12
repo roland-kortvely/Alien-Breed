@@ -9,8 +9,6 @@ public class Energy extends AbstractActor implements Usable<Ripley> {
 
     public Energy()
     {
-        super();
-
         setAnimation(new Animation("sprites/energy.png", 16, 16));
     }
 

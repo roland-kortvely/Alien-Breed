@@ -9,8 +9,6 @@ public class Ammo extends AbstractActor implements Usable<Ripley> {
 
     public Ammo()
     {
-        super();
-
         setAnimation(new Animation("sprites/ammo.png", 16, 16));
     }
 

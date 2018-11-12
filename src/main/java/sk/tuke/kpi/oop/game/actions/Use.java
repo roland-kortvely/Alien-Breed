@@ -8,9 +8,9 @@ import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
 import sk.tuke.kpi.oop.game.items.Usable;
 
-public class Use<T extends AbstractActor> extends AbstractAction<T> {
+public class Use<A extends AbstractActor> extends AbstractAction<A> {
 
-    private T actor;
+    private A actor;
 
     private Usable usable;
 
@@ -39,7 +39,7 @@ public class Use<T extends AbstractActor> extends AbstractAction<T> {
 
     @NotNull
     @Override
-    public Disposable scheduleOn(@NotNull T actor)
+    public Disposable scheduleOn(@NotNull A actor)
     {
         this.setActor(actor);
         return super.scheduleOn(actor);
@@ -47,13 +47,13 @@ public class Use<T extends AbstractActor> extends AbstractAction<T> {
 
     @Nullable
     @Override
-    public T getActor()
+    public A getActor()
     {
         return this.actor;
     }
 
     @Override
-    public void setActor(@Nullable T actor)
+    public void setActor(@Nullable A actor)
     {
         this.actor = actor;
     }

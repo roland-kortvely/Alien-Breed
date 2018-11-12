@@ -9,10 +9,10 @@ import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.actions.When;
 import sk.tuke.kpi.gamelib.graphics.Overlay;
 import sk.tuke.kpi.oop.game.actions.Use;
+import sk.tuke.kpi.oop.game.controllers.CollectorController;
 import sk.tuke.kpi.oop.game.controllers.MovableController;
 import sk.tuke.kpi.oop.game.characters.Ripley;
-import sk.tuke.kpi.oop.game.items.Ammo;
-import sk.tuke.kpi.oop.game.items.Energy;
+import sk.tuke.kpi.oop.game.items.*;
 
 import java.util.List;
 
@@ -34,8 +34,12 @@ public class FirstSteps implements SceneListener {
         scene.addActor(this.getRipley(), 0, 0);
 
         //Keyboard controller
-        MovableController movableController = new MovableController<Ripley>(this.getRipley());
+        MovableController movableController = new MovableController<>(this.getRipley());
         scene.getInput().registerListener(movableController);
+
+        //Collector controller
+        CollectorController collectorController = new CollectorController<>(this.getRipley());
+        scene.getInput().registerListener(collectorController);
 
         //Energy
         Energy energy = new Energy();
@@ -52,6 +56,12 @@ public class FirstSteps implements SceneListener {
             (action) -> ammo.intersects(this.getRipley()),
             new Invoke<>(() -> new Use<>(ammo).scheduleOn(this.getRipley()))
         ).scheduleOn(this.getRipley());
+
+        //Items
+        scene.addActor(new FireExtinguisher(), 50, -50);
+        scene.addActor(new Wrench(), -50, -50);
+
+        scene.getGame().pushActorContainer(this.getRipley().getContainer());
     }
 
     @Override

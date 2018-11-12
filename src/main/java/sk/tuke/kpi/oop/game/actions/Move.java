@@ -6,9 +6,9 @@ import sk.tuke.kpi.gamelib.actions.Action;
 import sk.tuke.kpi.oop.game.Direction;
 import sk.tuke.kpi.oop.game.Movable;
 
-public class Move<T extends Movable> implements Action<T> {
+public class Move<M extends Movable> implements Action<M> {
 
-    private T actor;
+    private M actor;
 
     private boolean firstCall;
     private boolean done;
@@ -96,7 +96,8 @@ public class Move<T extends Movable> implements Action<T> {
     @Override
     public void reset()
     {
-
+        this.setFirstCall(true);
+        this.setDone(false);
     }
 
     public void stop()
@@ -111,13 +112,13 @@ public class Move<T extends Movable> implements Action<T> {
 
     @Nullable
     @Override
-    public T getActor()
+    public M getActor()
     {
         return this.actor;
     }
 
     @Override
-    public void setActor(@Nullable T actor)
+    public void setActor(@Nullable M actor)
     {
         this.actor = actor;
     }
