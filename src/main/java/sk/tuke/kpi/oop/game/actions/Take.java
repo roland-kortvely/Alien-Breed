@@ -3,20 +3,20 @@ package sk.tuke.kpi.oop.game.actions;
 import org.jetbrains.annotations.Nullable;
 
 import sk.tuke.kpi.gamelib.Actor;
+import sk.tuke.kpi.gamelib.ActorContainer;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
 import sk.tuke.kpi.oop.game.Keeper;
-import sk.tuke.kpi.oop.game.items.Collectible;
 
 import java.util.Optional;
 
-public class Take<K extends Collectible, A extends Keeper> extends AbstractAction<A> {
+public class Take<A extends Keeper, Q> extends AbstractAction<A> {
 
     private A actor;
 
-    private Class<K> takeableActorsClass;
+    private Class<Q> takeableActorsClass;
 
-    public Take(Class<K> takeableActorsClass)
+    public Take(Class<Q> takeableActorsClass)
     {
         this.takeableActorsClass = takeableActorsClass;
     }
@@ -47,7 +47,13 @@ public class Take<K extends Collectible, A extends Keeper> extends AbstractActio
         }
 
         try {
-            this.getActor().getContainer().add(query.get());
+            ActorContainer<Actor> container = this.getActor().getContainer();
+            if (container == null) {
+                this.setDone(true);
+                return;
+            }
+
+            container.add(query.get());
             scene.removeActor(query.get());
         } catch (Exception ex) {
             scene.getGame().getOverlay().drawText(ex.getMessage(), 0, 0).showFor(2);

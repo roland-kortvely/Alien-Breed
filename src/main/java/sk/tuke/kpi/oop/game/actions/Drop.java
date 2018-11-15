@@ -2,6 +2,8 @@ package sk.tuke.kpi.oop.game.actions;
 
 import org.jetbrains.annotations.Nullable;
 
+import sk.tuke.kpi.gamelib.Actor;
+import sk.tuke.kpi.gamelib.ActorContainer;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
 import sk.tuke.kpi.oop.game.Keeper;
@@ -26,8 +28,20 @@ public class Drop<A extends Keeper> extends AbstractAction<A> {
         }
 
         try {
-            scene.addActor(this.getActor().getContainer().peek(), this.getActor().getPosX(), this.getActor().getPosY());
-            this.getActor().getContainer().remove(this.getActor().getContainer().peek());
+            ActorContainer<Actor> container = this.getActor().getContainer();
+            if (container == null) {
+                this.setDone(true);
+                return;
+            }
+
+            Actor actor = container.peek();
+            if (actor == null) {
+                this.setDone(true);
+                return;
+            }
+
+            scene.addActor(actor, this.getActor().getPosX(), this.getActor().getPosY());
+            container.remove(actor);
         } catch (Exception ex) {
             scene.getGame().getOverlay().drawText(ex.getMessage(), 0, 0).showFor(2);
         }

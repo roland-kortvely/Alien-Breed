@@ -10,9 +10,9 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-public class Backpack implements ActorContainer<Collectible> {
+public class Backpack<T extends Collectible> implements ActorContainer<T> {
 
-    private List<Collectible> content;
+    private List<T> content;
 
     private String name;
 
@@ -39,7 +39,7 @@ public class Backpack implements ActorContainer<Collectible> {
 
     @NotNull
     @Override
-    public List<Collectible> getContent()
+    public List<T> getContent()
     {
         return new ArrayList<>(this.content);
     }
@@ -63,7 +63,7 @@ public class Backpack implements ActorContainer<Collectible> {
     }
 
     @Override
-    public void add(@NotNull Collectible actor)
+    public void add(@NotNull T actor)
     {
         if (this.getSize() >= this.getCapacity()) {
             throw new IllegalStateException(this.getName() + " is full");
@@ -80,14 +80,14 @@ public class Backpack implements ActorContainer<Collectible> {
 
     @NotNull
     @Override
-    public Iterator<Collectible> iterator()
+    public Iterator<T> iterator()
     {
         return this.content.iterator();
     }
 
     @Nullable
     @Override
-    public Collectible peek()
+    public T peek()
     {
         return this.content.get(this.content.size() - 1);
     }

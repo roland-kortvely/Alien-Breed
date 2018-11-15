@@ -12,7 +12,7 @@ public class Use<A extends AbstractActor> extends AbstractAction<A> {
 
     private A actor;
 
-    private Usable usable;
+    private Usable<A> usable;
 
     private boolean done;
 
@@ -33,7 +33,7 @@ public class Use<A extends AbstractActor> extends AbstractAction<A> {
             return;
         }
 
-        this.getUsable().useWith(this.getActor());
+        this.usable.useWith(this.getActor());
         this.setDone(true);
     }
 

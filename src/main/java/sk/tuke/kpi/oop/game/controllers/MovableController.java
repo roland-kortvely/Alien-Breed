@@ -102,7 +102,7 @@ public class MovableController<M extends Movable> implements KeyboardListener {
 
         if (this.direction() != Direction.NONE) {
             this.setAction(new Move<>(this.direction(), 2));
-            this.getAction().scheduleOn(this.getActor());
+            action.scheduleOn(this.getActor());
         } else {
             this.getAction().stop();
         }

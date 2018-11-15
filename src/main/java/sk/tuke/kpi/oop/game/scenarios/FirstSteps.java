@@ -38,7 +38,7 @@ public class FirstSteps implements SceneListener {
         scene.getInput().registerListener(movableController);
 
         //Collector controller
-        CollectorController collectorController = new CollectorController<>(this.getRipley());
+        CollectorController<Ripley> collectorController = new CollectorController<>(this.getRipley());
         scene.getInput().registerListener(collectorController);
 
         //Energy
