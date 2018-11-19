@@ -12,11 +12,15 @@ import sk.tuke.kpi.gamelib.ActorFactory;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.SceneListener;
 
+import sk.tuke.kpi.oop.game.Locker;
+import sk.tuke.kpi.oop.game.Ventilator;
 import sk.tuke.kpi.oop.game.characters.Ripley;
 import sk.tuke.kpi.oop.game.controllers.CollectorController;
 import sk.tuke.kpi.oop.game.controllers.MovableController;
+import sk.tuke.kpi.oop.game.items.AccessCard;
 import sk.tuke.kpi.oop.game.items.Energy;
 import sk.tuke.kpi.oop.game.openables.Door;
+import sk.tuke.kpi.oop.game.openables.LockedDoor;
 
 import java.util.List;
 
@@ -40,10 +44,13 @@ public class MissionImpossible implements SceneListener {
                 case "energy":
                     return new Energy();
                 case "door":
-                    return new Door();
+                    return new LockedDoor();
                 case "locker":
+                    return new Locker();
                 case "ventilator":
+                    return new Ventilator();
                 case "access card":
+                    return new AccessCard();
                 default:
                     return null;
             }

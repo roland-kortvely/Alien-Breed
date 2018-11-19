@@ -4,9 +4,11 @@
 
 package sk.tuke.kpi.oop.game.controllers;
 
+import net.java.games.input.Usage;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.Input;
 import sk.tuke.kpi.gamelib.KeyboardListener;
 import sk.tuke.kpi.gamelib.Scene;
@@ -42,26 +44,37 @@ public class CollectorController<A extends Keeper> implements KeyboardListener {
         }
 
         switch (key) {
-            case ENTER:
+            case ENTER: //Move item from the floor to backpack
                 new Take<>(Collectible.class).scheduleOn(this.getActor());
                 break;
-            case BACKSPACE:
+            case BACKSPACE: //Drop item from backpack
                 new Drop<>().scheduleOn(this.getActor());
                 break;
-            case S:
+            case S: //Rotate items in the backpack
                 new Shift<>().scheduleOn(this.getActor());
                 break;
-            case U:
+            case U: //Use item on the floor
                 Optional query = scene.getActors().stream()
                     .filter(Usable.class::isInstance)
                     .filter(actor -> actor.intersects(this.getActor()))
                     .findFirst();
 
                 if (!query.isPresent()) {
-                    return;
+                    break;
                 }
 
                 new Use<>((Usable<?>) query.get()).scheduleOnIntersectingWith(this.getActor());
+                break;
+            case B: //Use item from backpack
+                if (this.getActor().getContainer().getSize() <= 0) {
+                    return;
+                }
+
+                if (!(this.getActor().getContainer().peek() instanceof Usable)) {
+                    return;
+                }
+
+                new Use<>((Usable<?>) this.getActor().getContainer().peek()).scheduleOnIntersectingWith(this.getActor());
                 break;
         }
     }
@@ -76,5 +89,4 @@ public class CollectorController<A extends Keeper> implements KeyboardListener {
     {
         this.actor = actor;
     }
-
 }

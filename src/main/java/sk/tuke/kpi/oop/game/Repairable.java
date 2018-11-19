@@ -4,10 +4,12 @@
 
 package sk.tuke.kpi.oop.game;
 
+import sk.tuke.kpi.gamelib.Actor;
+
 /**
  * Interface Repairable
  */
-public interface Repairable {
+public interface Repairable extends Actor {
 
     boolean repair();
 }
