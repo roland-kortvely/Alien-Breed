@@ -51,7 +51,7 @@ public class Take<A extends Keeper, Q> extends AbstractAction<A> {
         }
 
         try {
-            ActorContainer<Actor> container = this.getActor().getContainer();
+            ActorContainer<Actor> container = this.actor.getContainer();
             if (container == null) {
                 this.setDone(true);
                 return;

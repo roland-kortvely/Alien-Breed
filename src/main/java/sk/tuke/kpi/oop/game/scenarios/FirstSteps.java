@@ -43,18 +43,22 @@ public class FirstSteps implements SceneListener {
         //Energy
         Energy energy = new Energy();
         scene.addActor(energy, 50, 50);
+        /*
         new When<>(
             (action) -> energy.intersects(this.getRipley()),
             new Invoke<>(() -> new Use<>(energy).scheduleOn(this.getRipley()))
         ).scheduleOn(this.getRipley());
+        */
 
         //Ammo
         Ammo ammo = new Ammo();
         scene.addActor(ammo, -50, 50);
+        /*
         new When<>(
             (action) -> ammo.intersects(this.getRipley()),
             new Invoke<>(() -> new Use<>(ammo).scheduleOn(this.getRipley()))
         ).scheduleOn(this.getRipley());
+        */
 
         //Items
         scene.addActor(new FireExtinguisher(), 50, -50);
