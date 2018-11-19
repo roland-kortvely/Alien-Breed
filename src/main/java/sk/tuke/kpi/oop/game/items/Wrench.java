@@ -1,6 +1,11 @@
+/*
+ * Copyright (c) 2018  Roland Körtvely <roland.kortvely@gmail.com>
+ */
+
 package sk.tuke.kpi.oop.game.items;
 
 import sk.tuke.kpi.gamelib.graphics.Animation;
+
 import sk.tuke.kpi.oop.game.DefectiveLight;
 
 public class Wrench extends BreakableTool<DefectiveLight> implements Collectible {
@@ -27,5 +32,11 @@ public class Wrench extends BreakableTool<DefectiveLight> implements Collectible
         }
 
         this.setRemainingUses(this.getRemainingUses() - 1);
+    }
+
+    @Override
+    public Class<DefectiveLight> getUsingActorClass()
+    {
+        return DefectiveLight.class;
     }
 }

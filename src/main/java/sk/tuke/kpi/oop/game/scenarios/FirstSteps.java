@@ -1,13 +1,16 @@
+/*
+ * Copyright (c) 2018  Roland Körtvely <roland.kortvely@gmail.com>
+ */
+
 package sk.tuke.kpi.oop.game.scenarios;
 
 import org.jetbrains.annotations.NotNull;
 
-import sk.tuke.kpi.gamelib.GameApplication;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.SceneListener;
+
 import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.actions.When;
-import sk.tuke.kpi.gamelib.graphics.Overlay;
 import sk.tuke.kpi.oop.game.actions.Use;
 import sk.tuke.kpi.oop.game.controllers.CollectorController;
 import sk.tuke.kpi.oop.game.controllers.MovableController;
@@ -20,14 +23,10 @@ public class FirstSteps implements SceneListener {
 
     private Ripley ripley;
 
-    private int topLine;
-
     @Override
     public void sceneInitialized(@NotNull Scene scene)
     {
         scene.setActorRenderOrder(List.of(Ripley.class));
-
-        this.topLine = scene.getGame().getWindowSetup().getHeight() - GameApplication.STATUS_LINE_OFFSET;
 
         //Prepare player
         this.setRipley(new Ripley());
@@ -61,16 +60,8 @@ public class FirstSteps implements SceneListener {
         scene.addActor(new FireExtinguisher(), 50, -50);
         scene.addActor(new Wrench(), -50, -50);
 
+        //Render player's backpack
         scene.getGame().pushActorContainer(this.getRipley().getContainer());
-    }
-
-    @Override
-    public void sceneUpdating(@NotNull Scene scene)
-    {
-        Overlay overlay = scene.getGame().getOverlay();
-
-        overlay.drawText(" | ENERGY: " + this.getRipley().getEnergy(), 100, this.topLine);
-        overlay.drawText(" | AMMO: " + this.getRipley().getAmmo(), 250, this.topLine);
     }
 
     public Ripley getRipley()
