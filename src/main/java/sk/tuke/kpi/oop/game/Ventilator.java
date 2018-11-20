@@ -15,7 +15,7 @@ public class Ventilator extends AbstractActor implements Repairable {
 
     private boolean broken;
 
-    public static final Topic<Ventilator> VENTILATOR_REPAIRED = Topic.create("ventilator fixed", Ventilator.class);
+    public static final Topic<Ventilator> VENTILATOR_REPAIRED = Topic.create("ventilator repaired", Ventilator.class);
 
     public Ventilator()
     {

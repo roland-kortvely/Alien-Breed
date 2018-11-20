@@ -43,38 +43,65 @@ public class CollectorController<A extends Keeper<Collectible>> implements Keybo
 
         switch (key) {
             case ENTER: //Move item from the floor to backpack
-                new Take<>(Collectible.class).scheduleOn(this.getActor());
+                keyENTER();
                 break;
             case BACKSPACE: //Drop item from backpack
-                new Drop<>().scheduleOn(this.getActor());
+                keyBACKSPACE();
                 break;
             case S: //Rotate items in the backpack
-                new Shift<>().scheduleOn(this.getActor());
+                keyS();
                 break;
             case U: //Use item on the floor
-                Optional query = scene.getActors().stream()
-                    .filter(Usable.class::isInstance)
-                    .filter(actor -> actor.intersects(this.getActor()))
-                    .findFirst();
-
-                if (!query.isPresent()) {
-                    break;
-                }
-
-                new Use<>((Usable<?>) query.get()).scheduleOnIntersectingWith(this.getActor());
+                keyU(scene);
                 break;
             case B: //Use item from backpack
-                if (this.getActor().getContainer().getSize() <= 0) {
-                    return;
-                }
-
-                if (!(this.getActor().getContainer().peek() instanceof Usable)) {
-                    return;
-                }
-
-                new Use<>((Usable<?>) this.getActor().getContainer().peek()).scheduleOnIntersectingWith(this.getActor());
+                keyB();
+                break;
+            default:
                 break;
         }
+    }
+
+    private void keyENTER()
+    {
+        new Take<>(Collectible.class).scheduleOn(this.getActor());
+    }
+
+    private void keyBACKSPACE()
+    {
+        new Drop<>().scheduleOn(this.getActor());
+    }
+
+    private void keyS()
+    {
+        new Shift<>().scheduleOn(this.getActor());
+    }
+
+    private void keyB()
+    {
+        if (this.getActor().getContainer().getSize() <= 0) {
+            return;
+        }
+
+        if (!(this.getActor().getContainer().peek() instanceof Usable)) {
+            return;
+        }
+
+        new Use<>((Usable<?>) this.getActor().getContainer().peek()).scheduleOnIntersectingWith(this.getActor());
+    }
+
+    private void keyU(@NotNull Scene scene)
+    {
+        Optional query = scene.getActors().stream()
+            .filter(Usable.class::isInstance)
+            .filter(actor -> actor.intersects(this.getActor()))
+            .findFirst();
+
+        if (!query.isPresent()) {
+            return;
+        }
+
+        new Use<>((Usable<?>) query.get()).scheduleOnIntersectingWith(this.getActor());
     }
 
     @Contract(pure = true)

@@ -65,6 +65,23 @@ public class Move<M extends Movable> implements Action<M> {
             getActor().getPosY()
         };
 
+        this.setActorNewPosition();
+
+        //Check whether actor intersects with walls
+        if (scene.getMap().intersectsWithWall(this.getActor())) {
+            this.getActor().setPosition(position[0], position[1]);
+            this.stop();
+            return;
+        }
+
+        //Timeout -> stop()
+        if (this.getDuration() <= 0.00001f) {
+            this.stop();
+        }
+    }
+
+    private void setActorNewPosition()
+    {
         //Calc new position by direction
         switch (this.getDirection()) {
             case NORTH:
@@ -106,20 +123,7 @@ public class Move<M extends Movable> implements Action<M> {
                 break;
 
             default:
-            case NONE:
                 break;
-        }
-
-        //Check whether actor intersects with walls
-        if (scene.getMap().intersectsWithWall(this.getActor())) {
-            this.getActor().setPosition(position[0], position[1]);
-            this.stop();
-            return;
-        }
-
-        //Timeout -> stop()
-        if (this.getDuration() <= 0.00001f) {
-            this.stop();
         }
     }
 

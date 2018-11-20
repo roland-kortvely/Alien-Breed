@@ -4,6 +4,8 @@
 
 package sk.tuke.kpi.oop.game;
 
+import org.jetbrains.annotations.Contract;
+
 public enum Direction {
 
     NORTH(0, 1),
@@ -28,16 +30,19 @@ public enum Direction {
         this.dy = dy;
     }
 
+    @Contract(pure = true)
     public int getDx()
     {
         return this.dx;
     }
 
+    @Contract(pure = true)
     public int getDy()
     {
         return this.dy;
     }
 
+    @Contract(pure = true)
     public float getAngle()
     {
         switch (this) {
@@ -60,7 +65,6 @@ public enum Direction {
                 return 135;
 
             default:
-            case NONE:
                 return 0;
         }
     }

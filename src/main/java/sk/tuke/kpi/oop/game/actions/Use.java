@@ -10,8 +10,8 @@ import org.jetbrains.annotations.Nullable;
 import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.Disposable;
 import sk.tuke.kpi.gamelib.Scene;
-import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
+
 import sk.tuke.kpi.oop.game.items.Usable;
 
 public class Use<A extends Actor> extends AbstractAction<A> {
