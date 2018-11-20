@@ -11,25 +11,30 @@ import sk.tuke.kpi.gamelib.ActorContainer;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Overlay;
-import sk.tuke.kpi.oop.game.Keeper;
-import sk.tuke.kpi.oop.game.Movable;
-
 import sk.tuke.kpi.gamelib.GameApplication;
 import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.framework.actions.Loop;
 import sk.tuke.kpi.gamelib.graphics.Animation;
+import sk.tuke.kpi.gamelib.messages.Topic;
+
 import sk.tuke.kpi.oop.game.Direction;
 import sk.tuke.kpi.oop.game.items.Backpack;
+import sk.tuke.kpi.oop.game.items.Collectible;
+import sk.tuke.kpi.oop.game.Keeper;
+import sk.tuke.kpi.oop.game.Movable;
 
-public class Ripley extends AbstractActor implements Movable, Keeper {
+public class Ripley extends AbstractActor implements Movable, Keeper<Collectible> {
 
     private Animation normalAnimation;
+    private Animation dieAnimation;
 
     private int speed;
     private int energy;
     private int ammo;
 
     private Backpack backpack;
+
+    public static final Topic<Ripley> RIPLEY_DIED = Topic.create("ripley died", Ripley.class);
 
     public Ripley()
     {
@@ -38,6 +43,8 @@ public class Ripley extends AbstractActor implements Movable, Keeper {
 
         this.setNormalAnimation(new Animation("sprites/player.png", 32, 32, 0.1f, Animation.PlayMode.LOOP_PINGPONG));
         this.getNormalAnimation().stop();
+
+        this.setDieAnimation(new Animation("sprites/player_die.png", 32, 32, 0.1f, Animation.PlayMode.ONCE));
 
         //Default stats
         this.setSpeed(2);
@@ -56,6 +63,18 @@ public class Ripley extends AbstractActor implements Movable, Keeper {
 
         //Render stats
         this.showRipleyState();
+    }
+
+    private void die()
+    {
+        setAnimation(this.getDieAnimation());
+
+        Scene scene = this.getScene();
+        if (scene == null) {
+            return;
+        }
+
+        scene.getMessageBus().publish(RIPLEY_DIED, this);
     }
 
     private void showRipleyState()
@@ -114,6 +133,17 @@ public class Ripley extends AbstractActor implements Movable, Keeper {
         this.normalAnimation = normalAnimation;
     }
 
+    @Contract(pure = true)
+    private Animation getDieAnimation()
+    {
+        return dieAnimation;
+    }
+
+    private void setDieAnimation(Animation dieAnimation)
+    {
+        this.dieAnimation = dieAnimation;
+    }
+
     public int getEnergy()
     {
         return energy;
@@ -123,6 +153,15 @@ public class Ripley extends AbstractActor implements Movable, Keeper {
     public void setEnergy(int energy)
     {
         this.energy = energy;
+    }
+
+    public void decreaseEnergy(int energy)
+    {
+        this.energy = (this.energy - energy) < 0 ? 0 : (this.energy - energy);
+
+        if (this.energy <= 0) {
+            this.die();
+        }
     }
 
     public int getAmmo()

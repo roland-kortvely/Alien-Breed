@@ -6,12 +6,16 @@ package sk.tuke.kpi.oop.game;
 
 import org.jetbrains.annotations.Contract;
 
+import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
+import sk.tuke.kpi.gamelib.messages.Topic;
 
 public class Ventilator extends AbstractActor implements Repairable {
 
     private boolean broken;
+
+    public static final Topic<Ventilator> VENTILATOR_REPAIRED = Topic.create("ventilator fixed", Ventilator.class);
 
     public Ventilator()
     {
@@ -30,6 +34,14 @@ public class Ventilator extends AbstractActor implements Repairable {
 
         getAnimation().play();
         this.setBroken(false);
+
+        Scene scene = this.getScene();
+        if (scene == null) {
+            return true;
+        }
+
+        scene.getMessageBus().publish(VENTILATOR_REPAIRED, this);
+
         return true;
     }
 

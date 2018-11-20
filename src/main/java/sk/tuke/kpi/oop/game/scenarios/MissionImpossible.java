@@ -7,10 +7,10 @@ package sk.tuke.kpi.oop.game.scenarios;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import sk.tuke.kpi.gamelib.Actor;
-import sk.tuke.kpi.gamelib.ActorFactory;
-import sk.tuke.kpi.gamelib.Scene;
-import sk.tuke.kpi.gamelib.SceneListener;
+import sk.tuke.kpi.gamelib.*;
+import sk.tuke.kpi.gamelib.actions.ActionSequence;
+import sk.tuke.kpi.gamelib.actions.Invoke;
+import sk.tuke.kpi.gamelib.actions.Wait;
 
 import sk.tuke.kpi.oop.game.Locker;
 import sk.tuke.kpi.oop.game.Ventilator;
@@ -25,6 +25,8 @@ import sk.tuke.kpi.oop.game.openables.LockedDoor;
 import java.util.List;
 
 public class MissionImpossible implements SceneListener {
+
+    private boolean decreaseEnergyState = true;
 
     //Factory
     public static class Factory implements ActorFactory {
@@ -57,6 +59,19 @@ public class MissionImpossible implements SceneListener {
         }
     }
 
+    private void decreaseEnergy(Ripley ripley)
+    {
+        if (!this.decreaseEnergyState) {
+            return;
+        }
+
+        new ActionSequence<>(
+            new Wait<>(0.2f),
+            new Invoke<>(() -> ripley.decreaseEnergy(1)),
+            new Invoke<>(() -> decreaseEnergy(ripley))
+        ).scheduleOn(ripley);
+    }
+
     @Override
     public void sceneInitialized(@NotNull Scene scene)
     {
@@ -74,13 +89,23 @@ public class MissionImpossible implements SceneListener {
 
         //Keyboard controller
         MovableController movableController = new MovableController<>(ripley);
-        scene.getInput().registerListener(movableController);
+        Disposable disposableMovableController = scene.getInput().registerListener(movableController);
 
         //Collector controller
         CollectorController<Ripley> collectorController = new CollectorController<>(ripley);
-        scene.getInput().registerListener(collectorController);
+        Disposable disposableCollectorController = scene.getInput().registerListener(collectorController);
 
-        //Render player's backpack
+        //Render player backpack
         scene.getGame().pushActorContainer(ripley.getContainer());
+
+        //Decrease player energy once door are open, stop decreasing once ventilator is fixed
+        scene.getMessageBus().subscribeOnce(Door.DOOR_OPENED, door -> decreaseEnergy(ripley));
+        scene.getMessageBus().subscribeOnce(Ventilator.VENTILATOR_REPAIRED, ventilator -> decreaseEnergyState = false);
+
+        //Discard controllers after player died
+        scene.getMessageBus().subscribeOnce(Ripley.RIPLEY_DIED, action -> {
+            disposableMovableController.dispose();
+            disposableCollectorController.dispose();
+        });
     }
 }

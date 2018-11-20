@@ -10,17 +10,19 @@ import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.ActorContainer;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
+
 import sk.tuke.kpi.oop.game.Keeper;
+import sk.tuke.kpi.oop.game.items.Collectible;
 
 import java.util.Optional;
 
-public class Take<A extends Keeper, Q> extends AbstractAction<A> {
+public class Take<K extends Keeper<Collectible>, C extends Collectible> extends AbstractAction<K> {
 
-    private A actor;
+    private K actor;
 
-    private Class<Q> takeableActorsClass;
+    private Class<C> takeableActorsClass;
 
-    public Take(Class<Q> takeableActorsClass)
+    public Take(Class<C> takeableActorsClass)
     {
         this.takeableActorsClass = takeableActorsClass;
     }
@@ -51,13 +53,13 @@ public class Take<A extends Keeper, Q> extends AbstractAction<A> {
         }
 
         try {
-            ActorContainer<Actor> container = this.actor.getContainer();
+            ActorContainer<Collectible> container = this.actor.getContainer();
             if (container == null) {
                 this.setDone(true);
                 return;
             }
 
-            container.add(query.get());
+            container.add((Collectible) query.get());
             scene.removeActor(query.get());
         } catch (Exception ex) {
             scene.getGame().getOverlay().drawText(ex.getMessage(), 0, 0).showFor(2);
@@ -68,13 +70,13 @@ public class Take<A extends Keeper, Q> extends AbstractAction<A> {
 
     @Nullable
     @Override
-    public A getActor()
+    public K getActor()
     {
         return actor;
     }
 
     @Override
-    public void setActor(A actor)
+    public void setActor(K actor)
     {
         this.actor = actor;
     }

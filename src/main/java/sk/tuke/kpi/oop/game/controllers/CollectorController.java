@@ -4,11 +4,9 @@
 
 package sk.tuke.kpi.oop.game.controllers;
 
-import net.java.games.input.Usage;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.Input;
 import sk.tuke.kpi.gamelib.KeyboardListener;
 import sk.tuke.kpi.gamelib.Scene;
@@ -22,7 +20,7 @@ import sk.tuke.kpi.oop.game.items.Usable;
 
 import java.util.Optional;
 
-public class CollectorController<A extends Keeper> implements KeyboardListener {
+public class CollectorController<A extends Keeper<Collectible>> implements KeyboardListener {
 
     private A actor;
 
