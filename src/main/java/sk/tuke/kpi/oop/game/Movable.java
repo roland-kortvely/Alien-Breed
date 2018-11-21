@@ -11,12 +11,25 @@ import sk.tuke.kpi.gamelib.Actor;
  */
 public interface Movable extends Actor {
 
+    /**
+     * Gets speed.
+     *
+     * @return the speed
+     */
     int getSpeed();
 
+    /**
+     * Started moving.
+     *
+     * @param direction the direction
+     */
     default void startedMoving(Direction direction)
     {
     }
 
+    /**
+     * Stopped moving.
+     */
     default void stoppedMoving()
     {
     }

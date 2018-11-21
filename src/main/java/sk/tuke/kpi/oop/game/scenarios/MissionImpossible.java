@@ -24,11 +24,17 @@ import sk.tuke.kpi.oop.game.openables.LockedDoor;
 
 import java.util.List;
 
+
+/**
+ * The type Mission impossible.
+ */
 public class MissionImpossible implements SceneListener {
 
     private boolean decreaseEnergyState = true;
 
-    //Factory
+    /**
+     * The type Factory.
+     */
     public static class Factory implements ActorFactory {
 
         @Nullable
@@ -59,16 +65,21 @@ public class MissionImpossible implements SceneListener {
         }
     }
 
-    private void decreaseEnergy(Ripley ripley)
+    private void decreasePlayerEnergy(Ripley ripley)
     {
         if (!this.decreaseEnergyState) {
             return;
         }
 
+        if (ripley.getEnergy() <= 0) {
+            return;
+        }
+
+        //Repeat this action, till player dies
         new ActionSequence<>(
             new Wait<>(0.2f),
             new Invoke<>(() -> ripley.decreaseEnergy(1)),
-            new Invoke<>(() -> decreaseEnergy(ripley))
+            new Invoke<>(() -> decreasePlayerEnergy(ripley))
         ).scheduleOn(ripley);
     }
 
@@ -99,7 +110,7 @@ public class MissionImpossible implements SceneListener {
         scene.getGame().pushActorContainer(ripley.getContainer());
 
         //Decrease player energy once door are open, stop decreasing once ventilator is fixed
-        scene.getMessageBus().subscribeOnce(Door.DOOR_OPENED, door -> decreaseEnergy(ripley));
+        scene.getMessageBus().subscribeOnce(Door.DOOR_OPENED, door -> decreasePlayerEnergy(ripley));
         scene.getMessageBus().subscribeOnce(Ventilator.VENTILATOR_REPAIRED, ventilator -> decreaseEnergyState = false);
 
         //Discard controllers after player died

@@ -20,10 +20,20 @@ import sk.tuke.kpi.oop.game.items.Usable;
 
 import java.util.Optional;
 
+/**
+ * The type Collector controller.
+ *
+ * @param <A> the type parameter
+ */
 public class CollectorController<A extends Keeper<Collectible>> implements KeyboardListener {
 
     private A actor;
 
+    /**
+     * Instantiates a new Collector controller.
+     *
+     * @param actor the actor
+     */
     public CollectorController(A actor)
     {
         this.setActor(actor);

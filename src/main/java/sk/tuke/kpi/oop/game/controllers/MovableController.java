@@ -17,6 +17,11 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * The type Movable controller.
+ *
+ * @param <M> the type parameter
+ */
 public class MovableController<M extends Movable> implements KeyboardListener {
 
     private M actor;
@@ -27,6 +32,11 @@ public class MovableController<M extends Movable> implements KeyboardListener {
 
     private Set<Direction> keys;
 
+    /**
+     * Instantiates a new Movable controller.
+     *
+     * @param actor the actor
+     */
     public MovableController(M actor)
     {
         if (actor == null) {
@@ -129,6 +139,11 @@ public class MovableController<M extends Movable> implements KeyboardListener {
         return action;
     }
 
+    /**
+     * Sets action.
+     *
+     * @param action the action
+     */
     public void setAction(Move<M> action)
     {
         this.action = action;

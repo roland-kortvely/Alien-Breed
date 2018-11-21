@@ -9,5 +9,10 @@ package sk.tuke.kpi.oop.game;
  */
 public interface EnergyConsumer {
 
+    /**
+     * Sets powered.
+     *
+     * @param powered the powered
+     */
     void setPowered(boolean powered);
 }

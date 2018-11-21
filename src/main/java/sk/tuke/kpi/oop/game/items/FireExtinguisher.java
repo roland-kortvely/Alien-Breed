@@ -8,8 +8,14 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.oop.game.Reactor;
 
+/**
+ * The type Fire extinguisher.
+ */
 public class FireExtinguisher extends BreakableTool<Reactor> implements Collectible {
 
+    /**
+     * Instantiates a new Fire extinguisher.
+     */
     public FireExtinguisher()
     {
         super(1);

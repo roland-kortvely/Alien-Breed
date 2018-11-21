@@ -16,12 +16,18 @@ import sk.tuke.kpi.gamelib.framework.actions.Loop;
 
 import java.util.Random;
 
+/**
+ * The type Defective light.
+ */
 public class DefectiveLight extends Light implements Repairable {
 
     private Disposable instance;
 
     private boolean broken;
 
+    /**
+     * Instantiates a new Defective light.
+     */
     public DefectiveLight()
     {
         super();

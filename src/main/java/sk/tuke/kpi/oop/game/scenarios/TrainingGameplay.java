@@ -16,6 +16,9 @@ import sk.tuke.kpi.oop.game.*;
 
 import java.util.Map;
 
+/**
+ * The type Training gameplay.
+ */
 public class TrainingGameplay extends Scenario {
 
     @Override

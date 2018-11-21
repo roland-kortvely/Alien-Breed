@@ -12,6 +12,11 @@ import sk.tuke.kpi.gamelib.actions.Action;
 import sk.tuke.kpi.oop.game.Movable;
 import sk.tuke.kpi.oop.game.Direction;
 
+/**
+ * The type Move.
+ *
+ * @param <M> the type parameter
+ */
 public class Move<M extends Movable> implements Action<M> {
 
     private M actor;
@@ -23,11 +28,22 @@ public class Move<M extends Movable> implements Action<M> {
 
     private float duration;
 
+    /**
+     * Instantiates a new Move.
+     *
+     * @param direction the direction
+     */
     public Move(Direction direction)
     {
         this(direction, 0.0f);
     }
 
+    /**
+     * Instantiates a new Move.
+     *
+     * @param direction the direction
+     * @param duration  the duration
+     */
     public Move(Direction direction, float duration)
     {
         this.setFirstCall(true);
@@ -134,6 +150,9 @@ public class Move<M extends Movable> implements Action<M> {
         this.setDone(false);
     }
 
+    /**
+     * Stop.
+     */
     public void stop()
     {
         if (this.getActor() == null) {
@@ -157,31 +176,61 @@ public class Move<M extends Movable> implements Action<M> {
         this.actor = actor;
     }
 
+    /**
+     * Is first call boolean.
+     *
+     * @return the boolean
+     */
     public boolean isFirstCall()
     {
         return firstCall;
     }
 
+    /**
+     * Sets first call.
+     *
+     * @param firstCall the first call
+     */
     public void setFirstCall(boolean firstCall)
     {
         this.firstCall = firstCall;
     }
 
+    /**
+     * Gets direction.
+     *
+     * @return the direction
+     */
     public Direction getDirection()
     {
         return direction;
     }
 
+    /**
+     * Sets direction.
+     *
+     * @param direction the direction
+     */
     public void setDirection(Direction direction)
     {
         this.direction = direction;
     }
 
+    /**
+     * Gets duration.
+     *
+     * @return the duration
+     */
     public float getDuration()
     {
         return duration;
     }
 
+    /**
+     * Sets duration.
+     *
+     * @param duration the duration
+     */
     public void setDuration(float duration)
     {
         this.duration = duration;
@@ -193,6 +242,11 @@ public class Move<M extends Movable> implements Action<M> {
         return this.done;
     }
 
+    /**
+     * Sets done.
+     *
+     * @param done the done
+     */
     public void setDone(boolean done)
     {
         this.done = done;

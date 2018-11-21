@@ -10,8 +10,16 @@ import sk.tuke.kpi.gamelib.Scene;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
+/**
+ * The type Chain bomb.
+ */
 public class ChainBomb extends TimeBomb {
 
+    /**
+     * Instantiates a new Chain bomb.
+     *
+     * @param time the time
+     */
     public ChainBomb(float time)
     {
         super(time);

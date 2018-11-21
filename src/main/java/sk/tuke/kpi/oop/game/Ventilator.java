@@ -11,12 +11,21 @@ import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.gamelib.messages.Topic;
 
+/**
+ * The type Ventilator.
+ */
 public class Ventilator extends AbstractActor implements Repairable {
 
     private boolean broken;
 
+    /**
+     * The constant VENTILATOR_REPAIRED.
+     */
     public static final Topic<Ventilator> VENTILATOR_REPAIRED = Topic.create("ventilator repaired", Ventilator.class);
 
+    /**
+     * Instantiates a new Ventilator.
+     */
     public Ventilator()
     {
         setAnimation(new Animation("sprites/ventilator.png", 32, 32, 0.1f, Animation.PlayMode.LOOP));

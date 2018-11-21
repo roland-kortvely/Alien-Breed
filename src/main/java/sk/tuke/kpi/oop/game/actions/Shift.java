@@ -7,9 +7,16 @@ package sk.tuke.kpi.oop.game.actions;
 import org.jetbrains.annotations.Nullable;
 
 import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
-import sk.tuke.kpi.oop.game.Keeper;
 
-public class Shift<A extends Keeper> extends AbstractAction<A> {
+import sk.tuke.kpi.oop.game.Keeper;
+import sk.tuke.kpi.oop.game.items.Collectible;
+
+/**
+ * The type Shift.
+ *
+ * @param <A> the type parameter
+ */
+public class Shift<A extends Keeper<Collectible>> extends AbstractAction<A> {
 
     private A actor;
 

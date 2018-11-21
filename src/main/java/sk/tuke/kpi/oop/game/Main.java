@@ -16,7 +16,11 @@ public class Main {
 
     private static Game game;
 
-    //Initial program Game input
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args)
     {
         //Setup Game, window size, name, ...
@@ -43,12 +47,22 @@ public class Main {
         getGame().start();
     }
 
+    /**
+     * Gets game.
+     *
+     * @return the game
+     */
     @Contract(pure = true)
     public static Game getGame()
     {
         return game;
     }
 
+    /**
+     * Sets game.
+     *
+     * @param game the game
+     */
     public static void setGame(Game game)
     {
         Main.game = game;

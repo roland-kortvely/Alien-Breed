@@ -14,6 +14,11 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * The type Backpack.
+ *
+ * @param <T> the type parameter
+ */
 public class Backpack<T extends Collectible> implements ActorContainer<T> {
 
     private List<T> content;
@@ -22,6 +27,12 @@ public class Backpack<T extends Collectible> implements ActorContainer<T> {
 
     private int capacity;
 
+    /**
+     * Instantiates a new Backpack.
+     *
+     * @param name     the name
+     * @param capacity the capacity
+     */
     public Backpack(String name, int capacity)
     {
         this.content = new ArrayList<>();

@@ -8,10 +8,20 @@ import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 
+/**
+ * The type Breakable tool.
+ *
+ * @param <A> the type parameter
+ */
 public abstract class BreakableTool<A extends Actor> extends AbstractActor implements Usable<A> {
 
     private int remainingUses;
 
+    /**
+     * Instantiates a new Breakable tool.
+     *
+     * @param uses the uses
+     */
     public BreakableTool(int uses)
     {
         this.setRemainingUses(uses);
@@ -27,6 +37,11 @@ public abstract class BreakableTool<A extends Actor> extends AbstractActor imple
         this.setRemainingUses(this.getRemainingUses() - 1);
     }
 
+    /**
+     * Gets remaining uses.
+     *
+     * @return the remaining uses
+     */
     public int getRemainingUses()
     {
         Scene scene = this.getScene();
@@ -38,6 +53,11 @@ public abstract class BreakableTool<A extends Actor> extends AbstractActor imple
         return remainingUses;
     }
 
+    /**
+     * Sets remaining uses.
+     *
+     * @param remainingUses the remaining uses
+     */
     public void setRemainingUses(int remainingUses)
     {
         Scene scene = this.getScene();

@@ -9,8 +9,14 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.oop.game.openables.LockedDoor;
 
+/**
+ * The type Access card.
+ */
 public class AccessCard extends AbstractActor implements Collectible, Usable<LockedDoor> {
 
+    /**
+     * Instantiates a new Access card.
+     */
     public AccessCard()
     {
         setAnimation(new Animation("sprites/key.png", 16, 16));

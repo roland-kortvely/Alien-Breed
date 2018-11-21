@@ -9,6 +9,9 @@ import org.jetbrains.annotations.Contract;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
+/**
+ * The type Light.
+ */
 public class Light extends AbstractActor implements Switchable, EnergyConsumer {
 
     private Animation animationOn;
@@ -17,6 +20,9 @@ public class Light extends AbstractActor implements Switchable, EnergyConsumer {
     private boolean on;
     private boolean powered;
 
+    /**
+     * Instantiates a new Light.
+     */
     public Light()
     {
         this.setOn(false);
@@ -60,6 +66,9 @@ public class Light extends AbstractActor implements Switchable, EnergyConsumer {
         this.setOn(false);
     }
 
+    /**
+     * Toggle.
+     */
     public void toggle()
     {
         if (this.isOn()) {

@@ -10,8 +10,14 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.oop.game.characters.Ripley;
 
+/**
+ * The type Ammo.
+ */
 public class Ammo extends AbstractActor implements Usable<Ripley> {
 
+    /**
+     * Instantiates a new Ammo.
+     */
     public Ammo()
     {
         setAnimation(new Animation("sprites/ammo.png", 16, 16));

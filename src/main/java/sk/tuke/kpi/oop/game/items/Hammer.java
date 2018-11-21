@@ -8,8 +8,14 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.oop.game.Repairable;
 
+/**
+ * The type Hammer.
+ */
 public class Hammer extends BreakableTool<Repairable> implements Collectible {
 
+    /**
+     * Instantiates a new Hammer.
+     */
     public Hammer()
     {
         super(1);

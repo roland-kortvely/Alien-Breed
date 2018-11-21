@@ -14,17 +14,28 @@ import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.framework.Player;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
+/**
+ * The type Teleport.
+ */
 public class Teleport extends AbstractActor {
 
     private Teleport destination;
 
     private boolean active;
 
+    /**
+     * Instantiates a new Teleport.
+     */
     public Teleport()
     {
         this(null);
     }
 
+    /**
+     * Instantiates a new Teleport.
+     *
+     * @param destination the destination
+     */
     public Teleport(Teleport destination)
     {
         this.setActive(true);
@@ -46,7 +57,6 @@ public class Teleport extends AbstractActor {
         }
 
         Scene scene = this.getScene();
-
         if (scene == null) {
             return;
         }
@@ -57,13 +67,7 @@ public class Teleport extends AbstractActor {
         }
 
         new When<>(
-            action -> this.intersects(player)
-                && !this.isActive()
-                && ((((2 * player.getPosX() + player.getWidth()) / 2) >= this.getPosX())
-                && (((2 * player.getPosX() + player.getWidth()) / 2) <= this.getPosX() + this.getWidth())
-                && (((2 * player.getPosY() + player.getHeight()) / 2) >= this.getPosY())
-                && (((2 * player.getPosY() + player.getHeight()) / 2) <= this.getPosY() + this.getHeight())
-            ),
+            action -> validateIntersection(player) && this.intersects(player) && !this.isActive(),
             new Invoke<>(() -> {
                 destination.teleportPlayer(player);
                 this.teleport();
@@ -72,25 +76,31 @@ public class Teleport extends AbstractActor {
         ).scheduleOn(scene);
 
         new When<>(
-            action ->
-                !((((2 * player.getPosX() + player.getWidth()) / 2) >= this.getPosX())
-                    && (((2 * player.getPosX() + player.getWidth()) / 2) <= this.getPosX() + this.getWidth())
-                    && (((2 * player.getPosY() + player.getHeight()) / 2) >= this.getPosY())
-                    && (((2 * player.getPosY() + player.getHeight()) / 2) <= this.getPosY() + this.getHeight())
-                ) && !this.intersects(player),
+            action -> !validateIntersection(player) && !this.intersects(player),
             new Invoke<>(() -> this.setActive(false))
         ).scheduleOn(scene);
     }
 
+    private boolean validateIntersection(Player player)
+    {
+        return
+            ((((2 * player.getPosX() + player.getWidth()) / 2) >= this.getPosX())
+                && (((2 * player.getPosX() + player.getWidth()) / 2) <= this.getPosX() + this.getWidth())
+                && (((2 * player.getPosY() + player.getHeight()) / 2) >= this.getPosY())
+                && (((2 * player.getPosY() + player.getHeight()) / 2) <= this.getPosY() + this.getHeight())
+            );
+    }
+
+    /**
+     * Teleport player.
+     *
+     * @param player the player
+     */
     public void teleportPlayer(Player player)
     {
         if (player == null) {
             return;
         }
-
-        //        if (this.getDestination() == null) {
-        //            return;
-        //        }
 
         this.setActive(true);
 
@@ -100,11 +110,21 @@ public class Teleport extends AbstractActor {
         );
     }
 
+    /**
+     * Gets destination.
+     *
+     * @return the destination
+     */
     public Teleport getDestination()
     {
         return destination;
     }
 
+    /**
+     * Sets destination.
+     *
+     * @param destination the destination
+     */
     public void setDestination(Teleport destination)
     {
         if (this.equals(destination)) {

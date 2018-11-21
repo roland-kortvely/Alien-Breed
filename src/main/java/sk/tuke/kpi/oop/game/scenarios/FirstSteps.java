@@ -16,6 +16,9 @@ import sk.tuke.kpi.oop.game.items.*;
 
 import java.util.List;
 
+/**
+ * The type First steps.
+ */
 public class FirstSteps implements SceneListener {
 
     private Ripley ripley;
@@ -65,11 +68,21 @@ public class FirstSteps implements SceneListener {
         scene.getGame().pushActorContainer(this.getRipley().getContainer());
     }
 
+    /**
+     * Gets ripley.
+     *
+     * @return the ripley
+     */
     public Ripley getRipley()
     {
         return ripley;
     }
 
+    /**
+     * Sets ripley.
+     *
+     * @param ripley the ripley
+     */
     public void setRipley(Ripley ripley)
     {
         this.ripley = ripley;

@@ -9,9 +9,20 @@ package sk.tuke.kpi.oop.game;
  */
 public interface Switchable {
 
+    /**
+     * Turn on.
+     */
     void turnOn();
 
+    /**
+     * Turn off.
+     */
     void turnOff();
 
+    /**
+     * Is on boolean.
+     *
+     * @return the boolean
+     */
     boolean isOn();
 }

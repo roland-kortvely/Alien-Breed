@@ -6,19 +6,49 @@ package sk.tuke.kpi.oop.game;
 
 import org.jetbrains.annotations.Contract;
 
+/**
+ * The enum Direction.
+ */
 public enum Direction {
 
+    /**
+     * North direction.
+     */
     NORTH(0, 1),
+    /**
+     * East direction.
+     */
     EAST(1, 0),
+    /**
+     * South direction.
+     */
     SOUTH(0, -1),
+    /**
+     * West direction.
+     */
     WEST(-1, 0),
 
+    /**
+     * Northeast direction.
+     */
     NORTHEAST(1, 1),
+    /**
+     * Northwest direction.
+     */
     NORTHWEST(-1, 1),
 
+    /**
+     * Southeast direction.
+     */
     SOUTHEAST(1, -1),
+    /**
+     * Southwest direction.
+     */
     SOUTHWEST(-1, -1),
 
+    /**
+     * None direction.
+     */
     NONE(0, 0);
 
     private final int dx;
@@ -30,18 +60,33 @@ public enum Direction {
         this.dy = dy;
     }
 
+    /**
+     * Gets dx.
+     *
+     * @return the dx
+     */
     @Contract(pure = true)
     public int getDx()
     {
         return this.dx;
     }
 
+    /**
+     * Gets dy.
+     *
+     * @return the dy
+     */
     @Contract(pure = true)
     public int getDy()
     {
         return this.dy;
     }
 
+    /**
+     * Gets angle.
+     *
+     * @return the angle
+     */
     @Contract(pure = true)
     public float getAngle()
     {
@@ -69,6 +114,13 @@ public enum Direction {
         }
     }
 
+    /**
+     * Combine direction.
+     *
+     * @param other the other
+     *
+     * @return the direction
+     */
     public Direction combine(Direction other)
     {
         for (Direction direction : Direction.values()) {

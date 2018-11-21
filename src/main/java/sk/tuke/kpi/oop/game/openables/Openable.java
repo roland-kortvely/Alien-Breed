@@ -11,9 +11,20 @@ import sk.tuke.kpi.gamelib.Actor;
  */
 public interface Openable extends Actor {
 
+    /**
+     * Open.
+     */
     void open();
 
+    /**
+     * Close.
+     */
     void close();
 
+    /**
+     * Is open boolean.
+     *
+     * @return the boolean
+     */
     boolean isOpen();
 }

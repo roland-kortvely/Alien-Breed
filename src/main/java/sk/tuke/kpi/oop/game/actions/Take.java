@@ -16,12 +16,23 @@ import sk.tuke.kpi.oop.game.items.Collectible;
 
 import java.util.Optional;
 
+/**
+ * The type Take.
+ *
+ * @param <K> the type parameter
+ * @param <C> the type parameter
+ */
 public class Take<K extends Keeper<Collectible>, C extends Collectible> extends AbstractAction<K> {
 
     private K actor;
 
     private Class<C> takeableActorsClass;
 
+    /**
+     * Instantiates a new Take.
+     *
+     * @param takeableActorsClass the takeable actors class
+     */
     public Take(Class<C> takeableActorsClass)
     {
         this.takeableActorsClass = takeableActorsClass;
@@ -36,7 +47,6 @@ public class Take<K extends Keeper<Collectible>, C extends Collectible> extends 
         }
 
         Scene scene = this.getActor().getScene();
-
         if (scene == null) {
             this.setDone(true);
             return;

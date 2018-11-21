@@ -14,6 +14,9 @@ import sk.tuke.kpi.gamelib.actions.When;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
+/**
+ * The type Time bomb.
+ */
 public class TimeBomb extends AbstractActor {
 
     private Animation inactiveAnimation;
@@ -24,6 +27,11 @@ public class TimeBomb extends AbstractActor {
 
     private boolean activated;
 
+    /**
+     * Instantiates a new Time bomb.
+     *
+     * @param time the time
+     */
     public TimeBomb(float time)
     {
         this.setInactiveAnimation(new Animation("sprites/bomb.png", 16, 16));
@@ -35,6 +43,9 @@ public class TimeBomb extends AbstractActor {
         setAnimation(this.getInactiveAnimation());
     }
 
+    /**
+     * Activate.
+     */
     public void activate()
     {
         if (this.isActivated()) {
@@ -50,6 +61,9 @@ public class TimeBomb extends AbstractActor {
         ).scheduleOn(this);
     }
 
+    /**
+     * Detonate.
+     */
     public void detonate()
     {
         setAnimation(this.getExplosionAnimation());
@@ -76,6 +90,11 @@ public class TimeBomb extends AbstractActor {
         this.time = time;
     }
 
+    /**
+     * Is activated boolean.
+     *
+     * @return the boolean
+     */
     public boolean isActivated()
     {
         return activated;

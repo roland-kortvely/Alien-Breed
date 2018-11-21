@@ -10,8 +10,16 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.framework.actions.Loop;
 
+/**
+ * The type Smart cooler.
+ */
 public class SmartCooler extends Cooler {
 
+    /**
+     * Instantiates a new Smart cooler.
+     *
+     * @param reactor the reactor
+     */
     public SmartCooler(Reactor reactor)
     {
         super(reactor);

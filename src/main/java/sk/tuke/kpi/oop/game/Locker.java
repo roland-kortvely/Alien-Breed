@@ -12,11 +12,17 @@ import sk.tuke.kpi.oop.game.characters.Ripley;
 import sk.tuke.kpi.oop.game.items.Hammer;
 import sk.tuke.kpi.oop.game.items.Usable;
 
+/**
+ * The type Locker.
+ */
 public class Locker extends AbstractActor implements Usable<Ripley> {
 
     private boolean used;
 
 
+    /**
+     * Instantiates a new Locker.
+     */
     public Locker()
     {
         setAnimation(new Animation("sprites/locker.png", 16, 16));
@@ -45,11 +51,21 @@ public class Locker extends AbstractActor implements Usable<Ripley> {
         scene.addActor(new Hammer(), actor.getPosX(), actor.getPosY());
     }
 
+    /**
+     * Is used boolean.
+     *
+     * @return the boolean
+     */
     public boolean isUsed()
     {
         return used;
     }
 
+    /**
+     * Sets used.
+     *
+     * @param used the used
+     */
     public void setUsed(boolean used)
     {
         this.used = used;

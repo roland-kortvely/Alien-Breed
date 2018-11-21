@@ -11,5 +11,10 @@ import sk.tuke.kpi.gamelib.Actor;
  */
 public interface Repairable extends Actor {
 
+    /**
+     * Repair boolean.
+     *
+     * @return the boolean
+     */
     boolean repair();
 }

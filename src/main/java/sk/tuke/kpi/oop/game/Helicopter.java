@@ -7,11 +7,14 @@ package sk.tuke.kpi.oop.game;
 import org.jetbrains.annotations.Contract;
 
 import sk.tuke.kpi.gamelib.Scene;
-import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
+import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.framework.Player;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
+/**
+ * The type Helicopter.
+ */
 public class Helicopter extends AbstractActor {
 
     private Animation normalAnimation;
@@ -21,6 +24,9 @@ public class Helicopter extends AbstractActor {
     private int speed;
     private int damage;
 
+    /**
+     * Instantiates a new Helicopter.
+     */
     public Helicopter()
     {
         this.setNormalAnimation(new Animation("sprites/heli.png", 64, 64, 0.08f, Animation.PlayMode.LOOP));
@@ -31,6 +37,9 @@ public class Helicopter extends AbstractActor {
         this.setDamage(1);
     }
 
+    /**
+     * Search and destroy.
+     */
     public void searchAndDestroy()
     {
         this.setDeadly(true);
@@ -44,7 +53,6 @@ public class Helicopter extends AbstractActor {
         }
 
         Scene scene = this.getScene();
-
         if (scene == null) {
             return;
         }
@@ -85,11 +93,21 @@ public class Helicopter extends AbstractActor {
         new Invoke<>(this::searchAndDestroy).scheduleOn(this);
     }
 
+    /**
+     * Is deadly boolean.
+     *
+     * @return the boolean
+     */
     public boolean isDeadly()
     {
         return deadly;
     }
 
+    /**
+     * Sets deadly.
+     *
+     * @param deadly the deadly
+     */
     public void setDeadly(boolean deadly)
     {
         this.deadly = deadly;

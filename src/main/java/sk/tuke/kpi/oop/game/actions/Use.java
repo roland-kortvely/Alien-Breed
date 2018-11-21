@@ -14,6 +14,11 @@ import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
 
 import sk.tuke.kpi.oop.game.items.Usable;
 
+/**
+ * The type Use.
+ *
+ * @param <A> the type parameter
+ */
 public class Use<A extends Actor> extends AbstractAction<A> {
 
     private A actor;
@@ -22,6 +27,11 @@ public class Use<A extends Actor> extends AbstractAction<A> {
 
     private boolean done;
 
+    /**
+     * Instantiates a new Use.
+     *
+     * @param usable the usable
+     */
     public Use(Usable<A> usable)
     {
         this.setUsable(usable);
@@ -51,6 +61,13 @@ public class Use<A extends Actor> extends AbstractAction<A> {
         return super.scheduleOn(actor);
     }
 
+    /**
+     * Schedule on intersecting with disposable.
+     *
+     * @param mediatingActor the mediating actor
+     *
+     * @return the disposable
+     */
     public Disposable scheduleOnIntersectingWith(Actor mediatingActor)
     {
         Scene scene = mediatingActor.getScene();
@@ -81,11 +98,21 @@ public class Use<A extends Actor> extends AbstractAction<A> {
         this.actor = actor;
     }
 
+    /**
+     * Gets usable.
+     *
+     * @return the usable
+     */
     public Usable getUsable()
     {
         return usable;
     }
 
+    /**
+     * Sets usable.
+     *
+     * @param usable the usable
+     */
     public void setUsable(Usable usable)
     {
         this.usable = usable;

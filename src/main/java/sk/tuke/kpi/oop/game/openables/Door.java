@@ -15,15 +15,27 @@ import sk.tuke.kpi.gamelib.messages.Topic;
 
 import sk.tuke.kpi.oop.game.items.Usable;
 
+/**
+ * The type Door.
+ */
 public class Door extends AbstractActor implements Usable<Actor>, Openable {
 
     private boolean open;
 
     private MapTile[] mapTiles;
 
+    /**
+     * The constant DOOR_OPENED.
+     */
     public static final Topic<Door> DOOR_OPENED = Topic.create("door opened", Door.class);
+    /**
+     * The constant DOOR_CLOSED.
+     */
     public static final Topic<Door> DOOR_CLOSED = Topic.create("door closed", Door.class);
 
+    /**
+     * Instantiates a new Door.
+     */
     public Door()
     {
         setAnimation(new Animation("sprites/vdoor.png", 16, 32, 0.1f, Animation.PlayMode.ONCE_REVERSED));
@@ -107,6 +119,11 @@ public class Door extends AbstractActor implements Usable<Actor>, Openable {
         return this.open;
     }
 
+    /**
+     * Sets open.
+     *
+     * @param open the open
+     */
     public void setOpen(boolean open)
     {
         this.open = open;

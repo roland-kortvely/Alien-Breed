@@ -16,6 +16,9 @@ import sk.tuke.kpi.oop.game.actions.PerpetualReactorHeating;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * The type Reactor.
+ */
 public class Reactor extends AbstractActor implements Switchable, Repairable {
 
     private boolean running;
@@ -32,6 +35,9 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
 
     private Set<EnergyConsumer> devices;
 
+    /**
+     * Instantiates a new Reactor.
+     */
     public Reactor()
     {
         this.setDevices(new HashSet<>());
@@ -58,6 +64,11 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         new PerpetualReactorHeating(1).scheduleOn(this);
     }
 
+    /**
+     * Increase temperature.
+     *
+     * @param increment the increment
+     */
     public void increaseTemperature(int increment)
     {
         if (!this.isOn()) {
@@ -90,6 +101,11 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         }
     }
 
+    /**
+     * Decrease temperature.
+     *
+     * @param decrement the decrement
+     */
     public void decreaseTemperature(int decrement)
     {
         if (!this.isOn()) {
@@ -159,6 +175,11 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         return true;
     }
 
+    /**
+     * Extinguish boolean.
+     *
+     * @return the boolean
+     */
     public boolean extinguish()
     {
         if (this.getDamage() < 100) {
@@ -171,6 +192,11 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         return true;
     }
 
+    /**
+     * Gets temperature.
+     *
+     * @return the temperature
+     */
     public int getTemperature()
     {
         return temperature;
@@ -192,6 +218,11 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         this.temperature = temperature;
     }
 
+    /**
+     * Gets damage.
+     *
+     * @return the damage
+     */
     public int getDamage()
     {
         return damage;
@@ -286,6 +317,11 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         this.updateAnimation();
     }
 
+    /**
+     * Is extinguished boolean.
+     *
+     * @return the boolean
+     */
     public boolean isExtinguished()
     {
         return extinguished;
@@ -297,6 +333,11 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         this.updateAnimation();
     }
 
+    /**
+     * Add device.
+     *
+     * @param device the device
+     */
     public void addDevice(EnergyConsumer device)
     {
         if (device == null) {
@@ -307,6 +348,11 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         device.setPowered(this.isOn());
     }
 
+    /**
+     * Remove device.
+     *
+     * @param device the device
+     */
     public void removeDevice(EnergyConsumer device)
     {
         if (device == null) {
@@ -324,11 +370,21 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         }
     }
 
+    /**
+     * Gets devices.
+     *
+     * @return the devices
+     */
     public Set<EnergyConsumer> getDevices()
     {
         return devices;
     }
 
+    /**
+     * Sets devices.
+     *
+     * @param devices the devices
+     */
     public void setDevices(Set<EnergyConsumer> devices)
     {
         this.devices = devices;

@@ -23,6 +23,9 @@ import sk.tuke.kpi.oop.game.items.Collectible;
 import sk.tuke.kpi.oop.game.Keeper;
 import sk.tuke.kpi.oop.game.Movable;
 
+/**
+ * The type Ripley.
+ */
 public class Ripley extends AbstractActor implements Movable, Keeper<Collectible> {
 
     private Animation normalAnimation;
@@ -34,8 +37,14 @@ public class Ripley extends AbstractActor implements Movable, Keeper<Collectible
 
     private Backpack backpack;
 
+    /**
+     * The constant RIPLEY_DIED.
+     */
     public static final Topic<Ripley> RIPLEY_DIED = Topic.create("ripley died", Ripley.class);
 
+    /**
+     * Instantiates a new Ripley.
+     */
     public Ripley()
     {
         //Override Actor's name
@@ -144,17 +153,32 @@ public class Ripley extends AbstractActor implements Movable, Keeper<Collectible
         this.dieAnimation = dieAnimation;
     }
 
+    /**
+     * Gets energy.
+     *
+     * @return the energy
+     */
     public int getEnergy()
     {
         return energy;
     }
 
+    /**
+     * Sets energy.
+     *
+     * @param energy the energy
+     */
     @Contract(pure = true)
     public void setEnergy(int energy)
     {
         this.energy = energy;
     }
 
+    /**
+     * Decrease energy.
+     *
+     * @param energy the energy
+     */
     public void decreaseEnergy(int energy)
     {
         this.energy = (this.energy - energy) < 0 ? 0 : (this.energy - energy);
@@ -164,17 +188,32 @@ public class Ripley extends AbstractActor implements Movable, Keeper<Collectible
         }
     }
 
+    /**
+     * Gets ammo.
+     *
+     * @return the ammo
+     */
     public int getAmmo()
     {
         return ammo;
     }
 
+    /**
+     * Sets ammo.
+     *
+     * @param ammo the ammo
+     */
     @Contract(pure = true)
     public void setAmmo(int ammo)
     {
         this.ammo = ammo;
     }
 
+    /**
+     * Increase ammo.
+     *
+     * @param ammo the ammo
+     */
     public void increaseAmmo(int ammo)
     {
         this.ammo = (this.ammo + ammo) > 500 ? 500 : (this.ammo + ammo);

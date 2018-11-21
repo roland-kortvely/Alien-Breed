@@ -13,6 +13,9 @@ import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.framework.actions.Loop;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
+/**
+ * The type Cooler.
+ */
 public class Cooler extends AbstractActor implements Switchable {
 
     private Animation onAnimation;
@@ -23,6 +26,11 @@ public class Cooler extends AbstractActor implements Switchable {
 
     private int decrement;
 
+    /**
+     * Instantiates a new Cooler.
+     *
+     * @param reactor the reactor
+     */
     public Cooler(Reactor reactor)
     {
         this.setOnAnimation(new Animation("sprites/fan.png", 32, 32, 0f, Animation.PlayMode.LOOP_PINGPONG));
@@ -52,6 +60,11 @@ public class Cooler extends AbstractActor implements Switchable {
         new Loop<>(new Invoke<>(this::coolReactor)).scheduleOn(this);
     }
 
+    /**
+     * Gets reactor.
+     *
+     * @return the reactor
+     */
     public Reactor getReactor()
     {
         return reactor;
@@ -93,11 +106,21 @@ public class Cooler extends AbstractActor implements Switchable {
         setAnimation(this.getOnAnimation());
     }
 
+    /**
+     * Gets decrement.
+     *
+     * @return the decrement
+     */
     public int getDecrement()
     {
         return decrement;
     }
 
+    /**
+     * Sets decrement.
+     *
+     * @param decrement the decrement
+     */
     public void setDecrement(int decrement)
     {
         this.decrement = decrement;
