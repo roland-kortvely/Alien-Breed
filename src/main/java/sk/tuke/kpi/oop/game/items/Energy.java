@@ -8,12 +8,13 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
+import sk.tuke.kpi.oop.game.characters.Alive;
 import sk.tuke.kpi.oop.game.characters.Ripley;
 
 /**
  * The type Energy.
  */
-public class Energy extends AbstractActor implements Usable<Ripley> {
+public class Energy extends AbstractActor implements Usable<Alive> {
 
     /**
      * Instantiates a new Energy.
@@ -24,17 +25,17 @@ public class Energy extends AbstractActor implements Usable<Ripley> {
     }
 
     @Override
-    public void useWith(Ripley actor)
+    public void useWith(Alive actor)
     {
         if (actor == null) {
             return;
         }
 
-        if (actor.getEnergy() >= 100) {
+        if (actor.getHealth().getValue() >= actor.getHealth().getMaxValue()) {
             return;
         }
 
-        actor.setEnergy(100);
+        actor.getHealth().restore();
 
         Scene scene = this.getScene();
 
@@ -44,8 +45,8 @@ public class Energy extends AbstractActor implements Usable<Ripley> {
     }
 
     @Override
-    public Class<Ripley> getUsingActorClass()
+    public Class<Alive> getUsingActorClass()
     {
-        return Ripley.class;
+        return Alive.class;
     }
 }

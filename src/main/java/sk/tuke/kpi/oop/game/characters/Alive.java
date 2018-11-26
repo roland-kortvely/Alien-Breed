@@ -10,4 +10,11 @@ import sk.tuke.kpi.gamelib.Actor;
  * The interface Alive.
  */
 public interface Alive extends Actor {
+
+    /**
+     * Gets health.
+     *
+     * @return the health
+     */
+    Health getHealth();
 }

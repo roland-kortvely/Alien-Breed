@@ -33,10 +33,11 @@ public class Ripley extends AbstractActor implements Alive, Movable, Armed, Keep
     private Animation dieAnimation;
 
     private int speed;
-    private int energy;
     private int ammo;
 
     private Backpack backpack;
+
+    private Health health;
 
     /**
      * The constant RIPLEY_DIED.
@@ -58,9 +59,11 @@ public class Ripley extends AbstractActor implements Alive, Movable, Armed, Keep
 
         //Default stats
         this.setSpeed(2);
-        this.setEnergy(50);
+        this.setHealth(new Health(100));
         this.setAmmo(450);
         this.setBackpack(new Backpack("Ripley's backpack", 10));
+
+        this.getHealth().onExhaustion(this::die);
 
         //Initialize animation
         setAnimation(this.getNormalAnimation());
@@ -75,6 +78,9 @@ public class Ripley extends AbstractActor implements Alive, Movable, Armed, Keep
         this.showRipleyState();
     }
 
+    /**
+     * Die.
+     */
     private void die()
     {
         setAnimation(this.getDieAnimation());
@@ -84,6 +90,7 @@ public class Ripley extends AbstractActor implements Alive, Movable, Armed, Keep
             return;
         }
 
+        scene.cancelActions(this);
         scene.getMessageBus().publish(RIPLEY_DIED, this);
     }
 
@@ -101,7 +108,7 @@ public class Ripley extends AbstractActor implements Alive, Movable, Armed, Keep
         //Redraw stats on every frame
         new Loop<>(
             new Invoke<>(() -> {
-                overlay.drawText(" | ENERGY: " + this.getEnergy(), 100, topLine);
+                overlay.drawText(" | HEALTH: " + this.getHealth().getValue(), 100, topLine);
                 overlay.drawText(" | AMMO: " + this.getAmmo(), 250, topLine);
             })
         ).scheduleOn(scene);
@@ -155,41 +162,6 @@ public class Ripley extends AbstractActor implements Alive, Movable, Armed, Keep
     }
 
     /**
-     * Gets energy.
-     *
-     * @return the energy
-     */
-    public int getEnergy()
-    {
-        return energy;
-    }
-
-    /**
-     * Sets energy.
-     *
-     * @param energy the energy
-     */
-    @Contract(pure = true)
-    public void setEnergy(int energy)
-    {
-        this.energy = energy;
-    }
-
-    /**
-     * Decrease energy.
-     *
-     * @param energy the energy
-     */
-    public void decreaseEnergy(int energy)
-    {
-        this.energy = (this.energy - energy) < 0 ? 0 : (this.energy - energy);
-
-        if (this.energy <= 0) {
-            this.die();
-        }
-    }
-
-    /**
      * Gets ammo.
      *
      * @return the ammo
@@ -235,5 +207,16 @@ public class Ripley extends AbstractActor implements Alive, Movable, Armed, Keep
     public ActorContainer getContainer()
     {
         return this.getBackpack();
+    }
+
+    @Override
+    public Health getHealth()
+    {
+        return this.health;
+    }
+
+    private void setHealth(Health health)
+    {
+        this.health = health;
     }
 }

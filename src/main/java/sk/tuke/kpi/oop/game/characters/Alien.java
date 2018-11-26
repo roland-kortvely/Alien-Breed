@@ -14,6 +14,8 @@ import sk.tuke.kpi.oop.game.Movable;
  */
 public class Alien extends AbstractActor implements Alive, Enemy, Movable {
 
+    private Health health;
+
     /**
      * Instantiates a new Alien.
      */
@@ -21,6 +23,8 @@ public class Alien extends AbstractActor implements Alive, Enemy, Movable {
     {
         setAnimation(new Animation("sprites/alien.png", 32, 32, 0.1f, Animation.PlayMode.LOOP_PINGPONG));
         getAnimation().stop();
+
+        this.setHealth(new Health(100));
     }
 
     @Override
@@ -41,5 +45,16 @@ public class Alien extends AbstractActor implements Alive, Enemy, Movable {
     public void stoppedMoving()
     {
         getAnimation().stop();
+    }
+
+    @Override
+    public Health getHealth()
+    {
+        return this.health;
+    }
+
+    private void setHealth(Health health)
+    {
+        this.health = health;
     }
 }

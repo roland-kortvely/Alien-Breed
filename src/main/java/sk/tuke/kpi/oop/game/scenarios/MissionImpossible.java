@@ -71,14 +71,14 @@ public class MissionImpossible implements SceneListener {
             return;
         }
 
-        if (ripley.getEnergy() <= 0) {
+        if (ripley.getHealth().getValue() <= 0) {
             return;
         }
 
         //Repeat this action, till player dies
         new ActionSequence<>(
             new Wait<>(0.2f),
-            new Invoke<>(() -> ripley.decreaseEnergy(1)),
+            new Invoke<>(() -> ripley.getHealth().drain(1)),
             new Invoke<>(() -> decreasePlayerEnergy(ripley))
         ).scheduleOn(ripley);
     }
