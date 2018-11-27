@@ -14,7 +14,7 @@ configure<JavaPluginConvention> {
 }
 
 tasks.withType<JavaCompile>().configureEach {
-    options.compilerArgs.plusAssign("-parameters")
+    options.compilerArgs.plusAssign(listOf("-parameters", "-Xlint:unchecked,rawtypes", "-Werror"))
 }
 
 repositories {

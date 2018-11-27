@@ -33,11 +33,11 @@ public class FirstSteps implements SceneListener {
         scene.addActor(this.getRipley(), 0, 0);
 
         //Keyboard controller
-        MovableController movableController = new MovableController<>(this.getRipley());
+        MovableController movableController = new MovableController(this.getRipley());
         scene.getInput().registerListener(movableController);
 
         //Collector controller
-        CollectorController<Ripley> collectorController = new CollectorController<>(this.getRipley());
+        CollectorController collectorController = new CollectorController(this.getRipley());
         scene.getInput().registerListener(collectorController);
 
         //Energy

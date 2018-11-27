@@ -71,7 +71,7 @@ public class DefectiveLight extends Light implements Repairable {
         this.turnOn();
         this.setBroken(false);
 
-        new ActionSequence<>(new Wait(10), new Invoke<>(this::defect)).scheduleOn(this);
+        //new ActionSequence<>(new Wait(10), new Invoke<>(this::defect)).scheduleOn(this);
 
         return true;
     }

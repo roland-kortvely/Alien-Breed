@@ -78,11 +78,11 @@ public class EscapeRoom implements SceneListener {
         scene.follow(ripley);
 
         //Keyboard controller
-        MovableController movableController = new MovableController<>(ripley);
+        MovableController movableController = new MovableController(ripley);
         Disposable disposableMovableController = scene.getInput().registerListener(movableController);
 
         //Collector controller
-        CollectorController<Ripley> collectorController = new CollectorController<>(ripley);
+        CollectorController collectorController = new CollectorController(ripley);
         Disposable disposableCollectorController = scene.getInput().registerListener(collectorController);
 
         //Render player backpack

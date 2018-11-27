@@ -19,14 +19,12 @@ import java.util.Set;
 
 /**
  * The type Movable controller.
- *
- * @param <M> the type parameter
  */
-public class MovableController<M extends Movable> implements KeyboardListener {
+public class MovableController implements KeyboardListener {
 
-    private M actor;
+    private Movable actor;
 
-    private Move<M> action;
+    private Move<Movable> action;
 
     private Map<Input.Key, Direction> keyDirectionMap;
 
@@ -37,7 +35,7 @@ public class MovableController<M extends Movable> implements KeyboardListener {
      *
      * @param actor the actor
      */
-    public MovableController(M actor)
+    public MovableController(Movable actor)
     {
         if (actor == null) {
             return;
@@ -123,18 +121,18 @@ public class MovableController<M extends Movable> implements KeyboardListener {
     }
 
     @Contract(pure = true)
-    private M getActor()
+    private Movable getActor()
     {
         return actor;
     }
 
-    private void setActor(M actor)
+    private void setActor(Movable actor)
     {
         this.actor = actor;
     }
 
     @Contract(pure = true)
-    private Move getAction()
+    private Move<?> getAction()
     {
         return action;
     }
@@ -144,7 +142,7 @@ public class MovableController<M extends Movable> implements KeyboardListener {
      *
      * @param action the action
      */
-    public void setAction(Move<M> action)
+    public void setAction(Move<Movable> action)
     {
         this.action = action;
     }

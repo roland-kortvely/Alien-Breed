@@ -103,7 +103,7 @@ public class Use<A extends Actor> extends AbstractAction<A> {
      *
      * @return the usable
      */
-    public Usable getUsable()
+    public Usable<A> getUsable()
     {
         return usable;
     }
@@ -113,7 +113,7 @@ public class Use<A extends Actor> extends AbstractAction<A> {
      *
      * @param usable the usable
      */
-    public void setUsable(Usable usable)
+    public void setUsable(Usable<A> usable)
     {
         this.usable = usable;
     }

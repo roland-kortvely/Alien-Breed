@@ -22,19 +22,17 @@ import java.util.Optional;
 
 /**
  * The type Collector controller.
- *
- * @param <A> the type parameter
  */
-public class CollectorController<A extends Keeper<Collectible>> implements KeyboardListener {
+public class CollectorController implements KeyboardListener {
 
-    private A actor;
+    private Keeper<Collectible> actor;
 
     /**
      * Instantiates a new Collector controller.
      *
      * @param actor the actor
      */
-    public CollectorController(A actor)
+    public CollectorController(Keeper<Collectible> actor)
     {
         this.setActor(actor);
     }
@@ -102,7 +100,7 @@ public class CollectorController<A extends Keeper<Collectible>> implements Keybo
 
     private void keyU(@NotNull Scene scene)
     {
-        Optional query = scene.getActors().stream()
+        Optional<?> query = scene.getActors().stream()
             .filter(Usable.class::isInstance)
             .filter(actor -> actor.intersects(this.getActor()))
             .findFirst();
@@ -115,12 +113,12 @@ public class CollectorController<A extends Keeper<Collectible>> implements Keybo
     }
 
     @Contract(pure = true)
-    private A getActor()
+    private Keeper<Collectible> getActor()
     {
         return actor;
     }
 
-    private void setActor(A actor)
+    private void setActor(Keeper<Collectible> actor)
     {
         this.actor = actor;
     }
