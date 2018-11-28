@@ -14,6 +14,7 @@ import sk.tuke.kpi.oop.game.characters.AlienMother;
 import sk.tuke.kpi.oop.game.characters.Ripley;
 import sk.tuke.kpi.oop.game.controllers.CollectorController;
 import sk.tuke.kpi.oop.game.controllers.MovableController;
+import sk.tuke.kpi.oop.game.controllers.ShooterController;
 import sk.tuke.kpi.oop.game.items.Ammo;
 import sk.tuke.kpi.oop.game.items.Energy;
 import sk.tuke.kpi.oop.game.openables.Door;
@@ -85,6 +86,10 @@ public class EscapeRoom implements SceneListener {
         CollectorController collectorController = new CollectorController(ripley);
         Disposable disposableCollectorController = scene.getInput().registerListener(collectorController);
 
+        //Shooter Controller
+        ShooterController shooterController = new ShooterController(ripley);
+        Disposable disposableShooterController = scene.getInput().registerListener(shooterController);
+
         //Render player backpack
         scene.getGame().pushActorContainer(ripley.getContainer());
 
@@ -92,6 +97,7 @@ public class EscapeRoom implements SceneListener {
         scene.getMessageBus().subscribeOnce(Ripley.RIPLEY_DIED, action -> {
             disposableMovableController.dispose();
             disposableCollectorController.dispose();
+            disposableShooterController.dispose();
         });
     }
 }

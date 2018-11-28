@@ -115,6 +115,40 @@ public enum Direction {
     }
 
     /**
+     * From angle direction.
+     *
+     * @param angle the angle
+     *
+     * @return the direction
+     */
+    @Contract(pure = true)
+    public Direction fromAngle(float angle)
+    {
+        switch ((int) angle) {
+            case 0:
+                return NORTH;
+            case 270:
+                return EAST;
+            case 180:
+                return SOUTH;
+            case 90:
+                return WEST;
+
+            case 315:
+                return NORTHEAST;
+            case 45:
+                return NORTHWEST;
+            case 225:
+                return SOUTHEAST;
+            case 135:
+                return SOUTHWEST;
+
+            default:
+                return NONE;
+        }
+    }
+
+    /**
      * Combine direction.
      *
      * @param other the other

@@ -7,6 +7,7 @@ package sk.tuke.kpi.oop.game;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.Disposable;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.actions.ActionSequence;
@@ -71,7 +72,7 @@ public class DefectiveLight extends Light implements Repairable {
         this.turnOn();
         this.setBroken(false);
 
-        //new ActionSequence<>(new Wait(10), new Invoke<>(this::defect)).scheduleOn(this);
+//        new ActionSequence<Actor>(new Wait(10), new Invoke<>(this::defect)).scheduleOn(this);
 
         return true;
     }

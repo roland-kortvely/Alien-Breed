@@ -4,10 +4,20 @@
 
 package sk.tuke.kpi.oop.game.characters;
 
+import org.jetbrains.annotations.NotNull;
+import sk.tuke.kpi.gamelib.Actor;
+import sk.tuke.kpi.gamelib.Scene;
+import sk.tuke.kpi.gamelib.actions.ActionSequence;
+import sk.tuke.kpi.gamelib.actions.Invoke;
+import sk.tuke.kpi.gamelib.actions.Wait;
+import sk.tuke.kpi.gamelib.actions.When;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
+import sk.tuke.kpi.gamelib.framework.actions.Loop;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.oop.game.Direction;
 import sk.tuke.kpi.oop.game.Movable;
+
+import java.util.Optional;
 
 /**
  * The type Alien.
@@ -25,6 +35,59 @@ public class Alien extends AbstractActor implements Alive, Enemy, Movable {
         getAnimation().stop();
 
         this.setHealth(new Health(100));
+
+        this.getHealth().onExhaustion(this::die);
+    }
+
+    /**
+     * Die.
+     */
+    public void die()
+    {
+        Scene scene = this.getScene();
+        if (scene == null) {
+            return;
+        }
+
+        getAnimation().stop();
+
+        scene.cancelActions(this);
+        scene.removeActor(this);
+    }
+
+
+    @Override
+    public void addedToScene(@NotNull Scene scene)
+    {
+        super.addedToScene(scene);
+
+        this.deadly(scene);
+    }
+
+    private void deadly(@NotNull Scene scene)
+    {
+        new When<>(
+            action -> this.intersectsPlayer(scene).isPresent(),
+            new Invoke<>(() -> {
+                Optional<?> actor = this.intersectsPlayer(scene);
+                if (!actor.isPresent()) {
+                    return;
+                }
+                ((Alive) actor.get()).getHealth().drain(1);
+                this.deadly(scene);
+            })
+        ).scheduleOn(this);
+    }
+
+    @NotNull
+    private Optional<?> intersectsPlayer(@NotNull Scene scene)
+    {
+        return scene.getActors().stream()
+            .filter(Alive.class::isInstance)
+            .filter(actor -> !actor.getClass().isInstance(Enemy.class))
+            .filter(actor -> actor.intersects(this))
+            .filter(actor -> !actor.equals(this))
+            .findFirst();
     }
 
     @Override
@@ -53,7 +116,7 @@ public class Alien extends AbstractActor implements Alive, Enemy, Movable {
         return this.health;
     }
 
-    private void setHealth(Health health)
+    public void setHealth(Health health)
     {
         this.health = health;
     }

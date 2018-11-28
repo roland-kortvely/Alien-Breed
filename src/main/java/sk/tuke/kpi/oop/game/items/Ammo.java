@@ -8,12 +8,12 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
-import sk.tuke.kpi.oop.game.characters.Ripley;
+import sk.tuke.kpi.oop.game.characters.Armed;
 
 /**
  * The type Ammo.
  */
-public class Ammo extends AbstractActor implements Usable<Ripley> {
+public class Ammo extends AbstractActor implements Usable<Armed> {
 
     /**
      * Instantiates a new Ammo.
@@ -24,17 +24,17 @@ public class Ammo extends AbstractActor implements Usable<Ripley> {
     }
 
     @Override
-    public void useWith(Ripley actor)
+    public void useWith(Armed actor)
     {
         if (actor == null) {
             return;
         }
 
-        if (actor.getAmmo() >= 500) {
+        if (actor.getFirearm() == null) {
             return;
         }
 
-        actor.increaseAmmo(50);
+        actor.getFirearm().reload(50);
 
         Scene scene = this.getScene();
 
@@ -44,8 +44,8 @@ public class Ammo extends AbstractActor implements Usable<Ripley> {
     }
 
     @Override
-    public Class<Ripley> getUsingActorClass()
+    public Class<Armed> getUsingActorClass()
     {
-        return Ripley.class;
+        return Armed.class;
     }
 }

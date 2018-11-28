@@ -51,9 +51,9 @@ public class Health {
      */
     public Health(int value, int maxValue)
     {
+        this.setAlive(true);
         this.setValue(value);
         this.setMaxValue(maxValue);
-        this.setAlive(true);
         this.setExhaustionEffects(new ArrayList<>());
     }
 

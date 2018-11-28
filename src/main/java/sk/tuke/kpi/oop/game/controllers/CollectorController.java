@@ -59,7 +59,7 @@ public class CollectorController implements KeyboardListener {
             case S: //Rotate items in the backpack
                 keyS();
                 break;
-            case U: //Use item on the floor
+            case U: //Use item from the floor
                 keyU(scene);
                 break;
             case B: //Use item from backpack

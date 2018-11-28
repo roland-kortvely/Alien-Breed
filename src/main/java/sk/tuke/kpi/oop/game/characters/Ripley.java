@@ -18,11 +18,12 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.gamelib.messages.Topic;
 
 import sk.tuke.kpi.oop.game.Direction;
-import sk.tuke.kpi.oop.game.actors.Armed;
 import sk.tuke.kpi.oop.game.items.Backpack;
 import sk.tuke.kpi.oop.game.items.Collectible;
 import sk.tuke.kpi.oop.game.Keeper;
 import sk.tuke.kpi.oop.game.Movable;
+import sk.tuke.kpi.oop.game.weapons.Firearm;
+import sk.tuke.kpi.oop.game.weapons.Gun;
 
 /**
  * The type Ripley.
@@ -32,12 +33,11 @@ public class Ripley extends AbstractActor implements Alive, Movable, Armed, Keep
     private Animation normalAnimation;
     private Animation dieAnimation;
 
-    private int speed;
-    private int ammo;
-
     private Backpack<Collectible> backpack;
 
     private Health health;
+
+    private Firearm firearm;
 
     /**
      * The constant RIPLEY_DIED.
@@ -58,11 +58,11 @@ public class Ripley extends AbstractActor implements Alive, Movable, Armed, Keep
         this.setDieAnimation(new Animation("sprites/player_die.png", 32, 32, 0.1f, Animation.PlayMode.ONCE));
 
         //Default stats
-        this.setSpeed(2);
         this.setHealth(new Health(100));
-        this.setAmmo(450);
         this.setBackpack(new Backpack<>("Ripley's backpack", 10));
+        this.setFirearm(new Gun(0, 500));
 
+        //No Health -> Die
         this.getHealth().onExhaustion(this::die);
 
         //Initialize animation
@@ -83,12 +83,12 @@ public class Ripley extends AbstractActor implements Alive, Movable, Armed, Keep
      */
     private void die()
     {
-        setAnimation(this.getDieAnimation());
-
         Scene scene = this.getScene();
         if (scene == null) {
             return;
         }
+
+        setAnimation(this.getDieAnimation());
 
         scene.cancelActions(this);
         scene.getMessageBus().publish(RIPLEY_DIED, this);
@@ -109,7 +109,7 @@ public class Ripley extends AbstractActor implements Alive, Movable, Armed, Keep
         new Loop<>(
             new Invoke<>(() -> {
                 overlay.drawText(" | HEALTH: " + this.getHealth().getValue(), 100, topLine);
-                overlay.drawText(" | AMMO: " + this.getAmmo(), 250, topLine);
+                overlay.drawText(" | AMMO: " + this.getFirearm().getAmmo(), 250, topLine);
             })
         ).scheduleOn(scene);
     }
@@ -117,12 +117,7 @@ public class Ripley extends AbstractActor implements Alive, Movable, Armed, Keep
     @Override
     public int getSpeed()
     {
-        return this.speed;
-    }
-
-    private void setSpeed(int speed)
-    {
-        this.speed = speed;
+        return 2;
     }
 
     @Override
@@ -161,37 +156,6 @@ public class Ripley extends AbstractActor implements Alive, Movable, Armed, Keep
         this.dieAnimation = dieAnimation;
     }
 
-    /**
-     * Gets ammo.
-     *
-     * @return the ammo
-     */
-    public int getAmmo()
-    {
-        return ammo;
-    }
-
-    /**
-     * Sets ammo.
-     *
-     * @param ammo the ammo
-     */
-    @Contract(pure = true)
-    public void setAmmo(int ammo)
-    {
-        this.ammo = ammo;
-    }
-
-    /**
-     * Increase ammo.
-     *
-     * @param ammo the ammo
-     */
-    public void increaseAmmo(int ammo)
-    {
-        this.ammo = (this.ammo + ammo) > 500 ? 500 : (this.ammo + ammo);
-    }
-
     @Contract(pure = true)
     private Backpack<Collectible> getBackpack()
     {
@@ -218,5 +182,17 @@ public class Ripley extends AbstractActor implements Alive, Movable, Armed, Keep
     private void setHealth(Health health)
     {
         this.health = health;
+    }
+
+    @Override
+    public Firearm getFirearm()
+    {
+        return this.firearm;
+    }
+
+    @Override
+    public void setFirearm(Firearm weapon)
+    {
+        this.firearm = weapon;
     }
 }

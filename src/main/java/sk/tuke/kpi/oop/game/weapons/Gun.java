@@ -9,4 +9,30 @@ package sk.tuke.kpi.oop.game.weapons;
  */
 public class Gun extends Firearm {
 
+    /**
+     * Instantiates a new Gun.
+     *
+     * @param ammo the ammo
+     */
+    public Gun(int ammo)
+    {
+        super(ammo);
+    }
+
+    /**
+     * Instantiates a new Gun.
+     *
+     * @param ammo    the ammo
+     * @param maxAmmo the max ammo
+     */
+    public Gun(int ammo, int maxAmmo)
+    {
+        super(ammo, maxAmmo);
+    }
+
+    @Override
+    protected Fireable createBullet()
+    {
+        return new Bullet();
+    }
 }

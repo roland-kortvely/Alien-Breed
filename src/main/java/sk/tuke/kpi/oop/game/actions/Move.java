@@ -4,8 +4,10 @@
 
 package sk.tuke.kpi.oop.game.actions;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.actions.Action;
 
@@ -81,11 +83,12 @@ public class Move<M extends Movable> implements Action<M> {
             getActor().getPosY()
         };
 
-        this.setActorNewPosition();
+        this.setActorNewPosition(this.getActor());
 
         //Check whether actor intersects with walls
         if (scene.getMap().intersectsWithWall(this.getActor())) {
             this.getActor().setPosition(position[0], position[1]);
+            this.getActor().collidedWithWall();
             this.stop();
             return;
         }
@@ -96,45 +99,45 @@ public class Move<M extends Movable> implements Action<M> {
         }
     }
 
-    private void setActorNewPosition()
+    private void setActorNewPosition(@NotNull Movable actor)
     {
         //Calc new position by direction
         switch (this.getDirection()) {
             case NORTH:
-                this.getActor().setPosition(this.getActor().getPosX(), this.getActor().getPosY() + this.getActor().getSpeed());
+                actor.setPosition(actor.getPosX(), actor.getPosY() + actor.getSpeed());
                 break;
             case EAST:
-                this.getActor().setPosition(this.getActor().getPosX() + this.getActor().getSpeed(), this.getActor().getPosY());
+                actor.setPosition(actor.getPosX() + actor.getSpeed(), actor.getPosY());
                 break;
             case SOUTH:
-                this.getActor().setPosition(this.getActor().getPosX(), this.getActor().getPosY() - this.getActor().getSpeed());
+                actor.setPosition(actor.getPosX(), actor.getPosY() - actor.getSpeed());
                 break;
             case WEST:
-                this.getActor().setPosition(this.getActor().getPosX() - this.getActor().getSpeed(), this.getActor().getPosY());
+                actor.setPosition(actor.getPosX() - actor.getSpeed(), actor.getPosY());
                 break;
 
             case NORTHEAST:
-                this.getActor().setPosition(
-                    this.getActor().getPosX() + this.getActor().getSpeed() / 2,
-                    this.getActor().getPosY() + this.getActor().getSpeed() / 2
+                actor.setPosition(
+                    actor.getPosX() + actor.getSpeed() / 2,
+                    actor.getPosY() + actor.getSpeed() / 2
                 );
                 break;
             case NORTHWEST:
-                this.getActor().setPosition(
-                    this.getActor().getPosX() - this.getActor().getSpeed() / 2,
-                    this.getActor().getPosY() + this.getActor().getSpeed() / 2
+                actor.setPosition(
+                    actor.getPosX() - actor.getSpeed() / 2,
+                    actor.getPosY() + actor.getSpeed() / 2
                 );
                 break;
             case SOUTHEAST:
-                this.getActor().setPosition(
-                    this.getActor().getPosX() + this.getActor().getSpeed() / 2,
-                    this.getActor().getPosY() - this.getActor().getSpeed() / 2
+                actor.setPosition(
+                    actor.getPosX() + actor.getSpeed() / 2,
+                    actor.getPosY() - actor.getSpeed() / 2
                 );
                 break;
             case SOUTHWEST:
-                this.getActor().setPosition(
-                    this.getActor().getPosX() - this.getActor().getSpeed() / 2,
-                    this.getActor().getPosY() - this.getActor().getSpeed() / 2
+                actor.setPosition(
+                    actor.getPosX() - actor.getSpeed() / 2,
+                    actor.getPosY() - actor.getSpeed() / 2
                 );
                 break;
 
