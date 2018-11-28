@@ -6,6 +6,8 @@ package sk.tuke.kpi.oop.game.characters;
 
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
+import sk.tuke.kpi.oop.game.behaviours.Behaviour;
+
 /**
  * The type Alien mother.
  */
@@ -14,9 +16,10 @@ public class AlienMother extends Alien {
     /**
      * Instantiates a new Alien mother.
      */
-    public AlienMother()
+    public AlienMother(Behaviour<? super Alien> behaviour)
     {
-        super();
+        super(behaviour);
+
         setAnimation(new Animation("sprites/mother.png", 112, 162, 0.2f, Animation.PlayMode.LOOP_PINGPONG));
         getAnimation().stop();
 

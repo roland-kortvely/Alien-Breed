@@ -9,6 +9,8 @@ import org.jetbrains.annotations.Nullable;
 
 import sk.tuke.kpi.gamelib.*;
 
+import sk.tuke.kpi.oop.game.behaviours.Observing;
+import sk.tuke.kpi.oop.game.behaviours.RandomlyMoving;
 import sk.tuke.kpi.oop.game.characters.Alien;
 import sk.tuke.kpi.oop.game.characters.AlienMother;
 import sk.tuke.kpi.oop.game.characters.Ripley;
@@ -48,9 +50,18 @@ public class EscapeRoom implements SceneListener {
                 case "ammo":
                     return new Ammo();
                 case "alien":
-                    return new Alien();
+
+                    if (type.equals("running")) {
+                        return new Alien(new Observing<>(
+                            World.ACTOR_REMOVED_TOPIC,
+                            Ammo.class::isInstance,
+                            new RandomlyMoving()
+                        ));
+                    }
+
+                    return new Alien(null);
                 case "alien mother":
-                    return new AlienMother();
+                    return new AlienMother(null);
                 case "front door":
                     return new Door("front door", Door.Orientation.VERTICAL);
                 case "back door":

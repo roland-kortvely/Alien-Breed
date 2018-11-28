@@ -4,18 +4,18 @@
 
 package sk.tuke.kpi.oop.game.characters;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import sk.tuke.kpi.gamelib.Actor;
+
 import sk.tuke.kpi.gamelib.Scene;
-import sk.tuke.kpi.gamelib.actions.ActionSequence;
-import sk.tuke.kpi.gamelib.actions.Invoke;
-import sk.tuke.kpi.gamelib.actions.Wait;
-import sk.tuke.kpi.gamelib.actions.When;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
-import sk.tuke.kpi.gamelib.framework.actions.Loop;
+import sk.tuke.kpi.gamelib.actions.Invoke;
+import sk.tuke.kpi.gamelib.actions.When;
 import sk.tuke.kpi.gamelib.graphics.Animation;
-import sk.tuke.kpi.oop.game.Direction;
+
 import sk.tuke.kpi.oop.game.Movable;
+import sk.tuke.kpi.oop.game.behaviours.Behaviour;
+import sk.tuke.kpi.oop.game.Direction;
 
 import java.util.Optional;
 
@@ -26,15 +26,20 @@ public class Alien extends AbstractActor implements Alive, Enemy, Movable {
 
     private Health health;
 
+    private Behaviour<? super Alien> behaviour;
+
     /**
      * Instantiates a new Alien.
+     *
+     * @param behaviour the behaviour
      */
-    public Alien()
+    public Alien(Behaviour<? super Alien> behaviour)
     {
         setAnimation(new Animation("sprites/alien.png", 32, 32, 0.1f, Animation.PlayMode.LOOP_PINGPONG));
         getAnimation().stop();
 
         this.setHealth(new Health(100));
+        this.setBehaviour(behaviour);
 
         this.getHealth().onExhaustion(this::die);
     }
@@ -62,6 +67,10 @@ public class Alien extends AbstractActor implements Alive, Enemy, Movable {
         super.addedToScene(scene);
 
         this.deadly(scene);
+
+        if (this.getBehaviour() != null) {
+            this.getBehaviour().setUp(this);
+        }
     }
 
     private void deadly(@NotNull Scene scene)
@@ -116,8 +125,24 @@ public class Alien extends AbstractActor implements Alive, Enemy, Movable {
         return this.health;
     }
 
+    /**
+     * Sets health.
+     *
+     * @param health the health
+     */
     public void setHealth(Health health)
     {
         this.health = health;
+    }
+
+    @Contract(pure = true)
+    private Behaviour<? super Alien> getBehaviour()
+    {
+        return behaviour;
+    }
+
+    private void setBehaviour(Behaviour<? super Alien> behaviour)
+    {
+        this.behaviour = behaviour;
     }
 }
