@@ -33,13 +33,28 @@ public class Door extends AbstractActor implements Usable<Actor>, Openable {
      */
     public static final Topic<Door> DOOR_CLOSED = Topic.create("door closed", Door.class);
 
+    public enum Orientation {
+        HORIZONTAL,
+        VERTICAL
+    }
+
+    private Orientation orientation;
+
     /**
      * Instantiates a new Door.
      */
-    public Door()
+    public Door(String name, Orientation orientation)
     {
-        setAnimation(new Animation("sprites/vdoor.png", 16, 32, 0.1f, Animation.PlayMode.ONCE_REVERSED));
+        super(name);
 
+        if (orientation == Orientation.VERTICAL) {
+            setAnimation(new Animation("sprites/vdoor.png", 16, 32, 0.1f, Animation.PlayMode.ONCE_REVERSED));
+
+        } else {
+            setAnimation(new Animation("sprites/hdoor.png", 32, 16, 0.1f, Animation.PlayMode.ONCE_REVERSED));
+        }
+
+        this.orientation = orientation;
         this.close();
     }
 
@@ -48,10 +63,17 @@ public class Door extends AbstractActor implements Usable<Actor>, Openable {
     {
         super.addedToScene(scene);
 
-        this.mapTiles = new MapTile[]{
-            scene.getMap().getTile(this.getPosX() / 16, this.getPosY() / 16),
-            scene.getMap().getTile(this.getPosX() / 16, this.getPosY() / 16 + 1),
-        };
+        if (orientation == Orientation.VERTICAL) {
+            this.mapTiles = new MapTile[]{
+                scene.getMap().getTile(this.getPosX() / 16, this.getPosY() / 16),
+                scene.getMap().getTile(this.getPosX() / 16, this.getPosY() / 16 + 1),
+            };
+        } else {
+            this.mapTiles = new MapTile[]{
+                scene.getMap().getTile(this.getPosX() / 16, this.getPosY() / 16),
+                scene.getMap().getTile(this.getPosX() / 16 + 1, this.getPosY() / 16),
+            };
+        }
 
         mapTiles[0].setType(MapTile.Type.WALL);
         mapTiles[1].setType(MapTile.Type.WALL);

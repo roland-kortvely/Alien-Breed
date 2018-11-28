@@ -52,7 +52,7 @@ public class MissionImpossible implements SceneListener {
                 case "energy":
                     return new Energy();
                 case "door":
-                    return new LockedDoor();
+                    return new LockedDoor("door", Door.Orientation.HORIZONTAL);
                 case "locker":
                     return new Locker();
                 case "ventilator":

@@ -17,9 +17,9 @@ public class LockedDoor extends Door {
     /**
      * Instantiates a new Locked door.
      */
-    public LockedDoor()
+    public LockedDoor(String name, Orientation orientation)
     {
-        super();
+        super(name, orientation);
 
         this.lock();
     }

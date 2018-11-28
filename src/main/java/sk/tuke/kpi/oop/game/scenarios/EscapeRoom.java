@@ -52,11 +52,11 @@ public class EscapeRoom implements SceneListener {
                 case "alien mother":
                     return new AlienMother();
                 case "front door":
-                    return new Door();
+                    return new Door("front door", Door.Orientation.VERTICAL);
                 case "back door":
-                    return new Door();
+                    return new Door("back door", Door.Orientation.HORIZONTAL);
                 case "exit door":
-                    return new Door();
+                    return new Door("exit door", Door.Orientation.HORIZONTAL);
                 default:
                     return null;
             }
