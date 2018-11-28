@@ -4,43 +4,51 @@
 
 package sk.tuke.kpi.oop.game.actions;
 
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 
+import sk.tuke.kpi.gamelib.Actor;
+import sk.tuke.kpi.gamelib.Disposable;
+import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
 
 import sk.tuke.kpi.oop.game.Keeper;
-import sk.tuke.kpi.oop.game.items.Collectible;
 
 /**
  * The type Shift.
- *
- * @param <A> the type parameter
  */
-public class Shift<A extends Keeper<Collectible>> extends AbstractAction<A> {
+public class Shift extends AbstractAction<Actor> {
 
-    private A actor;
+    private Keeper<?> actor;
 
     @Override
     public void execute(float deltaTime)
     {
-        if (this.getActor() == null) {
+        if (this.actor == null) {
             this.setDone(true);
             return;
         }
 
-        this.getActor().getContainer().shift();
+        this.actor.getContainer().shift();
+
+        this.setDone(true);
     }
 
-    @Nullable
-    @Override
-    public A getActor()
+    /**
+     * Schedule on disposable.
+     *
+     * @param actor the actor
+     *
+     * @return the disposable
+     */
+    public Disposable scheduleOn(@NotNull Keeper<?> actor)
     {
-        return this.actor;
-    }
+        Scene scene = actor.getScene();
+        if (scene == null) {
+            return null;
+        }
 
-    @Override
-    public void setActor(@Nullable A actor)
-    {
         this.actor = actor;
+
+        return super.scheduleOn(scene);
     }
 }

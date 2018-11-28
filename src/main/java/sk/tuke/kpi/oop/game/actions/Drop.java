@@ -4,53 +4,55 @@
 
 package sk.tuke.kpi.oop.game.actions;
 
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.ActorContainer;
+import sk.tuke.kpi.gamelib.Disposable;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
 
 import sk.tuke.kpi.oop.game.Keeper;
-import sk.tuke.kpi.oop.game.items.Collectible;
 
 /**
  * The type Drop.
  *
  * @param <A> the type parameter
  */
-public class Drop<A extends Keeper<Collectible>> extends AbstractAction<A> {
+public class Drop<A extends Actor> extends AbstractAction<A> {
 
-    private A actor;
+    private Keeper<A> actor;
 
     @Override
     public void execute(float deltaTime)
     {
-        if (this.getActor() == null) {
+        if (this.actor == null) {
             this.setDone(true);
             return;
         }
 
-        Scene scene = this.getActor().getScene();
+        Scene scene = this.actor.getScene();
         if (scene == null) {
             this.setDone(true);
             return;
         }
 
+        System.out.println("h");
+
         try {
-            ActorContainer<Collectible> container = this.getActor().getContainer();
+            ActorContainer<A> container = this.actor.getContainer();
             if (container == null) {
                 this.setDone(true);
                 return;
             }
 
-            Collectible actor = container.peek();
+            A actor = container.peek();
             if (actor == null) {
                 this.setDone(true);
                 return;
             }
 
-            scene.addActor(actor, this.getActor().getPosX(), this.getActor().getPosY());
+            scene.addActor(actor, this.actor.getPosX(), this.actor.getPosY());
             container.remove(actor);
         } catch (Exception ex) {
             scene.getGame().getOverlay().drawText(ex.getMessage(), 0, 0).showFor(2);
@@ -59,16 +61,22 @@ public class Drop<A extends Keeper<Collectible>> extends AbstractAction<A> {
         this.setDone(true);
     }
 
-    @Nullable
-    @Override
-    public A getActor()
+    /**
+     * Schedule on disposable.
+     *
+     * @param actor the actor
+     *
+     * @return the disposable
+     */
+    public Disposable scheduleOn(@NotNull Keeper<A> actor)
     {
-        return this.actor;
-    }
+        Scene scene = actor.getScene();
+        if (scene == null) {
+            return null;
+        }
 
-    @Override
-    public void setActor(@Nullable A actor)
-    {
         this.actor = actor;
+
+        return super.scheduleOn(scene);
     }
 }

@@ -4,36 +4,35 @@
 
 package sk.tuke.kpi.oop.game.actions;
 
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.ActorContainer;
+import sk.tuke.kpi.gamelib.Disposable;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
 
 import sk.tuke.kpi.oop.game.Keeper;
-import sk.tuke.kpi.oop.game.items.Collectible;
 
 import java.util.Optional;
 
 /**
  * The type Take.
  *
- * @param <K> the type parameter
- * @param <C> the type parameter
+ * @param <A> the type parameter
  */
-public class Take<K extends Keeper<Collectible>, C extends Collectible> extends AbstractAction<K> {
+public class Take<A extends Actor> extends AbstractAction<A> {
 
-    private K actor;
+    private Keeper<A> actor;
 
-    private Class<C> takeableActorsClass;
+    private Class<A> takeableActorsClass;
 
     /**
      * Instantiates a new Take.
      *
      * @param takeableActorsClass the takeable actors class
      */
-    public Take(Class<C> takeableActorsClass)
+    public Take(Class<A> takeableActorsClass)
     {
         this.takeableActorsClass = takeableActorsClass;
     }
@@ -41,36 +40,38 @@ public class Take<K extends Keeper<Collectible>, C extends Collectible> extends 
     @Override
     public void execute(float deltaTime)
     {
-        if (this.getActor() == null) {
+        if (this.actor == null) {
             this.setDone(true);
             return;
         }
 
-        Scene scene = this.getActor().getScene();
+        Scene scene = this.actor.getScene();
         if (scene == null) {
             this.setDone(true);
             return;
         }
 
-        Optional<Actor> query = scene.getActors().stream()
+        Optional<?> q = scene.getActors().stream()
             .filter(actor -> this.takeableActorsClass.isInstance(actor))
-            .filter(actor -> actor.intersects(this.getActor()))
+            .filter(actor -> actor.intersects(this.actor))
             .findFirst();
 
-        if (!query.isPresent()) {
+        if (!q.isPresent()) {
             this.setDone(true);
             return;
         }
 
+        A query = takeableActorsClass.cast(q.get());
+
         try {
-            ActorContainer<Collectible> container = this.actor.getContainer();
+            ActorContainer<A> container = this.actor.getContainer();
             if (container == null) {
                 this.setDone(true);
                 return;
             }
 
-            container.add((Collectible) query.get());
-            scene.removeActor(query.get());
+            container.add(query);
+            scene.removeActor(query);
         } catch (Exception ex) {
             scene.getGame().getOverlay().drawText(ex.getMessage(), 0, 0).showFor(2);
         }
@@ -78,16 +79,22 @@ public class Take<K extends Keeper<Collectible>, C extends Collectible> extends 
         this.setDone(true);
     }
 
-    @Nullable
-    @Override
-    public K getActor()
+    /**
+     * Schedule on disposable.
+     *
+     * @param actor the actor
+     *
+     * @return the disposable
+     */
+    public Disposable scheduleOn(@NotNull Keeper<A> actor)
     {
-        return actor;
-    }
+        Scene scene = actor.getScene();
+        if (scene == null) {
+            return null;
+        }
 
-    @Override
-    public void setActor(K actor)
-    {
         this.actor = actor;
+
+        return super.scheduleOn(scene);
     }
 }

@@ -77,12 +77,12 @@ public class CollectorController implements KeyboardListener {
 
     private void keyBACKSPACE()
     {
-        new Drop<>().scheduleOn(this.getActor());
+        new Drop<Collectible>().scheduleOn(this.getActor());
     }
 
     private void keyS()
     {
-        new Shift<>().scheduleOn(this.getActor());
+        new Shift().scheduleOn(this.getActor());
     }
 
     private void keyB()
