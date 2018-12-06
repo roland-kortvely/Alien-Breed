@@ -67,7 +67,7 @@ public class EscapeRoom implements SceneListener {
                 case "back door":
                     return new Door("back door", Door.Orientation.HORIZONTAL);
                 case "exit door":
-                    return new Door("exit door", Door.Orientation.HORIZONTAL);
+                    return new Door("exit door", Door.Orientation.VERTICAL);
                 default:
                     return null;
             }
@@ -77,7 +77,7 @@ public class EscapeRoom implements SceneListener {
     @Override
     public void sceneInitialized(@NotNull Scene scene)
     {
-        //Player should be at top of the scene
+        //Player should be at the top of the scene
         scene.setActorRenderOrder(List.of(Ripley.class));
 
         //Player's reference
@@ -104,7 +104,7 @@ public class EscapeRoom implements SceneListener {
         //Render player backpack
         scene.getGame().pushActorContainer(ripley.getContainer());
 
-        //Discard controllers after player died
+        //Discard controllers once player is dead
         scene.getMessageBus().subscribeOnce(Ripley.RIPLEY_DIED, action -> {
             disposableMovableController.dispose();
             disposableCollectorController.dispose();

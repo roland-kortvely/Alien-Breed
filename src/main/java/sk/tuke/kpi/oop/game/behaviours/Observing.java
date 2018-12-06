@@ -5,12 +5,19 @@
 package sk.tuke.kpi.oop.game.behaviours;
 
 import org.jetbrains.annotations.Contract;
+
 import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.messages.Topic;
 
 import java.util.function.Predicate;
 
+/**
+ * The type Observing.
+ *
+ * @param <T> the type parameter
+ * @param <A> the type parameter
+ */
 public class Observing<T, A extends Actor> implements Behaviour<A> {
 
     private A actor;
@@ -20,6 +27,13 @@ public class Observing<T, A extends Actor> implements Behaviour<A> {
     private Behaviour<A> delegate;
 
 
+    /**
+     * Instantiates a new Observing.
+     *
+     * @param topic     the topic
+     * @param predicate the predicate
+     * @param delegate  the delegate
+     */
     public Observing(Topic<T> topic, Predicate<T> predicate, Behaviour<A> delegate)
     {
         this.setTopic(topic);

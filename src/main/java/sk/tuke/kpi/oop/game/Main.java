@@ -8,7 +8,6 @@ import org.jetbrains.annotations.Contract;
 
 import sk.tuke.kpi.gamelib.*;
 import sk.tuke.kpi.oop.game.scenarios.EscapeRoom;
-import sk.tuke.kpi.oop.game.scenarios.MissionImpossible;
 
 /**
  * Starting point of App
@@ -29,7 +28,7 @@ public class Main {
 
         //TODO:: Move away
         //-------------------------------------------------------------------------------------------------------------v
-        Scene scene = new World("world", "maps/mission-impossible.tmx", new MissionImpossible.Factory());
+        Scene scene = new World("world", "maps/escape-room.tmx", new EscapeRoom.Factory());
 
         //Exit game after pressing ESC
         scene.getInput().onKeyPressed(key -> {
@@ -38,7 +37,7 @@ public class Main {
             }
         });
 
-        scene.addListener(new MissionImpossible());
+        scene.addListener(new EscapeRoom());
         //-------------------------------------------------------------------------------------------------------------^
 
         //Load instantiated scene
