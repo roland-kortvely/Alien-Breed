@@ -7,7 +7,8 @@ package sk.tuke.kpi.oop.game;
 import org.jetbrains.annotations.Contract;
 
 import sk.tuke.kpi.gamelib.*;
-import sk.tuke.kpi.oop.game.scenarios.EscapeRoom;
+
+import sk.tuke.kpi.oop.game.scenarios.Problemset;
 
 /**
  * Starting point of App
@@ -26,9 +27,8 @@ public class Main {
         //Setup Game, window size, name, ...
         setGame(new GameApplication(new WindowSetup("Project Ellen", 800, 600)));
 
-        //TODO:: Move away
         //-------------------------------------------------------------------------------------------------------------v
-        Scene scene = new World("world", "maps/escape-room.tmx", new EscapeRoom.Factory());
+        Scene scene = new World("world", "maps/map.tmx", new Problemset.Factory());
 
         //Exit game after pressing ESC
         scene.getInput().onKeyPressed(key -> {
@@ -37,7 +37,7 @@ public class Main {
             }
         });
 
-        scene.addListener(new EscapeRoom());
+        scene.addListener(new Problemset());
         //-------------------------------------------------------------------------------------------------------------^
 
         //Load instantiated scene
