@@ -16,12 +16,10 @@ import java.util.List;
 
 /**
  * The type Backpack.
- *
- * @param <T> the type parameter
  */
-public class Backpack<T extends Collectible> implements ActorContainer<T> {
+public class Backpack implements ActorContainer<Collectible> {
 
-    private List<T> content;
+    private List<Collectible> content;
 
     private String name;
 
@@ -54,7 +52,7 @@ public class Backpack<T extends Collectible> implements ActorContainer<T> {
 
     @NotNull
     @Override
-    public List<T> getContent()
+    public List<Collectible> getContent()
     {
         return new ArrayList<>(this.content);
     }
@@ -78,7 +76,7 @@ public class Backpack<T extends Collectible> implements ActorContainer<T> {
     }
 
     @Override
-    public void add(@NotNull T actor)
+    public void add(@NotNull Collectible actor)
     {
         if (this.getSize() >= this.getCapacity()) {
             throw new IllegalStateException(this.getName() + " is full");
@@ -95,15 +93,19 @@ public class Backpack<T extends Collectible> implements ActorContainer<T> {
 
     @NotNull
     @Override
-    public Iterator<T> iterator()
+    public Iterator<Collectible> iterator()
     {
         return this.content.iterator();
     }
 
     @Nullable
     @Override
-    public T peek()
+    public Collectible peek()
     {
+        if (this.content.size() == 0) {
+            return null;
+        }
+
         return this.content.get(this.content.size() - 1);
     }
 

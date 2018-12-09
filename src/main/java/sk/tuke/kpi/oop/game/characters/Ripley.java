@@ -33,7 +33,7 @@ public class Ripley extends AbstractActor implements Alive, Movable, Armed, Keep
     private Animation normalAnimation;
     private Animation dieAnimation;
 
-    private Backpack<Collectible> backpack;
+    private Backpack backpack;
 
     private Health health;
 
@@ -59,7 +59,7 @@ public class Ripley extends AbstractActor implements Alive, Movable, Armed, Keep
 
         //Default stats
         this.setHealth(new Health(100));
-        this.setBackpack(new Backpack<>("Ripley's backpack", 10));
+        this.setBackpack(new Backpack("Ripley's backpack", 10));
         this.setFirearm(new Gun(0, 500));
 
         //No Health -> Die
@@ -157,18 +157,18 @@ public class Ripley extends AbstractActor implements Alive, Movable, Armed, Keep
     }
 
     @Contract(pure = true)
-    private Backpack<Collectible> getBackpack()
+    private Backpack getBackpack()
     {
         return backpack;
     }
 
-    private void setBackpack(Backpack<Collectible> backpack)
+    private void setBackpack(Backpack backpack)
     {
         this.backpack = backpack;
     }
 
     @Override
-    public Backpack<Collectible> getContainer()
+    public Backpack getContainer()
     {
         return this.getBackpack();
     }
