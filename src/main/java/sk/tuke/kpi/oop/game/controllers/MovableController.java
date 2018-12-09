@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 import sk.tuke.kpi.gamelib.Input;
 import sk.tuke.kpi.gamelib.KeyboardListener;
+
 import sk.tuke.kpi.oop.game.Direction;
 import sk.tuke.kpi.oop.game.Movable;
 import sk.tuke.kpi.oop.game.actions.Move;
@@ -86,16 +87,10 @@ public class MovableController implements KeyboardListener {
     private boolean checks(@NotNull Input.Key key)
     {
         if (this.getActor() == null) {
-            this.update();
             return false;
         }
 
-        if (!this.getKeyDirectionMap().containsKey(key)) {
-            this.update();
-            return false;
-        }
-
-        return true;
+        return this.getKeyDirectionMap().containsKey(key);
     }
 
     private Direction direction()
@@ -122,8 +117,6 @@ public class MovableController implements KeyboardListener {
         if (this.direction() != Direction.NONE) {
             this.setAction(new Move<>(this.direction(), 999));
             action.scheduleOn(this.getActor());
-        } else {
-            this.getAction().stop();
         }
     }
 

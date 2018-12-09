@@ -5,7 +5,6 @@
 package sk.tuke.kpi.oop.game;
 
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
@@ -155,8 +154,13 @@ public enum Direction {
      *
      * @return the direction
      */
-    public Direction combine(@NotNull Direction other)
+    @Contract("null -> this")
+    public Direction combine(Direction other)
     {
+        if (other == null) {
+            return this;
+        }
+
         int nDx = (this.getDx() + other.getDx() > 1) ? 1 : this.getDx() + other.getDx();
         nDx = (nDx < -1) ? -1 : nDx;
 
