@@ -101,6 +101,7 @@ public class Alien extends AbstractActor implements Alive, Enemy, Movable {
                 if (!actor.isPresent()) {
                     return;
                 }
+
                 ((Alive) actor.get()).getHealth().drain(1);
                 this.deadly(scene);
             })
@@ -112,9 +113,11 @@ public class Alien extends AbstractActor implements Alive, Enemy, Movable {
     {
         return scene.getActors().stream()
             .filter(Alive.class::isInstance)
-            .filter(actor -> !actor.getClass().isInstance(Enemy.class))
-            .filter(actor -> actor.intersects(this))
+            .filter(this::intersects)
+
+            .filter(actor -> !(actor instanceof Enemy))
             .filter(actor -> !actor.equals(this))
+
             .findFirst();
     }
 

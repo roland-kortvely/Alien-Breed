@@ -19,7 +19,7 @@
  <objectgroup id="3" name="actors">
   <object id="1" name="ripley" x="582.667" y="341.333" width="26.3333" height="28.3333"/>
   <object id="2" name="alien" x="100" y="95.6667" width="40" height="36.6667"/>
-  <object id="3" name="alien" x="100" y="151" width="40" height="36.6667"/>
+  <object id="3" name="alien" x="108.333" y="104.667" width="40" height="36.6667"/>
   <object id="4" name="energy" x="516.667" y="188"/>
   <object id="5" name="ammo" x="557.333" y="187.667"/>
   <object id="6" name="hammer" x="515" y="224.333"/>
