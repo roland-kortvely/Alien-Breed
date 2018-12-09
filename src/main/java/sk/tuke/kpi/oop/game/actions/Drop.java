@@ -19,19 +19,17 @@ import sk.tuke.kpi.oop.game.Keeper;
  *
  * @param <A> the type parameter
  */
-public class Drop<A extends Actor> extends AbstractAction<A> {
-
-    private Keeper<A> actor;
+public class Drop<A extends Actor> extends AbstractAction<Keeper<A>> {
 
     @Override
     public void execute(float deltaTime)
     {
-        if (this.actor == null) {
+        if (this.getActor() == null) {
             this.setDone(true);
             return;
         }
 
-        Scene scene = this.actor.getScene();
+        Scene scene = this.getActor().getScene();
         if (scene == null) {
             this.setDone(true);
             return;
@@ -40,7 +38,7 @@ public class Drop<A extends Actor> extends AbstractAction<A> {
         System.out.println("h");
 
         try {
-            ActorContainer<A> container = this.actor.getContainer();
+            ActorContainer<A> container = this.getActor().getContainer();
             if (container == null) {
                 this.setDone(true);
                 return;
@@ -52,31 +50,12 @@ public class Drop<A extends Actor> extends AbstractAction<A> {
                 return;
             }
 
-            scene.addActor(actor, this.actor.getPosX(), this.actor.getPosY());
+            scene.addActor(actor, this.getActor().getPosX(), this.getActor().getPosY());
             container.remove(actor);
         } catch (Exception ex) {
             scene.getGame().getOverlay().drawText(ex.getMessage(), 0, 0).showFor(2);
         }
 
         this.setDone(true);
-    }
-
-    /**
-     * Schedule on disposable.
-     *
-     * @param actor the actor
-     *
-     * @return the disposable
-     */
-    public Disposable scheduleOn(@NotNull Keeper<A> actor)
-    {
-        Scene scene = actor.getScene();
-        if (scene == null) {
-            return null;
-        }
-
-        this.actor = actor;
-
-        return super.scheduleOn(scene);
     }
 }
