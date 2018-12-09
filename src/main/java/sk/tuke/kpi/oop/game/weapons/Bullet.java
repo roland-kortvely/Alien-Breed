@@ -15,8 +15,6 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.oop.game.Direction;
 import sk.tuke.kpi.oop.game.characters.Alive;
 
-import java.util.Optional;
-
 /**
  * The type Bullet.
  */
@@ -36,24 +34,28 @@ public class Bullet extends AbstractActor implements Fireable {
         super.addedToScene(scene);
 
         new When<>(
+
+            //Search for any Alive actor which intersects bullet
             action -> scene.getActors().stream()
                 .filter(Alive.class::isInstance)
-//                .filter(Enemy.class::isInstance)
-                .anyMatch(actor -> actor.intersects(this)),
-            new Invoke<>(() -> {
-                Optional<?> actor = scene.getActors().stream()
-                    .filter(Alive.class::isInstance)
-//                    .filter(Enemy.class::isInstance)
-                    .filter(a -> a.intersects(this))
-                    .findFirst();
+                .anyMatch(this::intersects),
 
-                if (!actor.isPresent()) {
-                    return;
-                }
+            //Search for any Alive actor which intersects bullet
+            new Invoke<>(() -> scene.getActors().stream()
+                .filter(Alive.class::isInstance)
+                .filter(this::intersects)
+                .findFirst()
+                .ifPresent(
+                    actor -> {
 
-                ((Alive) actor.get()).getHealth().drain(25);
-                scene.removeActor(this);
-            })
+                        //Drain Health
+                        ((Alive) actor).getHealth().drain(25);
+
+                        //Remove bullet
+                        scene.cancelActions(this);
+                        scene.removeActor(this);
+                    }
+                ))
         ).scheduleOn(this);
     }
 
