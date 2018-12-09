@@ -42,10 +42,12 @@ public class Use<A extends Actor> extends AbstractAction<A> {
     public void execute(float deltaTime)
     {
         if (this.getActor() == null) {
+            this.setDone(true);
             return;
         }
 
         if (this.getUsable() == null) {
+            this.setDone(true);
             return;
         }
 
