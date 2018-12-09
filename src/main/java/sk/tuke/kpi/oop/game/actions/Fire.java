@@ -44,7 +44,7 @@ public class Fire<A extends Armed> extends AbstractAction<A> {
             return;
         }
 
-        Direction direction = Direction.NONE.fromAngle(this.getArmed().getAnimation().getRotation());
+        Direction direction = Direction.fromAngle(this.getArmed().getAnimation().getRotation());
 
         scene.addActor(fireable, this.getArmed().getPosX() + (this.getArmed().getWidth() * direction.getDx()), this.getArmed().getPosY() + (this.getArmed().getHeight() * direction.getDy()));
 

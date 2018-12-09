@@ -31,7 +31,7 @@ public class RandomlyMoving implements Behaviour<Movable> {
 
         new Loop<>(
             new ActionSequence<>(
-                new Invoke<>(() -> new Move<>((Direction.NONE.random()), 0.5f).scheduleOn(this.getMovable())),
+                new Invoke<>(() -> new Move<>((Direction.random()), 0.5f).scheduleOn(this.getMovable())),
                 new Wait<>(0.5f)
             )
         ).scheduleOn(this.getMovable());

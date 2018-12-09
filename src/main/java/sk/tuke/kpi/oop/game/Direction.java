@@ -5,6 +5,7 @@
 package sk.tuke.kpi.oop.game;
 
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
@@ -124,30 +125,27 @@ public enum Direction {
      * @return the direction
      */
     @Contract(pure = true)
-    public Direction fromAngle(float angle)
+    public static Direction fromAngle(float angle)
     {
-        switch ((int) angle) {
-            case 0:
-                return NORTH;
-            case 270:
-                return EAST;
-            case 180:
-                return SOUTH;
-            case 90:
-                return WEST;
-
-            case 315:
-                return NORTHEAST;
-            case 45:
-                return NORTHWEST;
-            case 225:
-                return SOUTHEAST;
-            case 135:
-                return SOUTHWEST;
-
-            default:
-                return NONE;
+        if (angle == 0.0f) {
+            return NORTH;
+        } else if (angle == 270.0f) {
+            return EAST;
+        } else if (angle == 180.0f) {
+            return SOUTH;
+        } else if (angle == 90.0f) {
+            return WEST;
+        } else if (angle == 315.0f) {
+            return NORTHEAST;
+        } else if (angle == 45.0f) {
+            return NORTHWEST;
+        } else if (angle == 225.0f) {
+            return SOUTHEAST;
+        } else if (angle == 135.0f) {
+            return SOUTHWEST;
         }
+
+        return NONE;
     }
 
     /**
@@ -157,14 +155,20 @@ public enum Direction {
      *
      * @return the direction
      */
-    public Direction combine(Direction other)
+    public Direction combine(@NotNull Direction other)
     {
+        int nDx = (this.getDx() + other.getDx() > 1) ? 1 : this.getDx() + other.getDx();
+        nDx = (nDx < -1) ? -1 : nDx;
+
+        int nDy = (this.getDy() + other.getDy() > 1) ? 1 : this.getDy() + other.getDy();
+        nDy = (nDy < -1) ? -1 : nDy;
+
         for (Direction direction : Direction.values()) {
-            if (this.getDx() + other.getDx() != direction.getDx()) {
+            if (nDx != direction.getDx()) {
                 continue;
             }
 
-            if (this.getDy() + other.getDy() != direction.getDy()) {
+            if (nDy != direction.getDy()) {
                 continue;
             }
 
@@ -174,7 +178,12 @@ public enum Direction {
         return Direction.NONE;
     }
 
-    public Direction random()
+    /**
+     * Random direction.
+     *
+     * @return the direction
+     */
+    public static Direction random()
     {
         return (Direction.values())[(new Random()).nextInt(Direction.values().length)];
     }
