@@ -28,6 +28,7 @@ public class Move<M extends Movable> implements Action<M> {
     private Direction direction;
 
     private float duration;
+    private float total;
 
     /**
      * Instantiates a new Move.
@@ -51,27 +52,26 @@ public class Move<M extends Movable> implements Action<M> {
         this.setDone(false);
         this.setDirection(direction);
         this.setDuration(duration);
+        this.setTotal(0.0f);
     }
 
     @Override
     public void execute(float deltaTime)
     {
         if (this.getActor() == null) {
-            this.stop();
             return;
         }
 
         Scene scene = this.getActor().getScene();
         if (scene == null) {
-            this.stop();
             return;
         }
 
         //Decrease duration..
-        this.setDuration(this.getDuration() - deltaTime);
+        this.setTotal(this.getTotal() + deltaTime);
 
         //Timeout -> stop()
-        if (this.getDuration() <= 0.00001f) {
+        if (this.getTotal() >= this.getDuration()) {
             this.stop();
         }
 
@@ -144,6 +144,10 @@ public class Move<M extends Movable> implements Action<M> {
      */
     public void stop()
     {
+        if (this.isDone()) {
+            return;
+        }
+
         if (this.getActor() == null) {
             return;
         }
@@ -213,6 +217,26 @@ public class Move<M extends Movable> implements Action<M> {
     public float getDuration()
     {
         return duration;
+    }
+
+    /**
+     * Gets total.
+     *
+     * @return the total
+     */
+    public float getTotal()
+    {
+        return total;
+    }
+
+    /**
+     * Sets total.
+     *
+     * @param total the total
+     */
+    public void setTotal(float total)
+    {
+        this.total = total;
     }
 
     /**
