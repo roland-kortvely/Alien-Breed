@@ -17,9 +17,7 @@ import sk.tuke.kpi.oop.game.characters.Ripley;
 import sk.tuke.kpi.oop.game.controllers.CollectorController;
 import sk.tuke.kpi.oop.game.controllers.MovableController;
 import sk.tuke.kpi.oop.game.controllers.ShooterController;
-import sk.tuke.kpi.oop.game.items.Ammo;
-import sk.tuke.kpi.oop.game.items.Energy;
-import sk.tuke.kpi.oop.game.items.Hammer;
+import sk.tuke.kpi.oop.game.items.*;
 import sk.tuke.kpi.oop.game.openables.Door;
 
 import java.util.List;
@@ -71,6 +69,10 @@ public class Problemset implements SceneListener {
                     return new Door("exit door", Door.Orientation.VERTICAL);
                 case "hammer":
                     return new Hammer();
+                case "card":
+                    return new AccessCard();
+                case "fire extinguisher":
+                    return new FireExtinguisher();
                 default:
                     return null;
             }

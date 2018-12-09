@@ -116,6 +116,6 @@ public class Backpack implements ActorContainer<Collectible> {
             return;
         }
 
-        Collections.rotate(this.content, -1);
+        Collections.rotate(this.content, 1);
     }
 }
