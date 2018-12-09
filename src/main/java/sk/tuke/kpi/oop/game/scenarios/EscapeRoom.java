@@ -52,16 +52,16 @@ public class EscapeRoom implements SceneListener {
                 case "alien":
 
                     if (type.equals("running")) {
-                        return new Alien(new Observing<>(
+                        return new Alien(100, new Observing<>(
                             World.ACTOR_REMOVED_TOPIC,
                             Ammo.class::isInstance,
                             new RandomlyMoving()
                         ));
                     }
 
-                    return new Alien(null);
+                    return new Alien();
                 case "alien mother":
-                    return new AlienMother(null);
+                    return new AlienMother();
                 case "front door":
                     return new Door("front door", Door.Orientation.VERTICAL);
                 case "back door":

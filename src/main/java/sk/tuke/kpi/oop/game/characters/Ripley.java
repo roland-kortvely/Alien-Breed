@@ -168,7 +168,7 @@ public class Ripley extends AbstractActor implements Alive, Movable, Armed, Keep
     }
 
     @Override
-    public ActorContainer<Collectible> getContainer()
+    public Backpack<Collectible> getContainer()
     {
         return this.getBackpack();
     }

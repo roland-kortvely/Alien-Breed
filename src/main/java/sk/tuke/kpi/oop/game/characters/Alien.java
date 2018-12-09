@@ -39,6 +39,16 @@ public class Alien extends AbstractActor implements Alive, Enemy, Movable {
     /**
      * Instantiates a new Alien.
      *
+     * @param behaviour the behaviour
+     */
+    public Alien(Behaviour<? super Alien> behaviour)
+    {
+        this(100, behaviour);
+    }
+
+    /**
+     * Instantiates a new Alien.
+     *
      * @param healthValue the health value
      * @param behaviour   the behaviour
      */
