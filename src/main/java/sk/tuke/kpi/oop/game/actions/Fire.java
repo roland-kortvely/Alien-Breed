@@ -4,10 +4,6 @@
 
 package sk.tuke.kpi.oop.game.actions;
 
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-
-import sk.tuke.kpi.gamelib.Disposable;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
 
@@ -22,53 +18,32 @@ import sk.tuke.kpi.oop.game.weapons.Fireable;
  */
 public class Fire<A extends Armed> extends AbstractAction<A> {
 
-    private A armed;
-
     @Override
     public void execute(float deltaTime)
     {
-        if (this.getArmed() == null) {
+        if (this.getActor() == null) {
             this.setDone(true);
             return;
         }
 
-        Scene scene = this.getArmed().getScene();
+        Scene scene = this.getActor().getScene();
         if (scene == null) {
             this.setDone(true);
             return;
         }
 
-        Fireable fireable = this.getArmed().getFirearm().fire();
+        Fireable fireable = this.getActor().getFirearm().fire();
         if (fireable == null) {
             this.setDone(true);
             return;
         }
 
-        Direction direction = Direction.fromAngle(this.getArmed().getAnimation().getRotation());
+        Direction direction = Direction.fromAngle(this.getActor().getAnimation().getRotation());
 
-        scene.addActor(fireable, this.getArmed().getPosX() + (this.getArmed().getWidth() * direction.getDx()), this.getArmed().getPosY() + (this.getArmed().getHeight() * direction.getDy()));
+        scene.addActor(fireable, this.getActor().getPosX() + (this.getActor().getWidth() * direction.getDx()), this.getActor().getPosY() + (this.getActor().getHeight() * direction.getDy()));
 
         new Move<>(direction, 999).scheduleOn(fireable);
 
         this.setDone(true);
-    }
-
-    @NotNull
-    @Override
-    public Disposable scheduleOn(@NotNull A actor)
-    {
-        this.setArmed(actor);
-        return super.scheduleOn(actor);
-    }
-
-    @Contract(pure = true)
-    private A getArmed()
-    {
-        return this.armed;
-    }
-
-    private void setArmed(A armed)
-    {
-        this.armed = armed;
     }
 }
