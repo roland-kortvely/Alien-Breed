@@ -62,11 +62,7 @@ public class MovableController implements KeyboardListener {
     @Override
     public void keyPressed(@NotNull Input.Key key)
     {
-        if (this.getActor() == null) {
-            return;
-        }
-
-        if (!this.getKeyDirectionMap().containsKey(key)) {
+        if (!checks(key)) {
             return;
         }
 
@@ -78,17 +74,28 @@ public class MovableController implements KeyboardListener {
     @Override
     public void keyReleased(@NotNull Input.Key key)
     {
-        if (this.getActor() == null) {
-            return;
-        }
-
-        if (!this.getKeyDirectionMap().containsKey(key)) {
+        if (!checks(key)) {
             return;
         }
 
         this.getKeys().remove(this.getKeyDirectionMap().get(key));
 
         this.update();
+    }
+
+    private boolean checks(@NotNull Input.Key key)
+    {
+        if (this.getActor() == null) {
+            this.update();
+            return false;
+        }
+
+        if (!this.getKeyDirectionMap().containsKey(key)) {
+            this.update();
+            return false;
+        }
+
+        return true;
     }
 
     private Direction direction()
