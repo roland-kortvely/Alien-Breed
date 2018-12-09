@@ -30,11 +30,11 @@ public class Energy extends AbstractActor implements Usable<Alive> {
             return;
         }
 
-        if (actor.getHealth().getValue() >= actor.getHealth().getMaxValue()) {
-            return;
-        }
+//        if (actor.getHealth().getValue() >= actor.getHealth().getMaxValue()) {
+//            return;
+//        }
 
-        actor.getHealth().restore();
+        actor.getHealth().refill(50);
 
         Scene scene = this.getScene();
 
