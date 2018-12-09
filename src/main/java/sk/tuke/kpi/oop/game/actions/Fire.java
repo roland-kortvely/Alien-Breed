@@ -64,7 +64,7 @@ public class Fire<A extends Armed> extends AbstractAction<A> {
     @Contract(pure = true)
     private A getArmed()
     {
-        return armed;
+        return this.armed;
     }
 
     private void setArmed(A armed)
