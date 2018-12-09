@@ -7,7 +7,6 @@ package sk.tuke.kpi.oop.game.characters;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import sk.tuke.kpi.gamelib.ActorContainer;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Overlay;

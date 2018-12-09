@@ -14,7 +14,6 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.oop.game.Direction;
 import sk.tuke.kpi.oop.game.characters.Alive;
-import sk.tuke.kpi.oop.game.characters.Enemy;
 
 import java.util.Optional;
 

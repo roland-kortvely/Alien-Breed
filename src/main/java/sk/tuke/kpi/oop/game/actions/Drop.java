@@ -4,11 +4,8 @@
 
 package sk.tuke.kpi.oop.game.actions;
 
-import org.jetbrains.annotations.NotNull;
-
 import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.ActorContainer;
-import sk.tuke.kpi.gamelib.Disposable;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
 

@@ -9,7 +9,6 @@ import org.jetbrains.annotations.Nullable;
 
 import sk.tuke.kpi.gamelib.*;
 
-import sk.tuke.kpi.oop.game.behaviours.Observing;
 import sk.tuke.kpi.oop.game.behaviours.RandomlyMoving;
 import sk.tuke.kpi.oop.game.characters.Alien;
 import sk.tuke.kpi.oop.game.characters.AlienMother;
