@@ -39,12 +39,12 @@ public class Bullet extends AbstractActor implements Fireable {
         new When<>(
             action -> scene.getActors().stream()
                 .filter(Alive.class::isInstance)
-                .filter(Enemy.class::isInstance)
+//                .filter(Enemy.class::isInstance)
                 .anyMatch(actor -> actor.intersects(this)),
             new Invoke<>(() -> {
                 Optional<?> actor = scene.getActors().stream()
                     .filter(Alive.class::isInstance)
-                    .filter(Enemy.class::isInstance)
+//                    .filter(Enemy.class::isInstance)
                     .filter(a -> a.intersects(this))
                     .findFirst();
 
