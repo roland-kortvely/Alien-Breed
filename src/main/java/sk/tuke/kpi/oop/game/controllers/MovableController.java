@@ -38,22 +38,11 @@ public class MovableController implements KeyboardListener {
      */
     public MovableController(Movable actor)
     {
-        if (actor == null) {
-            return;
-        }
-
         this.setKeyDirectionMap(Map.ofEntries(
             Map.entry(Input.Key.UP, Direction.NORTH),
             Map.entry(Input.Key.DOWN, Direction.SOUTH),
             Map.entry(Input.Key.RIGHT, Direction.EAST),
             Map.entry(Input.Key.LEFT, Direction.WEST)
-
-            /*
-            Map.entry(Input.Key.W, Direction.NORTH),
-            Map.entry(Input.Key.S, Direction.SOUTH),
-            Map.entry(Input.Key.D, Direction.EAST),
-            Map.entry(Input.Key.A, Direction.WEST)
-            */
         ));
 
         this.setKeys(new HashSet<>());
@@ -63,34 +52,59 @@ public class MovableController implements KeyboardListener {
     @Override
     public void keyPressed(@NotNull Input.Key key)
     {
-        if (!checks(key)) {
+        //Validate pressed key
+        if (!this.isValidKey(key)) {
+            return;
+        }
+
+        if (this.getKeys().contains(this.getKeyDirectionMap().get(key))) {
             return;
         }
 
         this.getKeys().add(this.getKeyDirectionMap().get(key));
 
+        //Update movement
         this.update();
     }
 
     @Override
     public void keyReleased(@NotNull Input.Key key)
     {
-        if (!checks(key)) {
+        //Validate released key
+        if (!this.isValidKey(key)) {
+            return;
+        }
+
+        if (!this.getKeys().contains(this.getKeyDirectionMap().get(key))) {
             return;
         }
 
         this.getKeys().remove(this.getKeyDirectionMap().get(key));
 
+        //Update movement
         this.update();
     }
 
-    private boolean checks(@NotNull Input.Key key)
+    private void update()
     {
         if (this.getActor() == null) {
-            return false;
+            return;
         }
 
-        return this.getKeyDirectionMap().containsKey(key);
+        //Stop current move
+        if (this.getAction() != null) {
+            this.getAction().stop();
+        }
+
+        //Retrieve new direction
+        Direction direction = this.direction();
+        if (direction == Direction.NONE) {
+            return;
+        }
+
+        //Schedule move
+        this.setAction(new Move<>(direction, 999));
+        action.scheduleOn(this.getActor());
     }
 
     private Direction direction()
@@ -104,29 +118,32 @@ public class MovableController implements KeyboardListener {
         return direction;
     }
 
-    private void update()
+    private boolean isValidKey(@NotNull Input.Key key)
     {
         if (this.getActor() == null) {
-            return;
+            return false;
         }
 
-        if (this.getAction() != null) {
-            this.getAction().stop();
-        }
-
-        if (this.direction() != Direction.NONE) {
-            this.setAction(new Move<>(this.direction(), 999));
-            action.scheduleOn(this.getActor());
-        }
+        return this.getKeyDirectionMap().containsKey(key);
     }
 
+    /**
+     * Gets actor.
+     *
+     * @return the actor
+     */
     @Contract(pure = true)
-    private Movable getActor()
+    public Movable getActor()
     {
         return actor;
     }
 
-    private void setActor(Movable actor)
+    /**
+     * Sets actor.
+     *
+     * @param actor the actor
+     */
+    public void setActor(Movable actor)
     {
         this.actor = actor;
     }
