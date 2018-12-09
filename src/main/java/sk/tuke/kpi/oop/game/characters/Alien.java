@@ -30,15 +30,24 @@ public class Alien extends AbstractActor implements Alive, Enemy, Movable {
 
     /**
      * Instantiates a new Alien.
-     *
-     * @param behaviour the behaviour
      */
-    public Alien(Behaviour<? super Alien> behaviour)
+    public Alien()
+    {
+        this(100, null);
+    }
+
+    /**
+     * Instantiates a new Alien.
+     *
+     * @param healthValue the health value
+     * @param behaviour   the behaviour
+     */
+    public Alien(int healthValue, Behaviour<? super Alien> behaviour)
     {
         setAnimation(new Animation("sprites/alien.png", 32, 32, 0.1f, Animation.PlayMode.LOOP_PINGPONG));
         getAnimation().stop();
 
-        this.setHealth(new Health(100));
+        this.setHealth(new Health(healthValue));
         this.setBehaviour(behaviour);
 
         this.getHealth().onExhaustion(this::die);
