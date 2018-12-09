@@ -70,6 +70,11 @@ public class Move<M extends Movable> implements Action<M> {
         //Decrease duration..
         this.setDuration(this.getDuration() - deltaTime);
 
+        //Timeout -> stop()
+        if (this.getDuration() <= 0.00001f) {
+            this.stop();
+        }
+
         //If it's first actors call, start animation
         if (this.isFirstCall()) {
             this.getActor().startedMoving(this.getDirection());
@@ -88,12 +93,6 @@ public class Move<M extends Movable> implements Action<M> {
         if (scene.getMap().intersectsWithWall(this.getActor())) {
             this.getActor().setPosition(position[0], position[1]);
             this.getActor().collidedWithWall();
-            this.stop();
-            return;
-        }
-
-        //Timeout -> stop()
-        if (this.getDuration() <= 0.00001f) {
             this.stop();
         }
     }
