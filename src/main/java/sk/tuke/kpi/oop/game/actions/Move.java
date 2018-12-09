@@ -116,28 +116,16 @@ public class Move<M extends Movable> implements Action<M> {
                 break;
 
             case NORTHEAST:
-                actor.setPosition(
-                    actor.getPosX() + actor.getSpeed() / 2,
-                    actor.getPosY() + actor.getSpeed() / 2
-                );
+                actor.setPosition(actor.getPosX() + actor.getSpeed(), actor.getPosY() + actor.getSpeed());
                 break;
             case NORTHWEST:
-                actor.setPosition(
-                    actor.getPosX() - actor.getSpeed() / 2,
-                    actor.getPosY() + actor.getSpeed() / 2
-                );
+                actor.setPosition(actor.getPosX() - actor.getSpeed(), actor.getPosY() + actor.getSpeed());
                 break;
             case SOUTHEAST:
-                actor.setPosition(
-                    actor.getPosX() + actor.getSpeed() / 2,
-                    actor.getPosY() - actor.getSpeed() / 2
-                );
+                actor.setPosition(actor.getPosX() + actor.getSpeed(), actor.getPosY() - actor.getSpeed());
                 break;
             case SOUTHWEST:
-                actor.setPosition(
-                    actor.getPosX() - actor.getSpeed() / 2,
-                    actor.getPosY() - actor.getSpeed() / 2
-                );
+                actor.setPosition(actor.getPosX() - actor.getSpeed(), actor.getPosY() - actor.getSpeed());
                 break;
 
             default:
