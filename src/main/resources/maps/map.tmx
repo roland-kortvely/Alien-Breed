@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="40" height="25" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="2">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="40" height="25" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="4">
  <tileset firstgid="1" name="tileset01" tilewidth="16" tileheight="16" tilecount="500" columns="20">
   <image source="tilesets/tileset01.png" width="320" height="400"/>
  </tileset>
@@ -18,5 +18,7 @@
  </layer>
  <objectgroup id="3" name="actors">
   <object id="1" name="ripley" x="582.667" y="341.333" width="26.3333" height="28.3333"/>
+  <object id="2" name="alien" x="100" y="95.6667" width="40" height="36.6667"/>
+  <object id="3" name="alien" x="100" y="151" width="40" height="36.6667"/>
  </objectgroup>
 </map>

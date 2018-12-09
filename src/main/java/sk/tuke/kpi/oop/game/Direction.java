@@ -6,6 +6,8 @@ package sk.tuke.kpi.oop.game;
 
 import org.jetbrains.annotations.Contract;
 
+import java.util.Random;
+
 /**
  * The enum Direction.
  */
@@ -170,5 +172,10 @@ public enum Direction {
         }
 
         return Direction.NONE;
+    }
+
+    public Direction random()
+    {
+        return (Direction.values())[(new Random()).nextInt(Direction.values().length)];
     }
 }

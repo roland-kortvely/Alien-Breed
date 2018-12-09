@@ -50,16 +50,16 @@ public class Problemset implements SceneListener {
                 case "ammo":
                     return new Ammo();
                 case "alien":
+//
+//                    if (type.equals("running")) {
+//                        return new Alien(new Observing<>(
+//                            World.ACTOR_REMOVED_TOPIC,
+//                            Ammo.class::isInstance,
+//                            new RandomlyMoving()
+//                        ));
+//                    }
 
-                    if (type.equals("running")) {
-                        return new Alien(new Observing<>(
-                            World.ACTOR_REMOVED_TOPIC,
-                            Ammo.class::isInstance,
-                            new RandomlyMoving()
-                        ));
-                    }
-
-                    return new Alien(null);
+                    return new Alien(new RandomlyMoving());
                 case "alien mother":
                     return new AlienMother(null);
                 case "front door":
