@@ -9,6 +9,7 @@ import org.jetbrains.annotations.Nullable;
 
 import sk.tuke.kpi.gamelib.*;
 
+import sk.tuke.kpi.oop.game.Barrel;
 import sk.tuke.kpi.oop.game.behaviours.RandomlyMoving;
 import sk.tuke.kpi.oop.game.characters.Alien;
 import sk.tuke.kpi.oop.game.characters.AlienMother;
@@ -63,6 +64,8 @@ public class Problemset implements SceneListener {
                     return new AccessCard();
                 case "fire extinguisher":
                     return new FireExtinguisher();
+                case "barrel":
+                    return new Barrel();
                 default:
                     return null;
             }

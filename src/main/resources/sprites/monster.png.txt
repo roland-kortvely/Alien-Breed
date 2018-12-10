@@ -1,0 +1,1 @@
+monster_01.png.png 4 1, monster_02.png.png 75 0, monster_03.png.png 144 4.

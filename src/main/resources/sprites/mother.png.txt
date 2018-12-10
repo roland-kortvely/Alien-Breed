@@ -1,0 +1,1 @@
+mother_01.png.png 1 1, mother_02.png.png 117 0, mother_03.png.png 233 1.

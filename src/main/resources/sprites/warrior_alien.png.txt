@@ -1,0 +1,1 @@
+warrior_alien_01.png.png 1 0, warrior_alien_02.png.png 0 64, warrior_alien_03.png.png 0 34.

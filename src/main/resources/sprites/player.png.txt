@@ -1,0 +1,1 @@
+player_01.png.png 4 2, player_02.png.png 36 2, player_03.png.png 68 1, player_04.png.png 4 2, player_05.png.png 36 2.

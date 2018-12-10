@@ -4,10 +4,9 @@
 
 package sk.tuke.kpi.oop.game;
 
-import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
-public class Barrel extends AbstractActor {
+public class Barrel extends Destructible {
 
     public Barrel()
     {
