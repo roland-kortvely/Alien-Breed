@@ -4,9 +4,6 @@
 
 package sk.tuke.kpi.oop.game.actions;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.Disposable;
 import sk.tuke.kpi.gamelib.Scene;
@@ -21,11 +18,7 @@ import sk.tuke.kpi.oop.game.items.Usable;
  */
 public class Use<A extends Actor> extends AbstractAction<A> {
 
-    private A actor;
-
     private Usable<A> usable;
-
-    private boolean done;
 
     /**
      * Instantiates a new Use.
@@ -55,14 +48,6 @@ public class Use<A extends Actor> extends AbstractAction<A> {
         this.setDone(true);
     }
 
-    @NotNull
-    @Override
-    public Disposable scheduleOn(@NotNull A actor)
-    {
-        this.setActor(actor);
-        return super.scheduleOn(actor);
-    }
-
     /**
      * Schedule on intersecting with disposable.
      *
@@ -87,19 +72,6 @@ public class Use<A extends Actor> extends AbstractAction<A> {
             .orElse(null);
     }
 
-    @Nullable
-    @Override
-    public A getActor()
-    {
-        return this.actor;
-    }
-
-    @Override
-    public void setActor(@Nullable A actor)
-    {
-        this.actor = actor;
-    }
-
     /**
      * Gets usable.
      *
@@ -118,16 +90,5 @@ public class Use<A extends Actor> extends AbstractAction<A> {
     public void setUsable(Usable<A> usable)
     {
         this.usable = usable;
-    }
-
-    @Override
-    public boolean isDone()
-    {
-        return this.done;
-    }
-
-    public void setDone(boolean done)
-    {
-        this.done = done;
     }
 }

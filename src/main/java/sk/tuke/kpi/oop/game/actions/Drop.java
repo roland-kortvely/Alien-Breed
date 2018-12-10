@@ -32,8 +32,6 @@ public class Drop<A extends Actor> extends AbstractAction<Keeper<A>> {
             return;
         }
 
-        System.out.println("h");
-
         try {
             ActorContainer<A> container = this.getActor().getContainer();
             if (container == null) {
