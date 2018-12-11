@@ -1,1 +1,0 @@
-computer_01.png.png 1 1, computer_02.png.png 81 1, computer_03.png.png 161 1.

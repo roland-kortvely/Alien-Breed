@@ -13,6 +13,7 @@ import sk.tuke.kpi.oop.game.Barrel;
 import sk.tuke.kpi.oop.game.behaviours.RandomlyMoving;
 import sk.tuke.kpi.oop.game.characters.Alien;
 import sk.tuke.kpi.oop.game.characters.AlienMother;
+import sk.tuke.kpi.oop.game.characters.AlienSpitter;
 import sk.tuke.kpi.oop.game.characters.Ripley;
 import sk.tuke.kpi.oop.game.controllers.CollectorController;
 import sk.tuke.kpi.oop.game.controllers.MovableController;
@@ -52,6 +53,8 @@ public class Problemset implements SceneListener {
                     return new Alien(100, new RandomlyMoving());
                 case "alien mother":
                     return new AlienMother();
+                case "spitter":
+                    return new AlienSpitter(100, new RandomlyMoving());
                 case "front door":
                     return new Door("front door", Door.Orientation.VERTICAL);
                 case "back door":

@@ -1,1 +1,0 @@
-heli_01.png.png 6 11, heli_02.png.png 4 68, heli_03.png.png 9 132.

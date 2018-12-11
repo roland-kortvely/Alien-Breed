@@ -1,1 +1,0 @@
-spitter_alien_01.png.png 2 1, spitter_alien_02.png.png 1 34, spitter_alien_03.png.png 1 66, spitter_alien_04.png.png 2 1.

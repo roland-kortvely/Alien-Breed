@@ -1,1 +1,0 @@
-alien_01.png.png 1 0, alien_02.png.png 0 64, alien_03.png.png 0 34.
