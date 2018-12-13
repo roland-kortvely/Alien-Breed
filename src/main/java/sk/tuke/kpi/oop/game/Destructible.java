@@ -41,6 +41,7 @@ public abstract class Destructible extends AbstractActor implements Fragile {
         new When<>(
             (action) -> this.getAnimation().getCurrentFrameIndex() >= (this.getAnimation().getFrameCount() - 1),
             new Invoke<>(() -> {
+                this.onDestruction();
                 Scene scene = this.getScene();
                 if (scene != null) {
                     scene.removeActor(this);
@@ -48,6 +49,8 @@ public abstract class Destructible extends AbstractActor implements Fragile {
             })
         ).scheduleOn(this);
     }
+
+    protected abstract void onDestruction();
 
     @Override
     public Health getHealth()

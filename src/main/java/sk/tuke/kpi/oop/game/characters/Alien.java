@@ -16,6 +16,7 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.oop.game.Movable;
 import sk.tuke.kpi.oop.game.behaviours.Behaviour;
 import sk.tuke.kpi.oop.game.Direction;
+import sk.tuke.kpi.oop.game.items.Fragile;
 
 import java.util.Optional;
 
@@ -116,6 +117,7 @@ public class Alien extends AbstractActor implements Alive, Enemy, Movable {
             .filter(this::intersects)
 
             .filter(actor -> !(actor instanceof Enemy))
+            .filter(actor -> !(actor instanceof Fragile))
             .filter(actor -> !actor.equals(this))
 
             .findFirst();

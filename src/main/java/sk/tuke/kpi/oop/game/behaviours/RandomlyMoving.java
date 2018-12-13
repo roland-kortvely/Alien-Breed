@@ -22,7 +22,6 @@ public class RandomlyMoving implements Behaviour<Movable> {
 
     private Movable movable;
 
-
     private void randomness()
     {
         if (this.getMovable() == null) {

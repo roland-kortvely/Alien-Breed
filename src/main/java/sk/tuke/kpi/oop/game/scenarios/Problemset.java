@@ -10,6 +10,7 @@ import org.jetbrains.annotations.Nullable;
 import sk.tuke.kpi.gamelib.*;
 
 import sk.tuke.kpi.oop.game.Barrel;
+import sk.tuke.kpi.oop.game.Reactor;
 import sk.tuke.kpi.oop.game.behaviours.RandomlyMoving;
 import sk.tuke.kpi.oop.game.characters.Alien;
 import sk.tuke.kpi.oop.game.characters.AlienMother;
@@ -20,6 +21,7 @@ import sk.tuke.kpi.oop.game.controllers.MovableController;
 import sk.tuke.kpi.oop.game.controllers.ShooterController;
 import sk.tuke.kpi.oop.game.items.*;
 import sk.tuke.kpi.oop.game.openables.Door;
+import sk.tuke.kpi.oop.game.openables.LockedDoor;
 
 import java.util.List;
 
@@ -55,8 +57,8 @@ public class Problemset implements SceneListener {
                     return new AlienMother();
                 case "spitter":
                     return new AlienSpitter(100, new RandomlyMoving());
-                case "front door":
-                    return new Door("front door", Door.Orientation.VERTICAL);
+                case "locked door":
+                    return new LockedDoor("front door", Door.Orientation.VERTICAL);
                 case "back door":
                     return new Door("back door", Door.Orientation.HORIZONTAL);
                 case "exit door":
@@ -69,6 +71,10 @@ public class Problemset implements SceneListener {
                     return new FireExtinguisher();
                 case "barrel":
                     return new Barrel();
+                case "access card":
+                    return new AccessCard();
+                case "reactor":
+                    return new Reactor();
                 default:
                     return null;
             }
