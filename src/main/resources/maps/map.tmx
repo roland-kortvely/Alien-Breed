@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="40" height="25" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="27">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="40" height="25" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="38">
  <tileset firstgid="1" name="tileset01" tilewidth="16" tileheight="16" tilecount="500" columns="20">
   <image source="tilesets/tileset01.png" width="320" height="400"/>
  </tileset>
@@ -93,17 +93,23 @@
   <object id="10" name="barrel" gid="224" x="304" y="240" width="16" height="16"/>
   <object id="11" name="barrel" gid="224" x="352" y="240" width="16" height="16"/>
   <object id="12" name="barrel" gid="224" x="508" y="250.083" width="16" height="16"/>
-  <object id="13" name="wrench" gid="407" x="389.25" y="94.75" width="16" height="16"/>
-  <object id="14" name="hammer" gid="408" x="430" y="96" width="16" height="16"/>
+  <object id="13" name="wrench" gid="407" x="589.5" y="188.25" width="16" height="16"/>
   <object id="16" name="ripley" gid="1016" x="580.25" y="365" width="24" height="26"/>
   <object id="17" name="alien" gid="1001" x="83.25" y="201.75" width="31" height="32"/>
   <object id="18" name="alien" gid="1001" x="141" y="201.25" width="31" height="32"/>
-  <object id="19" name="energy" gid="1008" x="545.75" y="192.5" width="16" height="16"/>
-  <object id="20" name="ammo" gid="1002" x="579.5" y="196.5" width="16" height="16"/>
-  <object id="21" name="access card" gid="1012" x="555.5" y="248" width="16" height="16"/>
   <object id="22" name="spitter" gid="1019" x="548.625" y="88.875" width="29" height="31"/>
   <object id="23" name="reactor" gid="1017" x="16.75" y="320.5" width="80" height="80"/>
-  <object id="25" name="access card" gid="1012" x="528.636" y="310.394" width="16" height="16"/>
+  <object id="25" name="access card" gid="1012" x="598.386" y="46.144" width="16" height="16"/>
   <object id="26" name="locked door" gid="65" x="480" y="224" width="16" height="16"/>
+  <object id="27" name="corpse" gid="1004" x="464.75" y="369.75" width="64" height="48"/>
+  <object id="29" name="energy" gid="322" x="326.25" y="262" width="16" height="16"/>
+  <object id="30" name="barrel" gid="224" x="352" y="264" width="16" height="16"/>
+  <object id="31" name="barrel" gid="224" x="352.25" y="288" width="16" height="16"/>
+  <object id="32" name="barrel" gid="224" x="352.25" y="288" width="16" height="16"/>
+  <object id="33" name="barrel" gid="224" x="328" y="288" width="16" height="16"/>
+  <object id="34" name="barrel" gid="224" x="304" y="288" width="16" height="16"/>
+  <object id="35" name="barrel" gid="224" x="304" y="264" width="16" height="16"/>
+  <object id="36" name="ammo" gid="1002" x="549.25" y="296.75" width="16" height="16"/>
+  <object id="37" name="extinguisher" gid="1009" x="562.5" y="226.5" width="16" height="16"/>
  </objectgroup>
 </map>

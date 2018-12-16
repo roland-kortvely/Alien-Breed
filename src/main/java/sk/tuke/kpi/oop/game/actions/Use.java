@@ -9,6 +9,7 @@ import sk.tuke.kpi.gamelib.Disposable;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
 
+import sk.tuke.kpi.oop.game.items.Fragile;
 import sk.tuke.kpi.oop.game.items.Usable;
 
 /**
@@ -64,6 +65,7 @@ public class Use<A extends Actor> extends AbstractAction<A> {
 
         Class<A> usingActorClass = usable.getUsingActorClass();
         return scene.getActors().stream()
+            .filter(actor -> !(actor instanceof Fragile))
             .filter(mediatingActor::intersects)
             .filter(usingActorClass::isInstance)
             .map(usingActorClass::cast)

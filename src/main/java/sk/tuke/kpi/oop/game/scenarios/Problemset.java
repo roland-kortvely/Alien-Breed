@@ -9,8 +9,11 @@ import org.jetbrains.annotations.Nullable;
 
 import sk.tuke.kpi.gamelib.*;
 
+import sk.tuke.kpi.gamelib.graphics.Overlay;
 import sk.tuke.kpi.oop.game.Barrel;
+import sk.tuke.kpi.oop.game.Corpse;
 import sk.tuke.kpi.oop.game.Reactor;
+import sk.tuke.kpi.oop.game.SmartCooler;
 import sk.tuke.kpi.oop.game.behaviours.RandomlyMoving;
 import sk.tuke.kpi.oop.game.characters.Alien;
 import sk.tuke.kpi.oop.game.characters.AlienMother;
@@ -74,7 +77,13 @@ public class Problemset implements SceneListener {
                 case "access card":
                     return new AccessCard();
                 case "reactor":
-                    return new Reactor();
+                    Reactor reactor = new Reactor();
+                    reactor.setDamage(100);
+                    return reactor;
+                case "corpse":
+                    return new Corpse();
+                case "extinguisher":
+                    return new FireExtinguisher();
                 default:
                     return null;
             }
@@ -116,6 +125,13 @@ public class Problemset implements SceneListener {
             disposableMovableController.dispose();
             disposableCollectorController.dispose();
             disposableShooterController.dispose();
+        });
+
+        int topLine = scene.getGame().getWindowSetup().getHeight() - GameApplication.STATUS_LINE_OFFSET;
+        Overlay overlay = scene.getGame().getOverlay();
+
+        scene.getMessageBus().subscribeOnce(Reactor.REACTOR_EXTINGUISHED, action -> {
+            overlay.drawText("YOU WON", 100, topLine);
         });
     }
 }

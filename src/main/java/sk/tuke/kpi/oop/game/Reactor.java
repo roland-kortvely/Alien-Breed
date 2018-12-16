@@ -11,6 +11,7 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
+import sk.tuke.kpi.gamelib.messages.Topic;
 import sk.tuke.kpi.oop.game.actions.PerpetualReactorHeating;
 
 import java.util.HashSet;
@@ -34,6 +35,8 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
     private Animation extinguishedAnimation;
 
     private Set<EnergyConsumer> devices;
+
+    public static final Topic<Reactor> REACTOR_EXTINGUISHED = Topic.create("reactor extinguished", Reactor.class);
 
     /**
      * Instantiates a new Reactor.
@@ -189,6 +192,13 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         this.setExtinguished(true);
         this.setTemperature(4000);
 
+        Scene scene = this.getScene();
+        if (scene == null) {
+            return false;
+        }
+
+        scene.getMessageBus().publish(REACTOR_EXTINGUISHED, this);
+
         return true;
     }
 
@@ -228,7 +238,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         return damage;
     }
 
-    private void setDamage(int damage)
+    public void setDamage(int damage)
     {
         if (damage <= 0) {
             this.damage = 0;
