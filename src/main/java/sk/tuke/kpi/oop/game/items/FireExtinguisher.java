@@ -7,6 +7,7 @@ package sk.tuke.kpi.oop.game.items;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.oop.game.Reactor;
+import sk.tuke.kpi.oop.game.commands.Extinguish;
 
 /**
  * The type Fire extinguisher.
@@ -25,11 +26,7 @@ public class FireExtinguisher extends BreakableTool<Reactor> implements Collecti
     @Override
     public void useWith(Reactor actor)
     {
-        if (actor == null) {
-            return;
-        }
-
-        if (!actor.extinguish()) {
+        if (!(new Extinguish()).execute(actor)) {
             return;
         }
 

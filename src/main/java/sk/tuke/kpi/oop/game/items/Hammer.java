@@ -7,6 +7,7 @@ package sk.tuke.kpi.oop.game.items;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.oop.game.Repairable;
+import sk.tuke.kpi.oop.game.commands.Repair;
 
 /**
  * The type Hammer.
@@ -25,13 +26,9 @@ public class Hammer extends BreakableTool<Repairable> implements Collectible {
     @Override
     public void useWith(Repairable actor)
     {
-        if (actor == null) {
-            return;
-        }
-
-        if (!actor.repair()) {
-            return;
-        }
+       if (!(new Repair()).execute(actor)) {
+           return;
+       }
 
         super.useWith(actor);
     }

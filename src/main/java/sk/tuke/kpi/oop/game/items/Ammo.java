@@ -9,8 +9,7 @@ import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.oop.game.characters.Armed;
-import sk.tuke.kpi.oop.game.characters.Ripley;
-import sk.tuke.kpi.oop.game.commands.ReloadPlayerFirearm;
+import sk.tuke.kpi.oop.game.commands.ReloadFirearm;
 
 /**
  * The type Ammo.
@@ -28,7 +27,7 @@ public class Ammo extends AbstractActor implements Usable<Armed> {
     @Override
     public void useWith(Armed actor)
     {
-        if (!(new ReloadPlayerFirearm()).execute((Ripley) actor)) {
+        if (!(new ReloadFirearm()).execute(actor)) {
             return;
         }
 

@@ -9,8 +9,7 @@ import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.oop.game.characters.Alive;
-import sk.tuke.kpi.oop.game.characters.Ripley;
-import sk.tuke.kpi.oop.game.commands.RefillPlayerHealth;
+import sk.tuke.kpi.oop.game.commands.RefillHealth;
 
 /**
  * The type Energy.
@@ -28,7 +27,7 @@ public class Energy extends AbstractActor implements Usable<Alive> {
     @Override
     public void useWith(Alive actor)
     {
-        if (!(new RefillPlayerHealth()).execute((Ripley) actor)) {
+        if (!(new RefillHealth()).execute(actor)) {
             return;
         }
 

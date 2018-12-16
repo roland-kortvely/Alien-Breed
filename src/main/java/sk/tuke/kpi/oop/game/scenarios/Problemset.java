@@ -125,6 +125,7 @@ public class Problemset implements SceneListener {
             disposableShooterController.dispose();
         });
 
-        scene.getMessageBus().subscribeOnce(Reactor.REACTOR_EXTINGUISHED, action -> scene.getGame().getOverlay().drawText("YOU WON", 0, scene.getGame().getWindowSetup().getHeight() - (GameApplication.STATUS_LINE_OFFSET * 2)).showFor(10));
+        //Finish the game
+        scene.getMessageBus().subscribeOnce(Reactor.REACTOR_EXTINGUISHED, action -> scene.getGame().getOverlay().drawText("YOU WON", 15, scene.getGame().getWindowSetup().getHeight() - (GameApplication.STATUS_LINE_OFFSET * 2)).showFor(10));
     }
 }

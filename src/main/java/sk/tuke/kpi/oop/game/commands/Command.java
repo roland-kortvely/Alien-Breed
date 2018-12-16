@@ -4,19 +4,21 @@
 
 package sk.tuke.kpi.oop.game.commands;
 
-import sk.tuke.kpi.oop.game.characters.Ripley;
+import sk.tuke.kpi.gamelib.Actor;
 
 /**
- * The interface Command player.
+ * The interface Command.
+ *
+ * @param <T> the type parameter
  */
-public interface CommandPlayer {
+public interface Command<T extends Actor> {
 
     /**
      * Execute boolean.
      *
-     * @param ripley the ripley
+     * @param actor the actor
      *
      * @return the boolean
      */
-    boolean execute(Ripley ripley);
+    boolean execute(T actor);
 }
