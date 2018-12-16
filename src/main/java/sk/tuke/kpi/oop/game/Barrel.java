@@ -9,8 +9,14 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.gamelib.map.MapTile;
 
+/**
+ * The type Barrel.
+ */
 public class Barrel extends Destructible {
 
+    /**
+     * Instantiates a new Barrel.
+     */
     public Barrel()
     {
         setAnimation(new Animation("sprites/barrel.png", 16, 16));

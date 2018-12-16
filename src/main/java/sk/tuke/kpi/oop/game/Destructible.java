@@ -13,6 +13,9 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.oop.game.characters.Health;
 import sk.tuke.kpi.oop.game.items.Fragile;
 
+/**
+ * The type Destructible.
+ */
 public abstract class Destructible extends AbstractActor implements Fragile {
 
     private Animation explosionAnimation;
