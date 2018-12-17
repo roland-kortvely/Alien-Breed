@@ -4,12 +4,16 @@
 
 package sk.tuke.kpi.oop.game.commands;
 
+import org.jetbrains.annotations.NotNull;
+
+import sk.tuke.kpi.gamelib.Scene;
+
 import sk.tuke.kpi.oop.game.characters.Alive;
 
 /**
  * Refill health of alive actor.
  */
-public class RefillHealth implements Command<Alive> {
+public class RefillHealth extends AbstractCommand<Alive> {
 
     private int increment;
 
@@ -24,17 +28,17 @@ public class RefillHealth implements Command<Alive> {
     }
 
     @Override
-    public boolean execute(Alive alive)
+    protected boolean command(@NotNull Alive actor, @NotNull Scene scene)
     {
-        if (alive == null) {
+        if (actor.getHealth() == null) {
             return false;
         }
 
-        if (alive.getHealth().isFull()) {
+        if (actor.getHealth().isFull()) {
             return false;
         }
 
-        alive.getHealth().refill(this.increment);
+        actor.getHealth().refill(this.increment);
 
         return true;
     }

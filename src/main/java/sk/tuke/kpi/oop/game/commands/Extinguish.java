@@ -4,20 +4,20 @@
 
 package sk.tuke.kpi.oop.game.commands;
 
+import org.jetbrains.annotations.NotNull;
+
+import sk.tuke.kpi.gamelib.Scene;
+
 import sk.tuke.kpi.oop.game.items.Flammable;
 
 /**
  * The type Extinguish.
  */
-public class Extinguish implements Command<Flammable> {
+public class Extinguish extends AbstractCommand<Flammable> {
 
     @Override
-    public boolean execute(Flammable flammable)
+    protected boolean command(@NotNull Flammable actor, @NotNull Scene scene)
     {
-        if (flammable == null) {
-            return false;
-        }
-
-        return flammable.extinguish();
+        return actor.extinguish();
     }
 }

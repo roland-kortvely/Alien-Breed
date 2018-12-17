@@ -4,20 +4,20 @@
 
 package sk.tuke.kpi.oop.game.commands;
 
+import org.jetbrains.annotations.NotNull;
+
+import sk.tuke.kpi.gamelib.Scene;
+
 import sk.tuke.kpi.oop.game.Repairable;
 
 /**
  * The type Repair.
  */
-public class Repair implements Command<Repairable> {
+public class Repair extends AbstractCommand<Repairable> {
 
     @Override
-    public boolean execute(Repairable repairable)
+    protected boolean command(@NotNull Repairable actor, @NotNull Scene scene)
     {
-        if (repairable == null) {
-            return false;
-        }
-
-        return repairable.repair();
+        return actor.repair();
     }
 }

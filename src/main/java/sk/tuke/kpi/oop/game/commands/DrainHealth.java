@@ -4,17 +4,21 @@
 
 package sk.tuke.kpi.oop.game.commands;
 
+import org.jetbrains.annotations.NotNull;
+
+import sk.tuke.kpi.gamelib.Scene;
+
 import sk.tuke.kpi.oop.game.characters.Alive;
 
 /**
  * The type Drain health.
  */
-public class DrainHealth implements Command<Alive> {
+public class DrainHealth extends AbstractCommand<Alive> {
 
     private int decrement;
 
     /**
-     * Instantiates a new Drain health.
+     * Drain health from Alive actor.
      *
      * @param decrement the decrement
      */
@@ -24,14 +28,9 @@ public class DrainHealth implements Command<Alive> {
     }
 
     @Override
-    public boolean execute(Alive alive)
+    protected boolean command(@NotNull Alive actor, @NotNull Scene scene)
     {
-        if (alive == null) {
-            return false;
-        }
-
-        alive.getHealth().drain(this.decrement);
-
+        actor.getHealth().drain(this.decrement);
         return true;
     }
 }

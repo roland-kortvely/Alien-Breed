@@ -4,12 +4,16 @@
 
 package sk.tuke.kpi.oop.game.commands;
 
+import org.jetbrains.annotations.NotNull;
+
+import sk.tuke.kpi.gamelib.Scene;
+
 import sk.tuke.kpi.oop.game.characters.Armed;
 
 /**
  * Reload firearm of armed actor.
  */
-public class ReloadFirearm implements Command<Armed> {
+public class ReloadFirearm extends AbstractCommand<Armed> {
 
     private int increment;
 
@@ -24,21 +28,17 @@ public class ReloadFirearm implements Command<Armed> {
     }
 
     @Override
-    public boolean execute(Armed armed)
+    protected boolean command(@NotNull Armed actor, @NotNull Scene scene)
     {
-        if (armed == null) {
+        if (actor.getFirearm() == null) {
             return false;
         }
 
-        if (armed.getFirearm() == null) {
+        if (actor.getFirearm().isFull()) {
             return false;
         }
 
-        if (armed.getFirearm().isFull()) {
-            return false;
-        }
-
-        armed.getFirearm().reload(this.increment);
+        actor.getFirearm().reload(this.increment);
 
         return true;
     }

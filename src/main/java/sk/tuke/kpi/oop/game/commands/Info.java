@@ -4,6 +4,8 @@
 
 package sk.tuke.kpi.oop.game.commands;
 
+import org.jetbrains.annotations.NotNull;
+
 import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.GameApplication;
 import sk.tuke.kpi.gamelib.Scene;
@@ -11,7 +13,7 @@ import sk.tuke.kpi.gamelib.Scene;
 /**
  * The type Info.
  */
-public class Info implements Command<Actor> {
+public class Info extends AbstractCommand<Actor> {
 
     private String message;
 
@@ -30,18 +32,12 @@ public class Info implements Command<Actor> {
     }
 
     @Override
-    public boolean execute(Actor actor)
+    protected boolean command(@NotNull Actor actor, @NotNull Scene scene)
     {
-        if (actor == null) {
-            return false;
-        }
-
-        Scene scene = actor.getScene();
-        if (scene == null) {
-            return false;
-        }
-
-        scene.getGame().getOverlay().drawText(this.message, 15, scene.getGame().getWindowSetup().getHeight() - (GameApplication.STATUS_LINE_OFFSET * 2)).showFor(this.duration);
+        scene.getGame().getOverlay()
+            .drawText(this.message, 15,
+                      scene.getGame().getWindowSetup().getHeight() - (GameApplication.STATUS_LINE_OFFSET * 2))
+            .showFor(this.duration);
 
         return true;
     }

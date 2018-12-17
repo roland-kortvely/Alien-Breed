@@ -4,29 +4,21 @@
 
 package sk.tuke.kpi.oop.game.commands;
 
+import org.jetbrains.annotations.NotNull;
+
 import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.Scene;
 
 /**
  * The type Destroy.
  */
-public class Destroy implements Command<Actor> {
+public class Destroy extends AbstractCommand<Actor> {
 
     @Override
-    public boolean execute(Actor actor)
+    protected boolean command(@NotNull Actor actor, @NotNull Scene scene)
     {
-        if (actor == null) {
-            return false;
-        }
-
-        Scene scene = actor.getScene();
-        if (scene == null) {
-            return false;
-        }
-
         scene.cancelActions(actor);
         scene.removeActor(actor);
-
         return true;
     }
 }
