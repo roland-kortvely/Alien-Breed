@@ -93,7 +93,7 @@
   <object id="10" name="barrel" gid="224" x="304" y="240" width="16" height="16"/>
   <object id="11" name="barrel" gid="224" x="352" y="240" width="16" height="16"/>
   <object id="12" name="barrel" gid="224" x="508" y="250.083" width="16" height="16"/>
-  <object id="13" name="wrench" gid="407" x="589.5" y="188.25" width="16" height="16"/>
+  <object id="13" name="wrench" gid="407" x="535.25" y="374.5" width="16" height="16"/>
   <object id="16" name="ripley" gid="1016" x="580.25" y="365" width="24" height="26"/>
   <object id="17" name="alien" gid="1001" x="83.25" y="201.75" width="31" height="32"/>
   <object id="18" name="alien" gid="1001" x="141" y="201.25" width="31" height="32"/>

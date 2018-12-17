@@ -67,6 +67,8 @@ public class Problemset implements SceneListener {
                     return new Door("exit door", Door.Orientation.VERTICAL);
                 case "hammer":
                     return new Hammer();
+                case "wrench":
+                    return new Wrench();
                 case "card":
                     return new AccessCard();
                 case "fire extinguisher":
