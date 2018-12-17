@@ -83,6 +83,11 @@ public class Health {
         this.value = value;
     }
 
+    /**
+     * Gets max value.
+     *
+     * @return the max value
+     */
     @Contract(pure = true)
     public int getMaxValue()
     {
@@ -92,6 +97,15 @@ public class Health {
     private void setMaxValue(int maxValue)
     {
         this.maxValue = maxValue;
+    }
+
+    /**
+     * Health is full boolean.
+     *
+     * @return the boolean
+     */
+    public boolean isFull() {
+        return this.getValue() == this.getMaxValue();
     }
 
     /**

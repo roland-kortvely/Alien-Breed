@@ -110,6 +110,6 @@
   <object id="34" name="barrel" gid="224" x="304" y="288" width="16" height="16"/>
   <object id="35" name="barrel" gid="224" x="304" y="264" width="16" height="16"/>
   <object id="36" name="ammo" gid="1002" x="549.25" y="296.75" width="16" height="16"/>
-  <object id="37" name="extinguisher" gid="1009" x="562.5" y="226.5" width="16" height="16"/>
+  <object id="37" name="extinguisher" gid="1009" x="588" y="232.5" width="16" height="16"/>
  </objectgroup>
 </map>

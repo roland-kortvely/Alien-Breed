@@ -4,11 +4,11 @@
 
 package sk.tuke.kpi.oop.game.items;
 
-import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.oop.game.characters.Alive;
+import sk.tuke.kpi.oop.game.commands.Destroy;
 import sk.tuke.kpi.oop.game.commands.RefillHealth;
 
 /**
@@ -27,14 +27,11 @@ public class Energy extends AbstractActor implements Usable<Alive> {
     @Override
     public void useWith(Alive actor)
     {
-        if (!(new RefillHealth()).execute(actor)) {
+        if (!(new RefillHealth(50)).execute(actor)) {
             return;
         }
 
-        Scene scene = this.getScene();
-        if (scene != null) {
-            scene.removeActor(this);
-        }
+        new Destroy().execute(this);
     }
 
     @Override

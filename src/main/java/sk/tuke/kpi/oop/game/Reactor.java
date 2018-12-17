@@ -13,6 +13,7 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.gamelib.messages.Topic;
 import sk.tuke.kpi.oop.game.actions.PerpetualReactorHeating;
+import sk.tuke.kpi.oop.game.items.Flammable;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +21,7 @@ import java.util.Set;
 /**
  * The type Reactor.
  */
-public class Reactor extends AbstractActor implements Switchable, Repairable {
+public class Reactor extends AbstractActor implements Switchable, Repairable, Flammable {
 
     private boolean running;
     private boolean extinguished;
@@ -183,6 +184,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
      *
      * @return the boolean
      */
+    @Override
     public boolean extinguish()
     {
         if (this.getDamage() < 100) {

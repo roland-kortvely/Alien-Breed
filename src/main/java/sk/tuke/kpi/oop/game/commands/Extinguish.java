@@ -4,20 +4,20 @@
 
 package sk.tuke.kpi.oop.game.commands;
 
-import sk.tuke.kpi.oop.game.Reactor;
+import sk.tuke.kpi.oop.game.items.Flammable;
 
 /**
  * The type Extinguish.
  */
-public class Extinguish implements Command<Reactor> {
+public class Extinguish implements Command<Flammable> {
 
     @Override
-    public boolean execute(Reactor reactor)
+    public boolean execute(Flammable flammable)
     {
-        if (reactor == null) {
+        if (flammable == null) {
             return false;
         }
 
-        return reactor.extinguish();
+        return flammable.extinguish();
     }
 }

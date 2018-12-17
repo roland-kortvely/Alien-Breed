@@ -94,4 +94,13 @@ public abstract class Firearm {
     {
         this.maxAmmo = maxAmmo;
     }
+
+    /**
+     * Ammo is full boolean.
+     *
+     * @return the boolean
+     */
+    public boolean isFull() {
+        return this.getAmmo() == this.getMaxAmmo();
+    }
 }

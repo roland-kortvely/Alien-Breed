@@ -14,6 +14,9 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.oop.game.Direction;
 import sk.tuke.kpi.oop.game.characters.Alive;
+import sk.tuke.kpi.oop.game.commands.Destroy;
+import sk.tuke.kpi.oop.game.commands.DrainHealth;
+import sk.tuke.kpi.oop.game.items.Obstacle;
 
 /**
  * The type Bullet.
@@ -38,22 +41,23 @@ public class Bullet extends AbstractActor implements Fireable {
             //Search for any Alive actor which intersects bullet
             action -> scene.getActors().stream()
                 .filter(Alive.class::isInstance)
+                .filter(actor -> !(actor instanceof Obstacle))      //Ignore obstacles --> solved in collidedWithObstacle
                 .anyMatch(this::intersects),
 
             //Search for any Alive actor which intersects bullet
             new Invoke<>(() -> scene.getActors().stream()
                 .filter(Alive.class::isInstance)
+                .filter(actor -> !(actor instanceof Obstacle))      //Ignore obstacles --> solved in collidedWithObstacle
                 .filter(this::intersects)
                 .findFirst()
                 .ifPresent(
                     actor -> {
 
                         //Drain Health
-                        ((Alive) actor).getHealth().drain(25);
+                        new DrainHealth(25).execute((Alive) actor);
 
                         //Remove bullet
-                        scene.cancelActions(this);
-                        scene.removeActor(this);
+                        new Destroy().execute(this);
                     }
                 ))
         ).scheduleOn(this);
@@ -82,11 +86,22 @@ public class Bullet extends AbstractActor implements Fireable {
     @Override
     public void collidedWithWall()
     {
-        Scene scene = this.getScene();
-        if (scene == null) {
-            return;
+        this.collided();
+    }
+
+    @Override
+    public void collidedWithObstacle(Obstacle obstacle)
+    {
+        if (obstacle instanceof Alive) {
+            //Drain Health
+            new DrainHealth(25).execute((Alive) obstacle);
         }
 
-        scene.removeActor(this);
+        this.collided();
+    }
+
+    private void collided()
+    {
+        new Destroy().execute(this);
     }
 }

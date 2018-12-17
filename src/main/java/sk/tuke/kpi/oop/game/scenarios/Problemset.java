@@ -17,6 +17,7 @@ import sk.tuke.kpi.oop.game.characters.Alien;
 import sk.tuke.kpi.oop.game.characters.AlienMother;
 import sk.tuke.kpi.oop.game.characters.AlienSpitter;
 import sk.tuke.kpi.oop.game.characters.Ripley;
+import sk.tuke.kpi.oop.game.commands.Info;
 import sk.tuke.kpi.oop.game.controllers.CollectorController;
 import sk.tuke.kpi.oop.game.controllers.MovableController;
 import sk.tuke.kpi.oop.game.controllers.ShooterController;
@@ -92,7 +93,7 @@ public class Problemset implements SceneListener {
     public void sceneInitialized(@NotNull Scene scene)
     {
         //Player should be at the top of the scene
-        scene.setActorRenderOrder(List.of(Ripley.class));
+        scene.setActorRenderOrder(List.of(Ripley.class, Alien.class));
 
         //Player's reference
         Ripley ripley = scene.getFirstActorByType(Ripley.class);
@@ -126,6 +127,6 @@ public class Problemset implements SceneListener {
         });
 
         //Finish the game
-        scene.getMessageBus().subscribeOnce(Reactor.REACTOR_EXTINGUISHED, action -> scene.getGame().getOverlay().drawText("YOU WON", 15, scene.getGame().getWindowSetup().getHeight() - (GameApplication.STATUS_LINE_OFFSET * 2)).showFor(10));
+        scene.getMessageBus().subscribeOnce(Reactor.REACTOR_EXTINGUISHED, action -> new Info("You won!", 10).execute(action));
     }
 }

@@ -4,11 +4,11 @@
 
 package sk.tuke.kpi.oop.game.items;
 
-import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.oop.game.characters.Armed;
+import sk.tuke.kpi.oop.game.commands.Destroy;
 import sk.tuke.kpi.oop.game.commands.ReloadFirearm;
 
 /**
@@ -27,14 +27,11 @@ public class Ammo extends AbstractActor implements Usable<Armed> {
     @Override
     public void useWith(Armed actor)
     {
-        if (!(new ReloadFirearm()).execute(actor)) {
+        if (!(new ReloadFirearm(50)).execute(actor)) {
             return;
         }
 
-        Scene scene = this.getScene();
-        if (scene != null) {
-            scene.removeActor(this);
-        }
+        new Destroy().execute(this);
     }
 
     @Override

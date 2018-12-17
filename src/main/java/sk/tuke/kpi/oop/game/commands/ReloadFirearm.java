@@ -11,6 +11,18 @@ import sk.tuke.kpi.oop.game.characters.Armed;
  */
 public class ReloadFirearm implements Command<Armed> {
 
+    private int increment;
+
+    /**
+     * Instantiates a new Reload firearm.
+     *
+     * @param increment the increment
+     */
+    public ReloadFirearm(int increment)
+    {
+        this.increment = increment;
+    }
+
     @Override
     public boolean execute(Armed armed)
     {
@@ -22,7 +34,11 @@ public class ReloadFirearm implements Command<Armed> {
             return false;
         }
 
-        armed.getFirearm().reload(50);
+        if (armed.getFirearm().isFull()) {
+            return false;
+        }
+
+        armed.getFirearm().reload(this.increment);
 
         return true;
     }

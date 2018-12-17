@@ -12,6 +12,7 @@ import sk.tuke.kpi.gamelib.actions.Action;
 
 import sk.tuke.kpi.oop.game.Movable;
 import sk.tuke.kpi.oop.game.Direction;
+import sk.tuke.kpi.oop.game.items.Obstacle;
 
 /**
  * The type Move.
@@ -94,6 +95,21 @@ public class Move<M extends Movable> implements Action<M> {
             this.getActor().setPosition(position[0], position[1]);
             this.getActor().collidedWithWall();
             this.stop();
+        }
+
+        //Check whether actor intersects with obstacles
+        try {
+            scene.getActors().stream()
+                .filter(Obstacle.class::isInstance)
+                .filter(this.getActor()::intersects)
+                .findFirst()
+                .ifPresent(obstacle -> {
+                    this.getActor().setPosition(position[0], position[1]);
+                    this.getActor().collidedWithObstacle((Obstacle) obstacle);
+                    this.stop();
+                });
+        } catch (Exception ex) {
+
         }
     }
 

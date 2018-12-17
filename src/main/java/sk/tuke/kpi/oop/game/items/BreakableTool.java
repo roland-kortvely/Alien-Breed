@@ -5,8 +5,8 @@
 package sk.tuke.kpi.oop.game.items;
 
 import sk.tuke.kpi.gamelib.Actor;
-import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
+import sk.tuke.kpi.oop.game.commands.Destroy;
 
 /**
  * The type Breakable tool.
@@ -44,10 +44,8 @@ public abstract class BreakableTool<A extends Actor> extends AbstractActor imple
      */
     public int getRemainingUses()
     {
-        Scene scene = this.getScene();
-
-        if (this.remainingUses <= 0 && scene != null) {
-            scene.removeActor(this);
+        if (this.remainingUses <= 0) {
+            new Destroy().execute(this);
         }
 
         return remainingUses;
@@ -60,12 +58,10 @@ public abstract class BreakableTool<A extends Actor> extends AbstractActor imple
      */
     public void setRemainingUses(int remainingUses)
     {
-        Scene scene = this.getScene();
-
         this.remainingUses = remainingUses;
 
-        if (this.remainingUses <= 0 && scene != null) {
-            scene.removeActor(this);
+        if (this.remainingUses <= 0) {
+            new Destroy().execute(this);
         }
     }
 }

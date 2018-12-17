@@ -11,6 +11,18 @@ import sk.tuke.kpi.oop.game.characters.Alive;
  */
 public class RefillHealth implements Command<Alive> {
 
+    private int increment;
+
+    /**
+     * Instantiates a new Refill health.
+     *
+     * @param increment the increment
+     */
+    public RefillHealth(int increment)
+    {
+        this.increment = increment;
+    }
+
     @Override
     public boolean execute(Alive alive)
     {
@@ -18,7 +30,11 @@ public class RefillHealth implements Command<Alive> {
             return false;
         }
 
-        alive.getHealth().refill(100);
+        if (alive.getHealth().isFull()) {
+            return false;
+        }
+
+        alive.getHealth().refill(this.increment);
 
         return true;
     }

@@ -5,6 +5,7 @@
 package sk.tuke.kpi.oop.game;
 
 import sk.tuke.kpi.gamelib.Actor;
+import sk.tuke.kpi.oop.game.items.Obstacle;
 
 /**
  * Interface Movable
@@ -38,4 +39,9 @@ public interface Movable extends Actor {
      * Collided with wall.
      */
     default void collidedWithWall() {}
+
+    /**
+     * Collided with obstacle.
+     */
+    default void collidedWithObstacle(Obstacle obstacle) {}
 }

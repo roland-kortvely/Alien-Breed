@@ -16,6 +16,7 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.oop.game.Movable;
 import sk.tuke.kpi.oop.game.behaviours.Behaviour;
 import sk.tuke.kpi.oop.game.Direction;
+import sk.tuke.kpi.oop.game.commands.Destroy;
 import sk.tuke.kpi.oop.game.items.Fragile;
 
 import java.util.Optional;
@@ -69,15 +70,9 @@ public class Alien extends AbstractActor implements Alive, Enemy, Movable {
      */
     public void die()
     {
-        Scene scene = this.getScene();
-        if (scene == null) {
-            return;
-        }
-
         getAnimation().stop();
 
-        scene.cancelActions(this);
-        scene.removeActor(this);
+        new Destroy().execute(this);
     }
 
 
