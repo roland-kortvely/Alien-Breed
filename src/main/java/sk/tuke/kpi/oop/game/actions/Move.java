@@ -98,7 +98,7 @@ public class Move<M extends Movable> implements Action<M> {
         }
 
         //Check whether actor intersects with obstacles
-        try {
+        if (this.getActor() != null) {
             scene.getActors().stream()
                 .filter(Obstacle.class::isInstance)
                 .filter(this.getActor()::intersects)
@@ -108,8 +108,6 @@ public class Move<M extends Movable> implements Action<M> {
                     this.getActor().collidedWithObstacle((Obstacle) obstacle);
                     this.stop();
                 });
-        } catch (Exception ex) {
-
         }
     }
 

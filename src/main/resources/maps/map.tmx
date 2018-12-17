@@ -105,7 +105,6 @@
   <object id="29" name="energy" gid="322" x="326.25" y="262" width="16" height="16"/>
   <object id="30" name="barrel" gid="224" x="352" y="264" width="16" height="16"/>
   <object id="31" name="barrel" gid="224" x="352.25" y="288" width="16" height="16"/>
-  <object id="32" name="barrel" gid="224" x="352.25" y="288" width="16" height="16"/>
   <object id="33" name="barrel" gid="224" x="328" y="288" width="16" height="16"/>
   <object id="34" name="barrel" gid="224" x="304" y="288" width="16" height="16"/>
   <object id="35" name="barrel" gid="224" x="304" y="264" width="16" height="16"/>
