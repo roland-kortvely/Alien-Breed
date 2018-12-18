@@ -6,13 +6,13 @@ package sk.tuke.kpi.oop.game.items;
 
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
-import sk.tuke.kpi.oop.game.Repairable;
+import sk.tuke.kpi.oop.game.objects.Repairable;
 import sk.tuke.kpi.oop.game.commands.Repair;
 
 /**
  * The type Hammer.
  */
-public class Hammer extends BreakableTool<Repairable> implements Collectible {
+public class Hammer extends BreakableTool<Repairable> implements Item, Collectible {
 
     /**
      * Instantiates a new Hammer.

@@ -11,7 +11,7 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.oop.game.characters.Alive;
 
 /**
- * The type Drain health.
+ * Drain health of alive object.
  */
 public class DrainHealth extends AbstractCommand<Alive> {
 

@@ -12,7 +12,7 @@ import sk.tuke.kpi.oop.game.openables.LockedDoor;
 /**
  * The type Access card.
  */
-public class AccessCard extends AbstractActor implements Collectible, Usable<LockedDoor> {
+public class AccessCard extends AbstractActor implements Item, Collectible, Usable<LockedDoor> {
 
     /**
      * Instantiates a new Access card.

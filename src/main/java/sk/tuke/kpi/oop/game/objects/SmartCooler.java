@@ -2,7 +2,7 @@
  * Copyright (c) 2018  Roland Körtvely <roland.kortvely@gmail.com>
  */
 
-package sk.tuke.kpi.oop.game;
+package sk.tuke.kpi.oop.game.objects;
 
 import org.jetbrains.annotations.NotNull;
 

@@ -12,8 +12,9 @@ import sk.tuke.kpi.gamelib.actions.ActionSequence;
 import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.actions.Wait;
 
-import sk.tuke.kpi.oop.game.Locker;
-import sk.tuke.kpi.oop.game.Ventilator;
+import sk.tuke.kpi.oop.game.items.Hammer;
+import sk.tuke.kpi.oop.game.objects.Locker;
+import sk.tuke.kpi.oop.game.objects.Ventilator;
 import sk.tuke.kpi.oop.game.characters.Ripley;
 import sk.tuke.kpi.oop.game.controllers.CollectorController;
 import sk.tuke.kpi.oop.game.controllers.MovableController;
@@ -54,7 +55,7 @@ public class MissionImpossible implements SceneListener {
                 case "door":
                     return new LockedDoor("door", Door.Orientation.VERTICAL);
                 case "locker":
-                    return new Locker();
+                    return new Locker(new Hammer(), Locker.Orientation.RIGHT);
                 case "ventilator":
                     return new Ventilator();
                 case "access card":

@@ -10,7 +10,7 @@ import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.Scene;
 
 /**
- * The type Destroy.
+ * Command to destroy object.
  */
 public class Destroy extends AbstractCommand<Actor> {
 

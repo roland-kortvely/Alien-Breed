@@ -6,12 +6,12 @@ package sk.tuke.kpi.oop.game.items;
 
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
-import sk.tuke.kpi.oop.game.DefectiveLight;
+import sk.tuke.kpi.oop.game.objects.DefectiveLight;
 
 /**
  * The type Wrench.
  */
-public class Wrench extends BreakableTool<DefectiveLight> implements Collectible {
+public class Wrench extends BreakableTool<DefectiveLight> implements Item, Collectible {
 
     /**
      * Instantiates a new Wrench.

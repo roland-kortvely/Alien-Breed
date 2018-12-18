@@ -19,15 +19,13 @@ import sk.tuke.kpi.gamelib.messages.Topic;
 import sk.tuke.kpi.oop.game.Direction;
 import sk.tuke.kpi.oop.game.items.Backpack;
 import sk.tuke.kpi.oop.game.items.Collectible;
-import sk.tuke.kpi.oop.game.Keeper;
-import sk.tuke.kpi.oop.game.Movable;
 import sk.tuke.kpi.oop.game.weapons.Firearm;
 import sk.tuke.kpi.oop.game.weapons.Gun;
 
 /**
  * The type Ripley.
  */
-public class Ripley extends AbstractActor implements Alive, Movable, Armed, Keeper<Collectible> {
+public class Ripley extends AbstractActor implements Player, Alive, Movable, Armed, Keeper<Collectible> {
 
     private Animation normalAnimation;
     private Animation dieAnimation;

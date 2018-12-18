@@ -8,10 +8,10 @@ import org.jetbrains.annotations.NotNull;
 
 import sk.tuke.kpi.gamelib.Scene;
 
-import sk.tuke.kpi.oop.game.Repairable;
+import sk.tuke.kpi.oop.game.objects.Repairable;
 
 /**
- * The type Repair.
+ * Repair repairable object.
  */
 public class Repair extends AbstractCommand<Repairable> {
 

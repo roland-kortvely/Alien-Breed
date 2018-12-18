@@ -12,7 +12,7 @@ import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.actions.Wait;
 import sk.tuke.kpi.gamelib.framework.Scenario;
 import sk.tuke.kpi.gamelib.map.MapMarker;
-import sk.tuke.kpi.oop.game.*;
+import sk.tuke.kpi.oop.game.objects.*;
 
 import java.util.Map;
 

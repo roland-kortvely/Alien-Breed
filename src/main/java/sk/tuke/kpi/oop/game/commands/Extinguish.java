@@ -11,7 +11,7 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.oop.game.items.Flammable;
 
 /**
- * The type Extinguish.
+ * Extinguish flammable object.
  */
 public class Extinguish extends AbstractCommand<Flammable> {
 

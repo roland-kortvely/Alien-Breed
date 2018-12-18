@@ -9,9 +9,6 @@ import org.jetbrains.annotations.Nullable;
 
 import sk.tuke.kpi.gamelib.*;
 
-import sk.tuke.kpi.oop.game.Barrel;
-import sk.tuke.kpi.oop.game.Corpse;
-import sk.tuke.kpi.oop.game.Reactor;
 import sk.tuke.kpi.oop.game.behaviours.RandomlyMoving;
 import sk.tuke.kpi.oop.game.characters.Alien;
 import sk.tuke.kpi.oop.game.characters.AlienMother;
@@ -22,6 +19,7 @@ import sk.tuke.kpi.oop.game.controllers.CollectorController;
 import sk.tuke.kpi.oop.game.controllers.MovableController;
 import sk.tuke.kpi.oop.game.controllers.ShooterController;
 import sk.tuke.kpi.oop.game.items.*;
+import sk.tuke.kpi.oop.game.objects.*;
 import sk.tuke.kpi.oop.game.openables.Door;
 import sk.tuke.kpi.oop.game.openables.LockedDoor;
 
@@ -60,11 +58,9 @@ public class Problemset implements SceneListener {
                 case "spitter":
                     return new AlienSpitter(100, new RandomlyMoving());
                 case "locked door":
-                    return new LockedDoor("front door", Door.Orientation.VERTICAL);
-                case "back door":
-                    return new Door("back door", Door.Orientation.HORIZONTAL);
-                case "exit door":
-                    return new Door("exit door", Door.Orientation.VERTICAL);
+                    return new LockedDoor("front door", (type.equals("vertical")) ? Door.Orientation.VERTICAL : Door.Orientation.HORIZONTAL);
+                case "door":
+                    return new Door("back door", (type.equals("vertical")) ? Door.Orientation.VERTICAL : Door.Orientation.HORIZONTAL);
                 case "hammer":
                     return new Hammer();
                 case "wrench":
@@ -85,6 +81,17 @@ public class Problemset implements SceneListener {
                     return new Corpse();
                 case "extinguisher":
                     return new FireExtinguisher();
+                case "computer":
+                    return new Computer();
+                case "locker":
+                    switch (type) {
+                        case "ammo":
+                            return new Locker(new Ammo(), Locker.Orientation.DOWN);
+                        case "extinguisher":
+                            return new Locker(new FireExtinguisher(), Locker.Orientation.DOWN);
+                        default:
+                            return null;
+                    }
                 default:
                     return null;
             }

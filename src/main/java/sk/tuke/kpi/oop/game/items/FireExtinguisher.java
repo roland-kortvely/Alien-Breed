@@ -11,7 +11,7 @@ import sk.tuke.kpi.oop.game.commands.Extinguish;
 /**
  * The type Fire extinguisher.
  */
-public class FireExtinguisher extends BreakableTool<Flammable> implements Collectible {
+public class FireExtinguisher extends BreakableTool<Flammable> implements Item, Collectible {
 
     /**
      * Instantiates a new Fire extinguisher.
