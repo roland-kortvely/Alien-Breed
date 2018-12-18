@@ -11,7 +11,7 @@ import sk.tuke.kpi.gamelib.Input;
 import sk.tuke.kpi.gamelib.KeyboardListener;
 import sk.tuke.kpi.gamelib.Scene;
 
-import sk.tuke.kpi.oop.game.characters.Keeper;
+import sk.tuke.kpi.oop.game.Keeper;
 import sk.tuke.kpi.oop.game.actions.Drop;
 import sk.tuke.kpi.oop.game.actions.Shift;
 import sk.tuke.kpi.oop.game.actions.Take;
