@@ -4,11 +4,11 @@
 
 package sk.tuke.kpi.oop.game.commands;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.Scene;
-import sk.tuke.kpi.oop.game.Gameplay;
 
 /**
  * The type Abstract command.
@@ -17,6 +17,8 @@ import sk.tuke.kpi.oop.game.Gameplay;
  */
 public abstract class AbstractCommand<T extends Actor> implements Command<T> {
 
+    private Scene scene;
+
     @Override
     public boolean execute(T actor)
     {
@@ -24,7 +26,13 @@ public abstract class AbstractCommand<T extends Actor> implements Command<T> {
             return false;
         }
 
-        return this.command(actor, Gameplay.getScene());
+        this.setScene(actor.getScene());
+
+        if (this.getScene() == null) {
+            return false;
+        }
+
+        return this.command(actor, getScene());
     }
 
     /**
@@ -36,4 +44,20 @@ public abstract class AbstractCommand<T extends Actor> implements Command<T> {
      * @return the boolean
      */
     protected abstract boolean command(@NotNull T actor, @NotNull Scene scene);
+
+    /**
+     * Gets scene.
+     *
+     * @return the scene
+     */
+    @Contract(pure = true)
+    private Scene getScene()
+    {
+        return scene;
+    }
+
+    private void setScene(Scene scene)
+    {
+        this.scene = scene;
+    }
 }

@@ -10,7 +10,6 @@ import org.jetbrains.annotations.Nullable;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.actions.Action;
 
-import sk.tuke.kpi.oop.game.Gameplay;
 import sk.tuke.kpi.oop.game.Movable;
 import sk.tuke.kpi.oop.game.Direction;
 import sk.tuke.kpi.oop.game.items.Obstacle;
@@ -64,7 +63,10 @@ public class Move<M extends Movable> implements Action<M> {
             return;
         }
 
-        Scene scene = Gameplay.getScene();
+        Scene scene = this.getActor().getScene();
+        if (scene == null) {
+            return;
+        }
 
         //Decrease duration..
         this.setTotal(this.getTotal() + deltaTime);

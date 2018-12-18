@@ -14,7 +14,10 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.SceneListener;
 
 import sk.tuke.kpi.oop.game.behaviours.RandomlyMoving;
-import sk.tuke.kpi.oop.game.characters.*;
+import sk.tuke.kpi.oop.game.characters.Alien;
+import sk.tuke.kpi.oop.game.characters.AlienMother;
+import sk.tuke.kpi.oop.game.characters.AlienSpitter;
+import sk.tuke.kpi.oop.game.characters.Ripley;
 import sk.tuke.kpi.oop.game.commands.Message;
 import sk.tuke.kpi.oop.game.controllers.CollectorController;
 import sk.tuke.kpi.oop.game.controllers.MovableController;
@@ -103,31 +106,31 @@ public class Problemset implements SceneListener {
     public void sceneInitialized(@NotNull Scene scene)
     {
         //Player should be at the top of the scene
-        scene.setActorRenderOrder(List.of(Player.class, Alien.class));
+        scene.setActorRenderOrder(List.of(Ripley.class, Alien.class));
 
         //Player's reference
-        Player player = scene.getFirstActorByType(Player.class);
-        if (player == null) {
+        Ripley ripley = scene.getFirstActorByType(Ripley.class);
+        if (ripley == null) {
             return;
         }
 
         //Camera should follow player through the map
-        scene.follow(player);
+        scene.follow(ripley);
 
         //Keyboard controller
-        MovableController movableController = new MovableController(player);
+        MovableController movableController = new MovableController(ripley);
         Disposable disposableMovableController = scene.getInput().registerListener(movableController);
 
         //Collector controller
-        CollectorController collectorController = new CollectorController(player);
+        CollectorController collectorController = new CollectorController(ripley);
         Disposable disposableCollectorController = scene.getInput().registerListener(collectorController);
 
         //Shooter Controller
-        ShooterController shooterController = new ShooterController(player);
+        ShooterController shooterController = new ShooterController(ripley);
         Disposable disposableShooterController = scene.getInput().registerListener(shooterController);
 
         //Render player backpack
-        scene.getGame().pushActorContainer(player.getContainer());
+        scene.getGame().pushActorContainer(ripley.getContainer());
 
         //Discard controllers once player is dead
         scene.getMessageBus().subscribeOnce(Ripley.RIPLEY_DIED, action -> {

@@ -39,7 +39,7 @@ public class Gameplay {
             }
         });
 
-        //Listen to Scene events
+        //
         scene.addListener(new Problemset());
 
         //Save scene reference

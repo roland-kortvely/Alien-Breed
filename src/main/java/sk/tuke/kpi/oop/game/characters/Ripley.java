@@ -17,15 +17,17 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.gamelib.messages.Topic;
 
 import sk.tuke.kpi.oop.game.Direction;
-import sk.tuke.kpi.oop.game.Gameplay;
+import sk.tuke.kpi.oop.game.Keeper;
+import sk.tuke.kpi.oop.game.Movable;
 import sk.tuke.kpi.oop.game.items.Backpack;
+import sk.tuke.kpi.oop.game.items.Collectible;
 import sk.tuke.kpi.oop.game.weapons.Firearm;
 import sk.tuke.kpi.oop.game.weapons.Gun;
 
 /**
  * The type Ripley.
  */
-public class Ripley extends AbstractActor implements Player {
+public class Ripley extends AbstractActor implements Player, Alive, Movable, Armed, Keeper<Collectible> {
 
     private Animation normalAnimation;
     private Animation dieAnimation;
@@ -80,7 +82,10 @@ public class Ripley extends AbstractActor implements Player {
      */
     private void die()
     {
-        Scene scene = Gameplay.getScene();
+        Scene scene = this.getScene();
+        if (scene == null) {
+            return;
+        }
 
         setAnimation(this.getDieAnimation());
 
@@ -90,7 +95,10 @@ public class Ripley extends AbstractActor implements Player {
 
     private void showRipleyState()
     {
-        Scene scene = Gameplay.getScene();
+        Scene scene = this.getScene();
+        if (scene == null) {
+            return;
+        }
 
         int topLine = scene.getGame().getWindowSetup().getHeight() - GameApplication.STATUS_LINE_OFFSET;
 

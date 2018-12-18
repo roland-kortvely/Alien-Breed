@@ -11,7 +11,6 @@ import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.framework.Player;
 import sk.tuke.kpi.gamelib.graphics.Animation;
-import sk.tuke.kpi.oop.game.Gameplay;
 
 /**
  * The type Helicopter.
@@ -53,7 +52,10 @@ public class Helicopter extends AbstractActor {
             return;
         }
 
-        Scene scene = Gameplay.getScene();
+        Scene scene = this.getScene();
+        if (scene == null) {
+            return;
+        }
 
         Player player = scene.getFirstActorByType(Player.class);
         if (player == null) {

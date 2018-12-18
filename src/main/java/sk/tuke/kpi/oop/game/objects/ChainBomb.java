@@ -6,7 +6,6 @@ package sk.tuke.kpi.oop.game.objects;
 
 import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.Scene;
-import sk.tuke.kpi.oop.game.Gameplay;
 
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
@@ -29,7 +28,11 @@ public class ChainBomb extends TimeBomb {
     @Override
     public void detonate()
     {
-        Scene scene = Gameplay.getScene();
+        Scene scene = this.getScene();
+
+        if (scene == null) {
+            return;
+        }
 
         Ellipse2D.Float ellipse = new Ellipse2D.Float(
             (this.getPosX() + this.getWidth() / 2.0f) - 50,
