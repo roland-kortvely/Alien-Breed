@@ -7,7 +7,11 @@ package sk.tuke.kpi.oop.game.scenarios;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import sk.tuke.kpi.gamelib.*;
+import sk.tuke.kpi.gamelib.Actor;
+import sk.tuke.kpi.gamelib.ActorFactory;
+import sk.tuke.kpi.gamelib.Disposable;
+import sk.tuke.kpi.gamelib.Scene;
+import sk.tuke.kpi.gamelib.SceneListener;
 
 import sk.tuke.kpi.oop.game.behaviours.RandomlyMoving;
 import sk.tuke.kpi.oop.game.characters.Alien;
