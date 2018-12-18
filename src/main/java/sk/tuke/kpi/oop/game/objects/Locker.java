@@ -93,7 +93,7 @@ public class Locker extends AbstractActor implements Usable<Player> {
             return;
         }
 
-        if (new AddActor(this.getContent(), actor.getPosX(), actor.getPosY()).execute(this)) {
+        if (new AddActor(actor.getPosX(), actor.getPosY()).execute(this.getContent())) {
             this.setUsed(true);
         }
     }

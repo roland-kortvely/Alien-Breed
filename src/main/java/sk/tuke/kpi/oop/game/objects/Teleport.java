@@ -13,6 +13,7 @@ import sk.tuke.kpi.gamelib.actions.When;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.framework.Player;
 import sk.tuke.kpi.gamelib.graphics.Animation;
+import sk.tuke.kpi.oop.game.Gameplay;
 
 /**
  * The type Teleport.
@@ -56,10 +57,7 @@ public class Teleport extends AbstractActor {
             return;
         }
 
-        Scene scene = this.getScene();
-        if (scene == null) {
-            return;
-        }
+        Scene scene = Gameplay.getScene();
 
         Player player = scene.getFirstActorByType(Player.class);
         if (player == null) {

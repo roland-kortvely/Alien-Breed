@@ -11,6 +11,7 @@ import sk.tuke.kpi.gamelib.Input;
 import sk.tuke.kpi.gamelib.KeyboardListener;
 import sk.tuke.kpi.gamelib.Scene;
 
+import sk.tuke.kpi.oop.game.Gameplay;
 import sk.tuke.kpi.oop.game.Keeper;
 import sk.tuke.kpi.oop.game.actions.Drop;
 import sk.tuke.kpi.oop.game.actions.Shift;
@@ -45,10 +46,7 @@ public class CollectorController implements KeyboardListener {
             return;
         }
 
-        Scene scene = this.getActor().getScene();
-        if (scene == null) {
-            return;
-        }
+        Scene scene = Gameplay.getScene();
 
         switch (key) {
             case ENTER: //Move item from the floor to backpack

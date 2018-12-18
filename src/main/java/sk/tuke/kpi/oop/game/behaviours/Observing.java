@@ -9,6 +9,7 @@ import org.jetbrains.annotations.Contract;
 import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.messages.Topic;
+import sk.tuke.kpi.oop.game.Gameplay;
 
 import java.util.function.Predicate;
 
@@ -50,10 +51,7 @@ public class Observing<T, A extends Actor> implements Behaviour<A> {
 
         this.setActor(actor);
 
-        Scene scene = this.getActor().getScene();
-        if (scene == null) {
-            return;
-        }
+        Scene scene = Gameplay.getScene();
 
         if (this.getTopic() == null) {
             return;
