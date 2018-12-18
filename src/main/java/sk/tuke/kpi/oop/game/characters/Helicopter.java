@@ -38,7 +38,7 @@ public class Helicopter extends AbstractActor {
     }
 
     /**
-     * Search and destroy.
+     * Search and destroy player
      */
     public void searchAndDestroy()
     {
@@ -93,22 +93,13 @@ public class Helicopter extends AbstractActor {
         new Invoke<>(this::searchAndDestroy).scheduleOn(this);
     }
 
-    /**
-     * Is deadly boolean.
-     *
-     * @return the boolean
-     */
-    public boolean isDeadly()
+    @Contract(pure = true)
+    private boolean isDeadly()
     {
         return deadly;
     }
 
-    /**
-     * Sets deadly.
-     *
-     * @param deadly the deadly
-     */
-    public void setDeadly(boolean deadly)
+    private void setDeadly(boolean deadly)
     {
         this.deadly = deadly;
     }

@@ -12,6 +12,7 @@ import sk.tuke.kpi.gamelib.actions.Wait;
 import sk.tuke.kpi.gamelib.actions.When;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
+
 import sk.tuke.kpi.oop.game.commands.Destroy;
 
 /**

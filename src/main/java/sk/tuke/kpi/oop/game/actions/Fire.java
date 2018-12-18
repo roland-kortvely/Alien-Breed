@@ -42,7 +42,7 @@ public class Fire<A extends Armed> extends AbstractAction<A> {
 
         scene.addActor(fireable, this.getActor().getPosX() + (this.getActor().getWidth() * direction.getDx()), this.getActor().getPosY() + (this.getActor().getHeight() * direction.getDy()));
 
-        new Move<>(direction, 999).scheduleOn(fireable);
+        new Move<>(direction, Integer.MAX_VALUE).scheduleOn(fireable);
 
         this.setDone(true);
     }

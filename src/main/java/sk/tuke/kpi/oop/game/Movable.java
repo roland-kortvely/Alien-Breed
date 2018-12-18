@@ -5,7 +5,6 @@
 package sk.tuke.kpi.oop.game;
 
 import sk.tuke.kpi.gamelib.Actor;
-import sk.tuke.kpi.oop.game.Direction;
 import sk.tuke.kpi.oop.game.items.Obstacle;
 
 /**

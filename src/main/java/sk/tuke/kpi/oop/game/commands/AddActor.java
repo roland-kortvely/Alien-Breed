@@ -5,6 +5,7 @@
 package sk.tuke.kpi.oop.game.commands;
 
 import org.jetbrains.annotations.NotNull;
+
 import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.Scene;
 

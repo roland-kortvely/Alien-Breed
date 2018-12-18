@@ -14,7 +14,7 @@ import sk.tuke.kpi.oop.game.characters.Alien;
 import sk.tuke.kpi.oop.game.characters.AlienMother;
 import sk.tuke.kpi.oop.game.characters.AlienSpitter;
 import sk.tuke.kpi.oop.game.characters.Ripley;
-import sk.tuke.kpi.oop.game.commands.Info;
+import sk.tuke.kpi.oop.game.commands.Message;
 import sk.tuke.kpi.oop.game.controllers.CollectorController;
 import sk.tuke.kpi.oop.game.controllers.MovableController;
 import sk.tuke.kpi.oop.game.controllers.ShooterController;
@@ -136,6 +136,6 @@ public class Problemset implements SceneListener {
         });
 
         //Finish the game
-        scene.getMessageBus().subscribeOnce(Reactor.REACTOR_EXTINGUISHED, action -> new Info("You won!", 10).execute(action));
+        scene.getMessageBus().subscribeOnce(Reactor.REACTOR_EXTINGUISHED, action -> new Message("You won!", 10).execute(action));
     }
 }

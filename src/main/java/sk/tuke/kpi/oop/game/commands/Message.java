@@ -11,21 +11,21 @@ import sk.tuke.kpi.gamelib.GameApplication;
 import sk.tuke.kpi.gamelib.Scene;
 
 /**
- * The type Info.
+ * The type Message.
  */
-public class Info extends AbstractCommand<Actor> {
+public class Message extends AbstractCommand<Actor> {
 
     private String message;
 
     private int duration;
 
     /**
-     * Instantiates a new Info.
+     * Instantiates a new Message.
      *
      * @param message  the message
      * @param duration the duration
      */
-    public Info(String message, int duration)
+    public Message(String message, int duration)
     {
         this.message = message;
         this.duration = duration;

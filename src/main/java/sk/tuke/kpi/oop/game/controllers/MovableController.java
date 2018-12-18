@@ -103,7 +103,7 @@ public class MovableController implements KeyboardListener {
         }
 
         //Schedule move
-        this.setAction(new Move<>(direction, 999));
+        this.setAction(new Move<>(direction, Integer.MAX_VALUE));
         action.scheduleOn(this.getActor());
     }
 
