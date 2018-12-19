@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="40" height="25" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="54">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="40" height="25" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="55">
  <tileset firstgid="1" name="tileset01" tilewidth="16" tileheight="16" tilecount="500" columns="20">
   <image source="tilesets/tileset01.png" width="320" height="400"/>
  </tileset>
@@ -80,12 +80,12 @@
  </tileset>
  <layer id="4" name="background" width="40" height="25">
   <data encoding="base64" compression="zlib">
-   eJzNlrlSAkEQhntdQo/UAE3ITQk9QBICsLzQUhNQI6qsMgA19ngF1ARz1NQj8Y48eQhfw39qp2tbagdhdXcNvvpnllZ6/+4eZomIekEf6Pex9vt3yx3EDIARsGsT7YF9cAAm8SxDwWoCpPBdadtRJi1UxUyAGtaH4AgcgwU8u7CILsGV5ewX6W81KfKbFxREfipmDjSwPgVn4Fz794y8XsCrFY5/aQHvs9q/G6xvwR24t4Pxy+TfKBgD49o76V9C+7eG9brtalB9lxH7Ro+TwzSYAbO6vtJL9Q5qPrax3rFdDcM/zkPmlxI9KOsbxry2qtdsyBkpiPqG4VerrpBzzrUjoesbhX+qt+o4G070+VXXqvb8PKnrG4V/Sa3XyOMBPIIny9lzXFbXNyr/TJ/nQJ7c+Y3Cv3ZaBCVy5xejQjEPjcJXpRVQJff37RO8gXfwofecX9D91y4uS+b5HdRx3b6/vFf47T9Wvr945a/8K/vwRd4rfnv+cX1N/gXZZzX8/ubQ6HkwZXvHcX1N/gXZfyq/IvIqgVXbO47r6/V+MfLXf934V0FeVbBl8I/r26Tv89vU9S0b/n/GRz5+lOtrOv+iPqe5vq3306DvqZ0q17f1fhrmPfWn83kDxMEQGBYa/wfrTfAFDSswJw==
+   eJzNlrlOw0AQhtd2So6WIgQk9xSAlJIjISClSBB3CDRcVSQkinDUHK8QoIGeo+VouCvOPASPgOj4rezIg/EmtqXEFJ/+2WQcT/6ZXTsvhGgCzaAlQBz0ujkPOa2gC2wbQuyAXbAHYroQHaBTrx17yXXDxH0TuFfSqCiRZGrlDIIS4n1wAA5BN67vAb167dhLrhtxVt8UY5rVZ+VMghPEp+AMnEv//MA9I1JgGIwocPqXZNA6Lf27QXwL7sC99M8P3DMiB2ZBXgH51wf6wYD0jvtnSv+WEa8YtqZ0f5BPtfJ4zSd6pYYxMA4mZH+5l3G5PzYRbxm25nR/0D395FIdvL4Em0He3y+tMXwzevW/e4PvkWnW3xmQa7DOy3OuGqbs7xBINVit2TqCj8dapd4jqdaaPo/L/obhX1zqNep4AI/gSausKS8t+xuWf6rvMyAr7P0bhn/VdAEsCnv/YquIiIuG4aulRbAu7OfbJ3gD7+BDrqm+es9ftby0UO/fNpnn9/9fYL4vwZUWfP5I6f3FrX7Lv0IAX55R1wt41arneTn/qL8q/+o5ZyU8PzIY9CwYNdzzqL8q/+o5f1Z9C6hrESwZ7nnUX7f/FxHB5s+Pf0XUtQ42FP5Rf8vi9/4ty/4WFL+fClCPU00PedRf1flXz3PY9JBH/XW+n5KGdT47++t8PyUN+zln9XcVREE7iDGN/oN4DfwAEd02Nw==
   </data>
  </layer>
  <layer id="5" name="walls" width="40" height="25" visible="0">
   <data encoding="base64" compression="zlib">
-   eJztlksKgDAMBSPe/zxexd+yuBIUegEjKBSJJG6aV+nArDuLtGloiAKwfUs0sCM7sTObg53P3gRTYu0ruk8jJjOYmoMVvM/C3YeKZ985f5rx0quvU/Tu0/DsW8D7LNS+d77Mn3S3a5/9/fPoe+5UaU8g9UmU0odKKX3SHzrXP/oPfcgefQjlAQ==
+   eJztljEKgDAMACP+/xU+wq9odSxOgkI/YASFIpG0DkkqPbi5N6RNfQPgDTu0ACPq0AmdUQl2PHsjjAm1r+g+jhDNYKwEq/G+FO4+18r4tU+Dc/44w6VWX8+o3ceh2bcY70uh9r2TM3/U3a596e+fRt9zp1J7wlIfRSl9GnTG3+ecPuoPLfWP/kOfZQ9Sofy7
   </data>
  </layer>
  <objectgroup id="3" name="actors">
@@ -121,8 +121,9 @@
   <object id="48" name="barrel" gid="224" x="192" y="80" width="16" height="16"/>
   <object id="49" name="barrel" gid="224" x="192" y="64" width="16" height="16"/>
   <object id="50" name="barrel" gid="224" x="208" y="64" width="16" height="16"/>
-  <object id="51" name="barrel" gid="224" x="213.75" y="47.25" width="16" height="16"/>
+  <object id="51" name="barrel" gid="224" x="208" y="48" width="16" height="16"/>
   <object id="52" name="barrel" gid="224" x="208" y="80" width="16" height="16"/>
   <object id="53" name="barrel" gid="224" x="512" y="256" width="16" height="16"/>
+  <object id="54" name="door" type="vertical" gid="65" x="480" y="384" width="16" height="16"/>
  </objectgroup>
 </map>

@@ -4,6 +4,8 @@
 
 package sk.tuke.kpi.oop.game.openables;
 
+import org.jetbrains.annotations.NotNull;
+
 import sk.tuke.kpi.gamelib.Actor;
 
 import sk.tuke.kpi.oop.game.items.AccessCard;
@@ -23,7 +25,7 @@ public class LockedDoor extends Door implements Lockable {
     {
         super(name, orientation);
 
-        this.lock();
+        this.lock(this);
     }
 
     @Override
@@ -41,13 +43,13 @@ public class LockedDoor extends Door implements Lockable {
             return;
         }
 
-        this.unlock();
+        this.unlock(this);
     }
 
     /**
      * Lock.
      */
-    public void lock()
+    public void lock(@NotNull Actor actor)
     {
         this.setLocked(true);
         this.close();
@@ -56,7 +58,7 @@ public class LockedDoor extends Door implements Lockable {
     /**
      * Unlock.
      */
-    public void unlock()
+    public void unlock(@NotNull Actor actor)
     {
         this.setLocked(false);
         this.open();
