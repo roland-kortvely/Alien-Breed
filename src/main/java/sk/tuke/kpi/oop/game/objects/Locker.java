@@ -5,19 +5,22 @@
 package sk.tuke.kpi.oop.game.objects;
 
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
+import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
-import sk.tuke.kpi.oop.game.characters.Player;
 import sk.tuke.kpi.oop.game.commands.AddActor;
+import sk.tuke.kpi.oop.game.items.AccessCard;
 import sk.tuke.kpi.oop.game.items.Item;
+import sk.tuke.kpi.oop.game.items.Lockable;
 import sk.tuke.kpi.oop.game.items.Usable;
 
 /**
  * The type Locker.
  */
-public class Locker extends AbstractActor implements Usable<Player> {
+public class Locker extends AbstractActor implements Lockable, Usable<Actor> {
 
     /**
      * The enum Orientation.
@@ -64,31 +67,39 @@ public class Locker extends AbstractActor implements Usable<Player> {
 
     private Orientation orientation;
 
+    private boolean locked;
 
-    /**
-     * Instantiates a new Locker.
-     *
-     * @param content     the content
-     * @param orientation the orientation
-     */
-    public Locker(Item content, Orientation orientation)
+    private Locker(@NotNull LockerBuilder lockerBuilder)
     {
         setAnimation(new Animation("sprites/locker.png", 16, 16));
 
+        this.content = lockerBuilder.content;
+        this.orientation = lockerBuilder.orientation;
+        this.locked = lockerBuilder.locked;
+
         this.setUsed(false);
-        this.setContent(content);
-        this.setOrientation(orientation);
 
         getAnimation().setRotation(getOrientation().getDeg());
     }
 
     @Override
-    public void useWith(Player actor)
+    public void unlock(@NotNull Actor actor)
+    {
+        this.drop(actor);
+    }
+
+    @Override
+    public void useWith(Actor actor)
     {
         if (actor == null) {
             return;
         }
 
+       this.drop(actor);
+    }
+
+    private void drop(@NotNull Actor actor)
+    {
         if (this.isUsed()) {
             return;
         }
@@ -110,9 +121,9 @@ public class Locker extends AbstractActor implements Usable<Player> {
     }
 
     @Override
-    public Class<Player> getUsingActorClass()
+    public Class<Actor> getUsingActorClass()
     {
-        return Player.class;
+        return Actor.class;
     }
 
     @Contract(pure = true)
@@ -121,19 +132,65 @@ public class Locker extends AbstractActor implements Usable<Player> {
         return content;
     }
 
-    private void setContent(Item content)
-    {
-        this.content = content;
-    }
-
     @Contract(pure = true)
     private Orientation getOrientation()
     {
         return orientation;
     }
 
-    private void setOrientation(Orientation orientation)
+    /**
+     * Is locked boolean.
+     *
+     * @return the boolean
+     */
+    public boolean isLocked()
     {
-        this.orientation = orientation;
+        return locked;
+    }
+
+    /**
+     * The type Locker builder.
+     */
+    public static class LockerBuilder {
+
+        private Item content;
+
+        private Orientation orientation;
+
+        private boolean locked;
+
+        /**
+         * Instantiates a new Locker builder.
+         *
+         * @param content     the content
+         * @param orientation the orientation
+         */
+        public LockerBuilder(Item content, Orientation orientation)
+        {
+            this.content = content;
+            this.orientation = orientation;
+            this.locked = false;
+        }
+
+        /**
+         * Sets locked.
+         *
+         * @return the locked
+         */
+        public LockerBuilder setLocked()
+        {
+            this.locked = true;
+            return this;
+        }
+
+        /**
+         * Build locker.
+         *
+         * @return the locker
+         */
+        public Locker build()
+        {
+            return new Locker(this);
+        }
     }
 }

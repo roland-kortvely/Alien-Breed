@@ -90,9 +90,13 @@ public class Problemset implements SceneListener {
                 case "locker":
                     switch (type) {
                         case "ammo":
-                            return new Locker(new Ammo(), Locker.Orientation.DOWN);
+                            return new Locker.LockerBuilder(new Ammo(), Locker.Orientation.DOWN).build();
                         case "extinguisher":
-                            return new Locker(new FireExtinguisher(), Locker.Orientation.DOWN);
+                            return new Locker.LockerBuilder(new FireExtinguisher(), Locker.Orientation.DOWN).build();
+                        case "hammer":
+                            return new Locker.LockerBuilder(new Hammer(), Locker.Orientation.DOWN)
+                                .setLocked()
+                                .build();
                         default:
                             return null;
                     }

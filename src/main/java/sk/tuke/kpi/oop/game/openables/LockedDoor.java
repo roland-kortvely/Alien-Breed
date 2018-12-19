@@ -7,11 +7,12 @@ package sk.tuke.kpi.oop.game.openables;
 import sk.tuke.kpi.gamelib.Actor;
 
 import sk.tuke.kpi.oop.game.items.AccessCard;
+import sk.tuke.kpi.oop.game.items.Lockable;
 
 /**
  * The type Locked door.
  */
-public class LockedDoor extends Door {
+public class LockedDoor extends Door implements Lockable {
 
     private boolean locked;
 

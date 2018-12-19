@@ -7,12 +7,10 @@ package sk.tuke.kpi.oop.game.items;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
-import sk.tuke.kpi.oop.game.openables.LockedDoor;
-
 /**
  * The type Access card.
  */
-public class AccessCard extends AbstractActor implements Item, Collectible, Usable<LockedDoor> {
+public class AccessCard extends AbstractActor implements Item, Collectible, Usable<Lockable> {
 
     /**
      * Instantiates a new Access card.
@@ -23,7 +21,7 @@ public class AccessCard extends AbstractActor implements Item, Collectible, Usab
     }
 
     @Override
-    public void useWith(LockedDoor actor)
+    public void useWith(Lockable actor)
     {
         if (actor == null) {
             return;
@@ -33,12 +31,12 @@ public class AccessCard extends AbstractActor implements Item, Collectible, Usab
             return;
         }
 
-        actor.unlock();
+        actor.unlock(actor);
     }
 
     @Override
-    public Class<LockedDoor> getUsingActorClass()
+    public Class<Lockable> getUsingActorClass()
     {
-        return LockedDoor.class;
+        return Lockable.class;
     }
 }
