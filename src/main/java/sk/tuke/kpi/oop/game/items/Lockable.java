@@ -4,8 +4,6 @@
 
 package sk.tuke.kpi.oop.game.items;
 
-import org.jetbrains.annotations.NotNull;
-
 import sk.tuke.kpi.gamelib.Actor;
 
 /**
@@ -28,7 +26,7 @@ public interface Lockable extends Actor {
      *
      * @param actor the actor
      */
-    default void lock(@NotNull Actor actor)
+    default void lock(Actor actor)
     {
     }
 
@@ -37,7 +35,7 @@ public interface Lockable extends Actor {
      *
      * @param actor the actor
      */
-    default void unlock(@NotNull Actor actor)
+    default void unlock(Actor actor)
     {
     }
 }
