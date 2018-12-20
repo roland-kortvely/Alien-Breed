@@ -12,7 +12,6 @@ import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.oop.game.commands.AddActor;
-import sk.tuke.kpi.oop.game.items.AccessCard;
 import sk.tuke.kpi.oop.game.items.Item;
 import sk.tuke.kpi.oop.game.items.Lockable;
 import sk.tuke.kpi.oop.game.items.Usable;

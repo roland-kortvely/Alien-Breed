@@ -14,8 +14,6 @@ import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.oop.game.commands.AddActor;
-import sk.tuke.kpi.oop.game.commands.Destroy;
-import sk.tuke.kpi.oop.game.items.Obstacle;
 
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
@@ -23,7 +21,7 @@ import java.awt.geom.Rectangle2D;
 /**
  * The type Alien egg.
  */
-public class AlienEgg extends AbstractActor implements Obstacle, Enemy {
+public class AlienEgg extends AbstractActor implements Enemy {
 
     private Enemy enemy;
 
@@ -77,7 +75,7 @@ public class AlienEgg extends AbstractActor implements Obstacle, Enemy {
             (action) -> this.getAnimation().getCurrentFrameIndex() >= (this.getAnimation().getFrameCount() - 1),
             new Invoke<>(() -> {
                 new AddActor(this.getEnemy(), this.getPosX(), this.getPosY()).execute(this);
-                new Destroy().execute(this);
+                //new Destroy().execute(this);
             })
         ).scheduleOn(this);
     }
