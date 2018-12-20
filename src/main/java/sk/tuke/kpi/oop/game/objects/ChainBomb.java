@@ -29,7 +29,6 @@ public class ChainBomb extends TimeBomb {
     public void detonate()
     {
         Scene scene = this.getScene();
-
         if (scene == null) {
             return;
         }
@@ -41,7 +40,7 @@ public class ChainBomb extends TimeBomb {
         );
 
         for (Actor actor : scene.getActors()) {
-            if (actor.getClass() == ChainBomb.class && !this.equals(actor)) {
+            if (actor instanceof ChainBomb && !this.equals(actor)) {
 
                 Rectangle2D.Float rectangle = new Rectangle2D.Float(actor.getPosX(), actor.getPosY(), actor.getWidth(), actor.getHeight());
 

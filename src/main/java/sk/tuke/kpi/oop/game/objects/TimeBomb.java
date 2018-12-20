@@ -71,9 +71,7 @@ public class TimeBomb extends AbstractActor {
 
         new When<>(
             (action) -> this.getAnimation().getCurrentFrameIndex() >= (this.getAnimation().getFrameCount() - 1),
-            new Invoke<>(() -> {
-                new Destroy().execute(this);
-            })
+            new Invoke<>(() -> new Destroy().execute(this))
         ).scheduleOn(this);
     }
 

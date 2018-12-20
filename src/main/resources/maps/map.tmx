@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="40" height="25" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="55">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="40" height="25" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="67">
  <tileset firstgid="1" name="tileset01" tilewidth="16" tileheight="16" tilecount="500" columns="20">
   <image source="tilesets/tileset01.png" width="320" height="400"/>
  </tileset>
@@ -80,7 +80,7 @@
  </tileset>
  <layer id="4" name="background" width="40" height="25">
   <data encoding="base64" compression="zlib">
-   eJzNlrlOw0AQhtd2So6WIgQk9xSAlJIjISClSBB3CDRcVSQkinDUHK8QoIGeo+VouCvOPASPgOj4rezIg/EmtqXEFJ/+2WQcT/6ZXTsvhGgCzaAlQBz0ujkPOa2gC2wbQuyAXbAHYroQHaBTrx17yXXDxH0TuFfSqCiRZGrlDIIS4n1wAA5BN67vAb167dhLrhtxVt8UY5rVZ+VMghPEp+AMnEv//MA9I1JgGIwocPqXZNA6Lf27QXwL7sC99M8P3DMiB2ZBXgH51wf6wYD0jvtnSv+WEa8YtqZ0f5BPtfJ4zSd6pYYxMA4mZH+5l3G5PzYRbxm25nR/0D395FIdvL4Em0He3y+tMXwzevW/e4PvkWnW3xmQa7DOy3OuGqbs7xBINVit2TqCj8dapd4jqdaaPo/L/obhX1zqNep4AI/gSausKS8t+xuWf6rvMyAr7P0bhn/VdAEsCnv/YquIiIuG4aulRbAu7OfbJ3gD7+BDrqm+es9ftby0UO/fNpnn9/9fYL4vwZUWfP5I6f3FrX7Lv0IAX55R1wt41arneTn/qL8q/+o5ZyU8PzIY9CwYNdzzqL8q/+o5f1Z9C6hrESwZ7nnUX7f/FxHB5s+Pf0XUtQ42FP5Rf8vi9/4ty/4WFL+fClCPU00PedRf1flXz3PY9JBH/XW+n5KGdT47++t8PyUN+zln9XcVREE7iDGN/oN4DfwAEd02Nw==
+   eJzNlr9OG0EQxvf2KAm0FGCQrqcwllxCsHEiGQkQ4V+ANDiksoREYYfUCXkFAg30BloCDSRABUngIXgERJdv5Rntcrk9351kX4qfZvY8tr/7ZnbvVoQQ3eAF6EmQJ/3eaoSaXjAMPrtCfAHb4CvISCEGwZBsnQddmxTBDEmNh3UB/1V0m5EpGlHVjIMd5N/ALtgDWXx/BORk6zzomk1fTmryhr4Fg0VDn6qZBw3kh+AIHJN/cTD9y4Toey01fv+KBrwuk3/nyC/AD/CT/IuD6V82RN+K1LB/o2AMvCTvTP888m8d+QdXx5KMxyvyhNc2fW/x2TLpa8imhlnwBsxRf00v87Q/tpB/cnVUvxMH/k9eR9HHOkx9BWMGzf4+Op3hySAn/90b5h5ZNPq7pO6tw/EdnXNheNTfCVDqcFSztQ8fD5ym3n2Kas3X89TfNPzLUzyDjktwBa6d5prrytTftPyzfT4FpoXev2n4FxbXQEXo/YutIroCYhq+qlgDdaGfbw/gN/gD7mjN+to9f2F1ZWHfv31UF/f+TzDf38Gpk3z+OPL7S5B+5V81gS830HULfjnhdVHOP+6vzb92ztkOnh9TGPRpMOMG13F/bf61c/6UvjXoqoD3bnAd9zfo/rpEsvmL418Nuurgo8U/7u+9eL5/76m/VcvvlxLo8UcvQh3313b+tfMc9iLUcX/976cc0zqf/f31v59yTPs5p/q7AfrBAMgYsf8/yDfBX7ajN28=
   </data>
  </layer>
  <layer id="5" name="walls" width="40" height="25" visible="0">
@@ -117,13 +117,25 @@
   <object id="44" name="barrel" gid="224" x="176" y="48" width="16" height="16"/>
   <object id="45" name="barrel" gid="224" x="176" y="64" width="16" height="16"/>
   <object id="46" name="barrel" gid="224" x="176" y="80" width="16" height="16"/>
-  <object id="47" name="barrel" gid="224" x="192" y="48" width="16" height="16"/>
-  <object id="48" name="barrel" gid="224" x="192" y="80" width="16" height="16"/>
+  <object id="47" name="barrel" gid="224" x="192" y="32" width="16" height="16"/>
+  <object id="48" name="barrel" gid="224" x="192" y="112" width="16" height="16"/>
   <object id="49" name="barrel" gid="224" x="192" y="64" width="16" height="16"/>
   <object id="50" name="barrel" gid="224" x="208" y="64" width="16" height="16"/>
-  <object id="51" name="barrel" gid="224" x="208" y="48" width="16" height="16"/>
-  <object id="52" name="barrel" gid="224" x="208" y="80" width="16" height="16"/>
+  <object id="51" name="barrel" gid="224" x="208" y="32" width="16" height="16"/>
+  <object id="52" name="barrel" gid="224" x="192" y="80" width="16" height="16"/>
   <object id="53" name="barrel" gid="224" x="512" y="256" width="16" height="16"/>
   <object id="54" name="door" type="vertical" gid="65" x="480" y="384" width="16" height="16"/>
+  <object id="55" name="alien egg" gid="384" x="352" y="80" width="16" height="16"/>
+  <object id="56" name="alien egg" gid="384" x="400" y="96" width="16" height="16"/>
+  <object id="57" name="barrel" gid="224" x="192" y="96" width="16" height="16"/>
+  <object id="58" name="barrel" gid="224" x="208" y="80" width="16" height="16"/>
+  <object id="59" name="barrel" gid="224" x="176" y="96" width="16" height="16"/>
+  <object id="60" name="barrel" gid="224" x="208" y="112" width="16" height="16"/>
+  <object id="61" name="barrel" gid="224" x="208" y="96" width="16" height="16"/>
+  <object id="62" name="barrel" gid="224" x="176" y="112" width="16" height="16"/>
+  <object id="63" name="spitter" gid="1019" x="112" y="96" width="29" height="31"/>
+  <object id="64" name="barrel" gid="224" x="176" y="32" width="16" height="16"/>
+  <object id="65" name="barrel" gid="224" x="192" y="48" width="16" height="16"/>
+  <object id="66" name="barrel" gid="224" x="208" y="48" width="16" height="16"/>
  </objectgroup>
 </map>

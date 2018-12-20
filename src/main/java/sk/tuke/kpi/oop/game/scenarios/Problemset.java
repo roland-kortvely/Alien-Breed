@@ -14,16 +14,22 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.SceneListener;
 
 import sk.tuke.kpi.oop.game.behaviours.RandomlyMoving;
-import sk.tuke.kpi.oop.game.characters.Alien;
-import sk.tuke.kpi.oop.game.characters.AlienMother;
-import sk.tuke.kpi.oop.game.characters.AlienSpitter;
-import sk.tuke.kpi.oop.game.characters.Ripley;
+import sk.tuke.kpi.oop.game.characters.*;
 import sk.tuke.kpi.oop.game.commands.Message;
 import sk.tuke.kpi.oop.game.controllers.CollectorController;
 import sk.tuke.kpi.oop.game.controllers.MovableController;
 import sk.tuke.kpi.oop.game.controllers.ShooterController;
-import sk.tuke.kpi.oop.game.items.*;
-import sk.tuke.kpi.oop.game.objects.*;
+import sk.tuke.kpi.oop.game.items.AccessCard;
+import sk.tuke.kpi.oop.game.items.Ammo;
+import sk.tuke.kpi.oop.game.items.Energy;
+import sk.tuke.kpi.oop.game.items.FireExtinguisher;
+import sk.tuke.kpi.oop.game.items.Hammer;
+import sk.tuke.kpi.oop.game.items.Wrench;
+import sk.tuke.kpi.oop.game.objects.Barrel;
+import sk.tuke.kpi.oop.game.objects.Computer;
+import sk.tuke.kpi.oop.game.objects.Corpse;
+import sk.tuke.kpi.oop.game.objects.Locker;
+import sk.tuke.kpi.oop.game.objects.Reactor;
 import sk.tuke.kpi.oop.game.openables.Door;
 import sk.tuke.kpi.oop.game.openables.LockedDoor;
 
@@ -59,6 +65,8 @@ public class Problemset implements SceneListener {
                     return new Alien(100, new RandomlyMoving());
                 case "alien mother":
                     return new AlienMother();
+                case "alien egg":
+                    return new AlienEgg(new Alien(new RandomlyMoving()));
                 case "spitter":
                     return new AlienSpitter(100, new RandomlyMoving());
                 case "locked door":

@@ -19,7 +19,7 @@ public class AlienSpitter extends Alien {
      */
     public AlienSpitter()
     {
-        this(100, null);
+        this(50, null);
     }
 
 

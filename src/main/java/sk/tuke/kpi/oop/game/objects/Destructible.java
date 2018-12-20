@@ -13,7 +13,7 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.oop.game.characters.Health;
 import sk.tuke.kpi.oop.game.commands.Destroy;
-import sk.tuke.kpi.oop.game.items.Fragile;
+import sk.tuke.kpi.oop.game.items.Explosive;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * The type Destructible.
  */
-public abstract class Destructible extends AbstractActor implements Fragile {
+public abstract class Destructible extends AbstractActor implements Explosive {
 
     private Animation explosionAnimation;
 

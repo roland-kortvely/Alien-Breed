@@ -7,9 +7,9 @@ package sk.tuke.kpi.oop.game.items;
 import sk.tuke.kpi.oop.game.characters.Alive;
 
 /**
- * The interface Fragile.
+ * The interface Explosive.
  */
-public interface Fragile extends Alive {
+public interface Explosive extends Alive {
 
     /**
      * Explode.
