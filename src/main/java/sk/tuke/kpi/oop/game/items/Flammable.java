@@ -11,7 +11,6 @@ import sk.tuke.kpi.gamelib.Actor;
  */
 public interface Flammable extends Actor {
 
-
     /**
      * Extinguish boolean.
      *

@@ -35,7 +35,5 @@ public interface Lockable extends Actor {
      *
      * @param actor the actor
      */
-    default void unlock(Actor actor)
-    {
-    }
+    void unlock(Actor actor);
 }

@@ -10,5 +10,4 @@ import sk.tuke.kpi.gamelib.Actor;
  * The interface Enemy.
  */
 public interface Enemy extends Actor {
-
 }

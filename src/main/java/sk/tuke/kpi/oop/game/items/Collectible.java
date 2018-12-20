@@ -10,5 +10,4 @@ import sk.tuke.kpi.gamelib.Actor;
  * Interface Collectible
  */
 public interface Collectible extends Actor {
-
 }
