@@ -10,7 +10,7 @@ import sk.tuke.kpi.gamelib.Input;
 import sk.tuke.kpi.gamelib.KeyboardListener;
 
 import sk.tuke.kpi.oop.game.actions.Fire;
-import sk.tuke.kpi.oop.game.characters.Armed;
+import sk.tuke.kpi.oop.game.interfaces.Armed;
 
 /**
  * The type Shooter controller.

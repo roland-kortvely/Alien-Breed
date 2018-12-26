@@ -14,7 +14,10 @@ import sk.tuke.kpi.gamelib.messages.Topic;
 
 import sk.tuke.kpi.oop.game.Gameplay;
 import sk.tuke.kpi.oop.game.actions.PerpetualReactorHeating;
-import sk.tuke.kpi.oop.game.items.Flammable;
+import sk.tuke.kpi.oop.game.interfaces.EnergyConsumer;
+import sk.tuke.kpi.oop.game.interfaces.Repairable;
+import sk.tuke.kpi.oop.game.interfaces.Switchable;
+import sk.tuke.kpi.oop.game.interfaces.Flammable;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -8,6 +8,8 @@ import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 
 import sk.tuke.kpi.oop.game.commands.Destroy;
+import sk.tuke.kpi.oop.game.interfaces.Collectible;
+import sk.tuke.kpi.oop.game.interfaces.Item;
 
 /**
  * The type Breakable tool.

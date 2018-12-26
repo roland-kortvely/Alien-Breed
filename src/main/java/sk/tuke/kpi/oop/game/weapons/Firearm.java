@@ -5,6 +5,7 @@
 package sk.tuke.kpi.oop.game.weapons;
 
 import org.jetbrains.annotations.Contract;
+import sk.tuke.kpi.oop.game.interfaces.Fireable;
 
 /**
  * The type Firearm.

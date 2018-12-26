@@ -11,6 +11,7 @@ import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.gamelib.messages.Topic;
 import sk.tuke.kpi.oop.game.Gameplay;
+import sk.tuke.kpi.oop.game.interfaces.Repairable;
 
 /**
  * The type Ventilator.

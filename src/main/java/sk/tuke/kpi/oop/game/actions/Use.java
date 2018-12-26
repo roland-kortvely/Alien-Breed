@@ -10,8 +10,8 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
 
 import sk.tuke.kpi.oop.game.Gameplay;
-import sk.tuke.kpi.oop.game.items.Explosive;
-import sk.tuke.kpi.oop.game.items.Usable;
+import sk.tuke.kpi.oop.game.interfaces.Explosive;
+import sk.tuke.kpi.oop.game.interfaces.Usable;
 
 /**
  * The type Use.

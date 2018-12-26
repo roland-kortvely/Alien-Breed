@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 import sk.tuke.kpi.gamelib.Scene;
 
-import sk.tuke.kpi.oop.game.objects.Repairable;
+import sk.tuke.kpi.oop.game.interfaces.Repairable;
 
 /**
  * Repair repairable object.

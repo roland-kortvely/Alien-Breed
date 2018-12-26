@@ -13,6 +13,8 @@ import sk.tuke.kpi.gamelib.actions.When;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.oop.game.commands.AddActor;
+import sk.tuke.kpi.oop.game.interfaces.Enemy;
+import sk.tuke.kpi.oop.game.interfaces.Player;
 
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;

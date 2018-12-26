@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 import sk.tuke.kpi.gamelib.Scene;
 
-import sk.tuke.kpi.oop.game.characters.Armed;
+import sk.tuke.kpi.oop.game.interfaces.Armed;
 
 /**
  * Reload firearm of armed actor.

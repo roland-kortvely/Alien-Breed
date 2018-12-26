@@ -6,7 +6,7 @@ package sk.tuke.kpi.oop.game.items;
 
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
-import sk.tuke.kpi.oop.game.objects.Repairable;
+import sk.tuke.kpi.oop.game.interfaces.Repairable;
 import sk.tuke.kpi.oop.game.commands.Repair;
 
 /**

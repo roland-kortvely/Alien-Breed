@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 import sk.tuke.kpi.gamelib.Scene;
 
-import sk.tuke.kpi.oop.game.items.Flammable;
+import sk.tuke.kpi.oop.game.interfaces.Flammable;
 
 /**
  * Extinguish flammable object.

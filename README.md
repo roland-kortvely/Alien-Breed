@@ -1,1 +1,3 @@
-GROUP: 09
+**Alien Breed**
+
+Simple game for testing purposes

@@ -12,7 +12,8 @@ import sk.tuke.kpi.gamelib.actions.Wait;
 import sk.tuke.kpi.gamelib.framework.actions.Loop;
 
 import sk.tuke.kpi.oop.game.Direction;
-import sk.tuke.kpi.oop.game.characters.Movable;
+import sk.tuke.kpi.oop.game.interfaces.Behaviour;
+import sk.tuke.kpi.oop.game.interfaces.Movable;
 import sk.tuke.kpi.oop.game.actions.Move;
 
 /**

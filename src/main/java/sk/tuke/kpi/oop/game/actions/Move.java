@@ -11,9 +11,9 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.actions.Action;
 
 import sk.tuke.kpi.oop.game.Gameplay;
-import sk.tuke.kpi.oop.game.characters.Movable;
+import sk.tuke.kpi.oop.game.interfaces.Movable;
 import sk.tuke.kpi.oop.game.Direction;
-import sk.tuke.kpi.oop.game.items.Obstacle;
+import sk.tuke.kpi.oop.game.interfaces.Obstacle;
 
 /**
  * The type Move.

@@ -10,7 +10,7 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
 
 import sk.tuke.kpi.oop.game.Gameplay;
-import sk.tuke.kpi.oop.game.characters.Keeper;
+import sk.tuke.kpi.oop.game.interfaces.Keeper;
 
 import java.util.Optional;
 

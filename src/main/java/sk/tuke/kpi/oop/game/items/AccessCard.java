@@ -6,6 +6,9 @@ package sk.tuke.kpi.oop.game.items;
 
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
+import sk.tuke.kpi.oop.game.interfaces.Collectible;
+import sk.tuke.kpi.oop.game.interfaces.Item;
+import sk.tuke.kpi.oop.game.interfaces.Lockable;
 
 /**
  * The type Access card.

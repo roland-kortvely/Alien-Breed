@@ -4,6 +4,8 @@
 
 package sk.tuke.kpi.oop.game.weapons;
 
+import sk.tuke.kpi.oop.game.interfaces.Fireable;
+
 /**
  * The type Gun.
  */

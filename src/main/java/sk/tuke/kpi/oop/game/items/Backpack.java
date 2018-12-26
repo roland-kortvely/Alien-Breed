@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import sk.tuke.kpi.gamelib.ActorContainer;
+import sk.tuke.kpi.oop.game.interfaces.Collectible;
 
 import java.util.ArrayList;
 import java.util.Collections;

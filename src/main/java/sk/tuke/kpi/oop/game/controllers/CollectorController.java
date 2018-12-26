@@ -12,13 +12,13 @@ import sk.tuke.kpi.gamelib.KeyboardListener;
 import sk.tuke.kpi.gamelib.Scene;
 
 import sk.tuke.kpi.oop.game.Gameplay;
-import sk.tuke.kpi.oop.game.characters.Keeper;
+import sk.tuke.kpi.oop.game.interfaces.Keeper;
 import sk.tuke.kpi.oop.game.actions.Drop;
 import sk.tuke.kpi.oop.game.actions.Shift;
 import sk.tuke.kpi.oop.game.actions.Take;
 import sk.tuke.kpi.oop.game.actions.Use;
-import sk.tuke.kpi.oop.game.items.Collectible;
-import sk.tuke.kpi.oop.game.items.Usable;
+import sk.tuke.kpi.oop.game.interfaces.Collectible;
+import sk.tuke.kpi.oop.game.interfaces.Usable;
 
 import java.util.Optional;
 

@@ -9,9 +9,9 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.oop.game.Gameplay;
-import sk.tuke.kpi.oop.game.characters.Alive;
+import sk.tuke.kpi.oop.game.interfaces.Alive;
 import sk.tuke.kpi.oop.game.commands.DrainHealth;
-import sk.tuke.kpi.oop.game.items.Obstacle;
+import sk.tuke.kpi.oop.game.interfaces.Obstacle;
 
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;

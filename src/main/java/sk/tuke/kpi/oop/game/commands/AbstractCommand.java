@@ -9,13 +9,14 @@ import org.jetbrains.annotations.NotNull;
 import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.oop.game.Gameplay;
+import sk.tuke.kpi.oop.game.interfaces.Executable;
 
 /**
  * The type Abstract command.
  *
  * @param <T> the type parameter
  */
-public abstract class AbstractCommand<T extends Actor> implements Command<T> {
+public abstract class AbstractCommand<T extends Actor> implements Executable<T> {
 
     @Override
     public boolean execute(T actor)
@@ -28,7 +29,7 @@ public abstract class AbstractCommand<T extends Actor> implements Command<T> {
     }
 
     /**
-     * Command boolean.
+     * Executable boolean.
      *
      * @param actor the actor
      * @param scene the scene

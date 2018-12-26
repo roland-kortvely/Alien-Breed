@@ -2,16 +2,16 @@
  * Copyright (c) 2018  Roland Körtvely <roland.kortvely@gmail.com>
  */
 
-package sk.tuke.kpi.oop.game.commands;
+package sk.tuke.kpi.oop.game.interfaces;
 
 import sk.tuke.kpi.gamelib.Actor;
 
 /**
- * The interface Command.
+ * The interface Executable.
  *
  * @param <T> the type parameter
  */
-public interface Command<T extends Actor> {
+public interface Executable<T extends Actor> {
 
     /**
      * Execute boolean.

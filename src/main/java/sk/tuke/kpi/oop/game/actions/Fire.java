@@ -9,8 +9,8 @@ import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
 
 import sk.tuke.kpi.oop.game.Direction;
 import sk.tuke.kpi.oop.game.Gameplay;
-import sk.tuke.kpi.oop.game.characters.Armed;
-import sk.tuke.kpi.oop.game.weapons.Fireable;
+import sk.tuke.kpi.oop.game.interfaces.Armed;
+import sk.tuke.kpi.oop.game.interfaces.Fireable;
 
 /**
  * The type Fire.

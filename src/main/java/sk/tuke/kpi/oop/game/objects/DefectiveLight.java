@@ -11,6 +11,7 @@ import sk.tuke.kpi.gamelib.Disposable;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.framework.actions.Loop;
+import sk.tuke.kpi.oop.game.interfaces.Repairable;
 
 import java.util.Random;
 

@@ -18,6 +18,7 @@ import sk.tuke.kpi.gamelib.messages.Topic;
 
 import sk.tuke.kpi.oop.game.Direction;
 import sk.tuke.kpi.oop.game.Gameplay;
+import sk.tuke.kpi.oop.game.interfaces.Player;
 import sk.tuke.kpi.oop.game.items.Backpack;
 import sk.tuke.kpi.oop.game.weapons.Firearm;
 import sk.tuke.kpi.oop.game.weapons.Gun;

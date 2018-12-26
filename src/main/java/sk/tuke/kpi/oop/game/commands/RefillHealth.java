@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 import sk.tuke.kpi.gamelib.Scene;
 
-import sk.tuke.kpi.oop.game.characters.Alive;
+import sk.tuke.kpi.oop.game.interfaces.Alive;
 
 /**
  * Refill health of alive actor.

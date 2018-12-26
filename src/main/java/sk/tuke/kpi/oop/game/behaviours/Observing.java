@@ -10,6 +10,7 @@ import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.messages.Topic;
 import sk.tuke.kpi.oop.game.Gameplay;
+import sk.tuke.kpi.oop.game.interfaces.Behaviour;
 
 import java.util.function.Predicate;
 

@@ -12,9 +12,9 @@ import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.oop.game.commands.AddActor;
-import sk.tuke.kpi.oop.game.items.Item;
-import sk.tuke.kpi.oop.game.items.Lockable;
-import sk.tuke.kpi.oop.game.items.Usable;
+import sk.tuke.kpi.oop.game.interfaces.Item;
+import sk.tuke.kpi.oop.game.interfaces.Lockable;
+import sk.tuke.kpi.oop.game.interfaces.Usable;
 
 /**
  * The type Locker.

@@ -7,38 +7,23 @@ package sk.tuke.kpi.oop.game.scenarios;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import sk.tuke.kpi.gamelib.Actor;
-import sk.tuke.kpi.gamelib.ActorFactory;
-import sk.tuke.kpi.gamelib.Disposable;
-import sk.tuke.kpi.gamelib.Scene;
-import sk.tuke.kpi.gamelib.SceneListener;
+import sk.tuke.kpi.gamelib.*;
 
-import sk.tuke.kpi.oop.game.behaviours.RandomlyMoving;
+import sk.tuke.kpi.oop.game.behaviours.*;
 import sk.tuke.kpi.oop.game.characters.*;
-import sk.tuke.kpi.oop.game.commands.Message;
-import sk.tuke.kpi.oop.game.controllers.CollectorController;
-import sk.tuke.kpi.oop.game.controllers.MovableController;
-import sk.tuke.kpi.oop.game.controllers.ShooterController;
-import sk.tuke.kpi.oop.game.items.AccessCard;
-import sk.tuke.kpi.oop.game.items.Ammo;
-import sk.tuke.kpi.oop.game.items.Energy;
-import sk.tuke.kpi.oop.game.items.FireExtinguisher;
-import sk.tuke.kpi.oop.game.items.Hammer;
-import sk.tuke.kpi.oop.game.items.Wrench;
-import sk.tuke.kpi.oop.game.objects.Barrel;
-import sk.tuke.kpi.oop.game.objects.Computer;
-import sk.tuke.kpi.oop.game.objects.Corpse;
-import sk.tuke.kpi.oop.game.objects.Locker;
-import sk.tuke.kpi.oop.game.objects.Reactor;
-import sk.tuke.kpi.oop.game.openables.Door;
-import sk.tuke.kpi.oop.game.openables.LockedDoor;
+import sk.tuke.kpi.oop.game.commands.*;
+import sk.tuke.kpi.oop.game.controllers.*;
+import sk.tuke.kpi.oop.game.interfaces.Player;
+import sk.tuke.kpi.oop.game.items.*;
+import sk.tuke.kpi.oop.game.objects.*;
+import sk.tuke.kpi.oop.game.openables.*;
 
 import java.util.List;
 
 /**
- * The type Problemset.
+ * The type ReactorExtinguishing.
  */
-public class Problemset implements SceneListener {
+public class ReactorExtinguishing implements SceneListener {
 
     /**
      * The type Factory.

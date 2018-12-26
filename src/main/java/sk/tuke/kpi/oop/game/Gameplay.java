@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import sk.tuke.kpi.gamelib.*;
-import sk.tuke.kpi.oop.game.scenarios.Problemset;
+import sk.tuke.kpi.oop.game.scenarios.ReactorExtinguishing;
 
 /**
  * The type Gameplay.
@@ -30,7 +30,7 @@ public class Gameplay {
         setGame(new GameApplication(new WindowSetup("Project Ellen", 800, 600)));
 
         //Preload map, instantiate actors
-        Scene scene = new World("world", "maps/map.tmx", new Problemset.Factory());
+        Scene scene = new World("world", "maps/map.tmx", new ReactorExtinguishing.Factory());
 
         //Exit game after pressing ESC
         scene.getInput().onKeyPressed(key -> {
@@ -39,8 +39,8 @@ public class Gameplay {
             }
         });
 
-        //
-        scene.addListener(new Problemset());
+        //Listen to topics
+        scene.addListener(new ReactorExtinguishing());
 
         //Save scene reference
         setScene(scene);

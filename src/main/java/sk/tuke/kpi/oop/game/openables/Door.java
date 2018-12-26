@@ -14,7 +14,8 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.gamelib.messages.Topic;
 
 import sk.tuke.kpi.oop.game.Gameplay;
-import sk.tuke.kpi.oop.game.items.Usable;
+import sk.tuke.kpi.oop.game.interfaces.Openable;
+import sk.tuke.kpi.oop.game.interfaces.Usable;
 
 /**
  * The type Door.

@@ -7,7 +7,7 @@ package sk.tuke.kpi.oop.game.openables;
 import sk.tuke.kpi.gamelib.Actor;
 
 import sk.tuke.kpi.oop.game.items.AccessCard;
-import sk.tuke.kpi.oop.game.items.Lockable;
+import sk.tuke.kpi.oop.game.interfaces.Lockable;
 
 /**
  * The type Locked door.

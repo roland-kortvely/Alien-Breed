@@ -7,9 +7,10 @@ package sk.tuke.kpi.oop.game.items;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
-import sk.tuke.kpi.oop.game.characters.Alive;
+import sk.tuke.kpi.oop.game.interfaces.Alive;
 import sk.tuke.kpi.oop.game.commands.Destroy;
 import sk.tuke.kpi.oop.game.commands.RefillHealth;
+import sk.tuke.kpi.oop.game.interfaces.Item;
 
 /**
  * The type Energy.

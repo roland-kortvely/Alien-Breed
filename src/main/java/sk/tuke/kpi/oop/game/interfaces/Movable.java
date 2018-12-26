@@ -2,11 +2,11 @@
  * Copyright (c) 2018  Roland Körtvely <roland.kortvely@gmail.com>
  */
 
-package sk.tuke.kpi.oop.game.characters;
+package sk.tuke.kpi.oop.game.interfaces;
 
 import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.oop.game.Direction;
-import sk.tuke.kpi.oop.game.items.Obstacle;
+import sk.tuke.kpi.oop.game.interfaces.Obstacle;
 
 /**
  * Interface Movable

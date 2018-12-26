@@ -13,10 +13,11 @@ import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.oop.game.Direction;
-import sk.tuke.kpi.oop.game.characters.Alive;
+import sk.tuke.kpi.oop.game.interfaces.Alive;
 import sk.tuke.kpi.oop.game.commands.Destroy;
 import sk.tuke.kpi.oop.game.commands.DrainHealth;
-import sk.tuke.kpi.oop.game.items.Obstacle;
+import sk.tuke.kpi.oop.game.interfaces.Fireable;
+import sk.tuke.kpi.oop.game.interfaces.Obstacle;
 
 /**
  * The type Bullet.

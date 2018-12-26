@@ -13,7 +13,7 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.oop.game.characters.Health;
 import sk.tuke.kpi.oop.game.commands.Destroy;
-import sk.tuke.kpi.oop.game.items.Explosive;
+import sk.tuke.kpi.oop.game.interfaces.Explosive;
 
 import java.util.ArrayList;
 import java.util.List;

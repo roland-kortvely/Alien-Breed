@@ -6,7 +6,7 @@ package sk.tuke.kpi.oop.game.characters;
 
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
-import sk.tuke.kpi.oop.game.behaviours.Behaviour;
+import sk.tuke.kpi.oop.game.interfaces.Behaviour;
 
 /**
  * The type Alien mother.

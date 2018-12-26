@@ -6,7 +6,9 @@ package sk.tuke.kpi.oop.game.characters;
 
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.oop.game.commands.Destroy;
-import sk.tuke.kpi.oop.game.items.Obstacle;
+import sk.tuke.kpi.oop.game.interfaces.Alive;
+import sk.tuke.kpi.oop.game.interfaces.Enemy;
+import sk.tuke.kpi.oop.game.interfaces.Obstacle;
 
 /**
  * The type Abstract alive enemy.
