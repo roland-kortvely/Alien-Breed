@@ -10,7 +10,7 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 /**
  * The type Access card.
  */
-public class AccessCard extends AbstractActor implements Item, Collectible, Usable<Lockable> {
+public class AccessCard extends AbstractActor implements Item<Lockable>, Collectible {
 
     /**
      * Instantiates a new Access card.

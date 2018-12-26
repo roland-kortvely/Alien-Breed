@@ -9,6 +9,7 @@ import sk.tuke.kpi.gamelib.Disposable;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
 
+import sk.tuke.kpi.oop.game.Gameplay;
 import sk.tuke.kpi.oop.game.items.Explosive;
 import sk.tuke.kpi.oop.game.items.Usable;
 
@@ -58,10 +59,7 @@ public class Use<A extends Actor> extends AbstractAction<A> {
      */
     public Disposable scheduleOnIntersectingWith(Actor mediatingActor)
     {
-        Scene scene = mediatingActor.getScene();
-        if (scene == null) {
-            return null;
-        }
+        Scene scene = Gameplay.getScene();
 
         Class<A> usingActorClass = usable.getUsingActorClass();
         return scene.getActors().stream()

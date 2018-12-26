@@ -11,7 +11,7 @@ import sk.tuke.kpi.oop.game.objects.DefectiveLight;
 /**
  * The type Wrench.
  */
-public class Wrench extends BreakableTool<DefectiveLight> implements Item, Collectible {
+public class Wrench extends BreakableTool<DefectiveLight> {
 
     /**
      * Instantiates a new Wrench.

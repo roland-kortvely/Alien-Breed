@@ -8,6 +8,7 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
 
 import sk.tuke.kpi.oop.game.Direction;
+import sk.tuke.kpi.oop.game.Gameplay;
 import sk.tuke.kpi.oop.game.characters.Armed;
 import sk.tuke.kpi.oop.game.weapons.Fireable;
 
@@ -26,11 +27,7 @@ public class Fire<A extends Armed> extends AbstractAction<A> {
             return;
         }
 
-        Scene scene = this.getActor().getScene();
-        if (scene == null) {
-            this.setDone(true);
-            return;
-        }
+        Scene scene = Gameplay.getScene();
 
         Fireable fireable = this.getActor().getFirearm().fire();
         if (fireable == null) {

@@ -8,6 +8,8 @@ import sk.tuke.kpi.gamelib.Actor;
 
 /**
  * The interface Item.
+ *
+ * @param <U> the type parameter
  */
-public interface Item extends Actor {
+public interface Item<U extends Actor> extends Actor, Usable<U> {
 }

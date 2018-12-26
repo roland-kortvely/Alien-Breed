@@ -14,7 +14,7 @@ import sk.tuke.kpi.oop.game.commands.Destroy;
  *
  * @param <A> the type parameter
  */
-public abstract class BreakableTool<A extends Actor> extends AbstractActor implements Usable<A> {
+public abstract class BreakableTool<A extends Actor> extends AbstractActor implements Item<A>, Collectible {
 
     private int remainingUses;
 

@@ -10,6 +10,7 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.gamelib.messages.Topic;
+import sk.tuke.kpi.oop.game.Gameplay;
 
 /**
  * The type Ventilator.
@@ -44,10 +45,7 @@ public class Ventilator extends AbstractActor implements Repairable {
         getAnimation().play();
         this.setBroken(false);
 
-        Scene scene = this.getScene();
-        if (scene == null) {
-            return true;
-        }
+        Scene scene = Gameplay.getScene();
 
         scene.getMessageBus().publish(VENTILATOR_REPAIRED, this);
 

@@ -62,7 +62,7 @@ public class Locker extends AbstractActor implements Lockable, Usable<Actor> {
 
     private boolean used;
 
-    private Item content;
+    private Item<?> content;
 
     private Orientation orientation;
 
@@ -126,7 +126,7 @@ public class Locker extends AbstractActor implements Lockable, Usable<Actor> {
     }
 
     @Contract(pure = true)
-    private Item getContent()
+    private Item<?> getContent()
     {
         return content;
     }
@@ -152,7 +152,7 @@ public class Locker extends AbstractActor implements Lockable, Usable<Actor> {
      */
     public static class LockerBuilder {
 
-        private Item content;
+        private Item<?> content;
 
         private Orientation orientation;
 
@@ -164,7 +164,7 @@ public class Locker extends AbstractActor implements Lockable, Usable<Actor> {
          * @param content     the content
          * @param orientation the orientation
          */
-        public LockerBuilder(Item content, Orientation orientation)
+        public LockerBuilder(Item<?> content, Orientation orientation)
         {
             this.content = content;
             this.orientation = orientation;

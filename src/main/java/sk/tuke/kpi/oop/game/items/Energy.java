@@ -14,7 +14,7 @@ import sk.tuke.kpi.oop.game.commands.RefillHealth;
 /**
  * The type Energy.
  */
-public class Energy extends AbstractActor implements Item, Usable<Alive> {
+public class Energy extends AbstractActor implements Item<Alive> {
 
     /**
      * Instantiates a new Energy.

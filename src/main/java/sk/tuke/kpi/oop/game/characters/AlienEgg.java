@@ -10,7 +10,6 @@ import org.jetbrains.annotations.NotNull;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.actions.When;
-import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
 import sk.tuke.kpi.oop.game.commands.AddActor;
@@ -21,7 +20,7 @@ import java.awt.geom.Rectangle2D;
 /**
  * The type Alien egg.
  */
-public class AlienEgg extends AbstractActor implements Enemy {
+public class AlienEgg extends AbstractAliveEnemy {
 
     private Enemy enemy;
 
@@ -32,6 +31,8 @@ public class AlienEgg extends AbstractActor implements Enemy {
      */
     public AlienEgg(Enemy enemy)
     {
+        super(10);
+
         setAnimation(new Animation("sprites/alien_egg.png", 32, 32, 0.2f, Animation.PlayMode.ONCE));
         getAnimation().stop();
 

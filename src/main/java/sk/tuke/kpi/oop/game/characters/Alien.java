@@ -8,15 +8,12 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import sk.tuke.kpi.gamelib.Scene;
-import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.actions.When;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
-import sk.tuke.kpi.oop.game.Movable;
 import sk.tuke.kpi.oop.game.behaviours.Behaviour;
 import sk.tuke.kpi.oop.game.Direction;
-import sk.tuke.kpi.oop.game.commands.Destroy;
 import sk.tuke.kpi.oop.game.items.Explosive;
 
 import java.util.Optional;
@@ -24,9 +21,7 @@ import java.util.Optional;
 /**
  * The type Alien.
  */
-public class Alien extends AbstractActor implements Alive, Enemy, Movable {
-
-    private Health health;
+public class Alien extends AbstractAliveEnemy implements Movable {
 
     private Behaviour<? super Alien> behaviour;
 
@@ -56,25 +51,15 @@ public class Alien extends AbstractActor implements Alive, Enemy, Movable {
      */
     public Alien(int healthValue, Behaviour<? super Alien> behaviour)
     {
+        super(healthValue);
+
         setAnimation(new Animation("sprites/alien.png", 32, 32, 0.1f, Animation.PlayMode.LOOP_PINGPONG));
         getAnimation().stop();
 
-        this.setHealth(new Health(healthValue));
         this.setBehaviour(behaviour);
 
         this.getHealth().onExhaustion(this::die);
     }
-
-    /**
-     * Die.
-     */
-    public void die()
-    {
-        getAnimation().stop();
-
-        new Destroy().execute(this);
-    }
-
 
     @Override
     public void addedToScene(@NotNull Scene scene)
@@ -138,21 +123,6 @@ public class Alien extends AbstractActor implements Alive, Enemy, Movable {
         getAnimation().stop();
     }
 
-    @Override
-    public Health getHealth()
-    {
-        return this.health;
-    }
-
-    /**
-     * Sets health.
-     *
-     * @param health the health
-     */
-    public void setHealth(Health health)
-    {
-        this.health = health;
-    }
 
     @Contract(pure = true)
     private Behaviour<? super Alien> getBehaviour()

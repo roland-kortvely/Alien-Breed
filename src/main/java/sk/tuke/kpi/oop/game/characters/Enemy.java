@@ -9,5 +9,5 @@ import sk.tuke.kpi.gamelib.Actor;
 /**
  * The interface Enemy.
  */
-public interface Enemy extends Actor {
+public interface Enemy extends Actor, Alive {
 }

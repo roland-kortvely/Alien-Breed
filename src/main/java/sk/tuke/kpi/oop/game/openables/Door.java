@@ -13,6 +13,7 @@ import sk.tuke.kpi.gamelib.map.MapTile;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.gamelib.messages.Topic;
 
+import sk.tuke.kpi.oop.game.Gameplay;
 import sk.tuke.kpi.oop.game.items.Usable;
 
 /**
@@ -107,10 +108,7 @@ public class Door extends AbstractActor implements Usable<Actor>, Openable {
             mapTiles[1].setType(MapTile.Type.CLEAR);
         }
 
-        Scene scene = this.getScene();
-        if (scene == null) {
-            return;
-        }
+        Scene scene = Gameplay.getScene();
 
         scene.getMessageBus().publish(DOOR_OPENED, this);
     }
@@ -127,10 +125,7 @@ public class Door extends AbstractActor implements Usable<Actor>, Openable {
             mapTiles[1].setType(MapTile.Type.WALL);
         }
 
-        Scene scene = this.getScene();
-        if (scene == null) {
-            return;
-        }
+        Scene scene = Gameplay.getScene();
 
         scene.getMessageBus().publish(DOOR_CLOSED, this);
     }

@@ -9,7 +9,8 @@ import sk.tuke.kpi.gamelib.ActorContainer;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.actions.AbstractAction;
 
-import sk.tuke.kpi.oop.game.Keeper;
+import sk.tuke.kpi.oop.game.Gameplay;
+import sk.tuke.kpi.oop.game.characters.Keeper;
 
 import java.util.Optional;
 
@@ -40,11 +41,7 @@ public class Take<A extends Actor> extends AbstractAction<Keeper<A>> {
             return;
         }
 
-        Scene scene = this.getActor().getScene();
-        if (scene == null) {
-            this.setDone(true);
-            return;
-        }
+        Scene scene = Gameplay.getScene();
 
         Optional<?> q = scene.getActors().stream()
             .filter(actor -> this.takeableActorsClass.isInstance(actor))

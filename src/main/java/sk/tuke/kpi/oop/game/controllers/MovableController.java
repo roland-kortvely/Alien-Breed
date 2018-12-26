@@ -11,7 +11,7 @@ import sk.tuke.kpi.gamelib.Input;
 import sk.tuke.kpi.gamelib.KeyboardListener;
 
 import sk.tuke.kpi.oop.game.Direction;
-import sk.tuke.kpi.oop.game.Movable;
+import sk.tuke.kpi.oop.game.characters.Movable;
 import sk.tuke.kpi.oop.game.actions.Move;
 
 import java.util.HashSet;

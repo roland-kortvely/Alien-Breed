@@ -8,6 +8,7 @@ import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
+import sk.tuke.kpi.oop.game.Gameplay;
 import sk.tuke.kpi.oop.game.characters.Alive;
 import sk.tuke.kpi.oop.game.commands.DrainHealth;
 import sk.tuke.kpi.oop.game.items.Obstacle;
@@ -32,10 +33,7 @@ public class Barrel extends Destructible implements Obstacle {
 
     private void destroyed()
     {
-        Scene scene = this.getScene();
-        if (scene == null) {
-            return;
-        }
+        Scene scene = Gameplay.getScene();
 
         Ellipse2D.Float ellipse = new Ellipse2D.Float(
             (this.getPosX() + this.getWidth() / 2.0f) - 50,

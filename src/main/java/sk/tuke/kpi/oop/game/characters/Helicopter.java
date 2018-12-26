@@ -11,11 +11,12 @@ import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.framework.Player;
 import sk.tuke.kpi.gamelib.graphics.Animation;
+import sk.tuke.kpi.oop.game.Gameplay;
 
 /**
  * The type Helicopter.
  */
-public class Helicopter extends AbstractActor {
+public class Helicopter extends AbstractAliveEnemy {
 
     private Animation normalAnimation;
 
@@ -29,6 +30,8 @@ public class Helicopter extends AbstractActor {
      */
     public Helicopter()
     {
+        super(100);
+
         this.setNormalAnimation(new Animation("sprites/heli.png", 64, 64, 0.08f, Animation.PlayMode.LOOP));
         this.setAnimation(this.getNormalAnimation());
 
@@ -52,10 +55,7 @@ public class Helicopter extends AbstractActor {
             return;
         }
 
-        Scene scene = this.getScene();
-        if (scene == null) {
-            return;
-        }
+        Scene scene = Gameplay.getScene();
 
         Player player = scene.getFirstActorByType(Player.class);
         if (player == null) {

@@ -5,9 +5,10 @@
 package sk.tuke.kpi.oop.game.characters;
 
 import sk.tuke.kpi.gamelib.Actor;
+import sk.tuke.kpi.oop.game.items.Collectible;
 
 /**
  * The interface Player.
  */
-public interface Player extends Actor {
+public interface Player extends Actor, Alive, Movable, Armed, Keeper<Collectible> {
 }

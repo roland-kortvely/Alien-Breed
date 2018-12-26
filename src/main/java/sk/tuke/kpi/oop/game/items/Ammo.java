@@ -14,7 +14,7 @@ import sk.tuke.kpi.oop.game.commands.ReloadFirearm;
 /**
  * The type Ammo.
  */
-public class Ammo extends AbstractActor implements Item, Usable<Armed> {
+public class Ammo extends AbstractActor implements Item<Armed> {
 
     /**
      * Instantiates a new Ammo.

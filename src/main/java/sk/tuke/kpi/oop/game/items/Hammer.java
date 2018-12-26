@@ -12,7 +12,7 @@ import sk.tuke.kpi.oop.game.commands.Repair;
 /**
  * The type Hammer.
  */
-public class Hammer extends BreakableTool<Repairable> implements Item, Collectible {
+public class Hammer extends BreakableTool<Repairable> {
 
     /**
      * Instantiates a new Hammer.

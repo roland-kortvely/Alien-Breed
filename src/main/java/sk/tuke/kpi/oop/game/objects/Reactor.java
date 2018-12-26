@@ -12,6 +12,7 @@ import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.gamelib.messages.Topic;
 
+import sk.tuke.kpi.oop.game.Gameplay;
 import sk.tuke.kpi.oop.game.actions.PerpetualReactorHeating;
 import sk.tuke.kpi.oop.game.items.Flammable;
 
@@ -194,10 +195,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable, Fl
         this.setExtinguished(true);
         this.setTemperature(4000);
 
-        Scene scene = this.getScene();
-        if (scene == null) {
-            return false;
-        }
+        Scene scene = Gameplay.getScene();
 
         scene.getMessageBus().publish(REACTOR_EXTINGUISHED, this);
 
